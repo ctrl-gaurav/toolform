@@ -1,0 +1,1811 @@
+{
+ "schema_version": 1,
+ "name": "families",
+ "source": [
+  "paper:tab_models_main",
+  "paper:tab_models_full"
+ ],
+ "description": "Strict-call accuracy per family and anchor model on the main grid, per core format (percent). An open row averages the family's checkpoints; an anchor row is one model on one to three seeds of 25 requests per format. checkpoints holds each open-weight checkpoint's own row (tab_models_full), three seeds of 50 requests per format.",
+ "conditions": {
+  "n_tools": 8,
+  "tier": 3,
+  "regime": "single",
+  "rule": "main",
+  "seeds": "0-2"
+ },
+ "data": {
+  "rows": [
+   {
+    "label": "Qwen 3.5 122B",
+    "family": "qwen3.5-large",
+    "kind": "open",
+    "effort": null,
+    "checkpoints": 2,
+    "params": "122",
+    "accuracy": {
+     "xml_schema": 86.7,
+     "natural_language": 83.0,
+     "python_stub": 89.0,
+     "json_schema_openai": 87.0,
+     "yaml_schema": 87.3,
+     "typescript": 82.7,
+     "markdown_table": 86.7,
+     "json_minimal": 67.0
+    },
+    "mean": 83.7,
+    "spread": 22.0,
+    "best_format": "python_stub",
+    "params_range": [
+     122.0,
+     122.0
+    ]
+   },
+   {
+    "label": "GLM",
+    "family": "glm",
+    "kind": "open",
+    "effort": null,
+    "checkpoints": 1,
+    "params": "106",
+    "accuracy": {
+     "xml_schema": 87.3,
+     "natural_language": 84.0,
+     "python_stub": 80.0,
+     "json_schema_openai": 79.3,
+     "yaml_schema": 80.7,
+     "typescript": 67.3,
+     "markdown_table": 72.0,
+     "json_minimal": 71.3
+    },
+    "mean": 77.8,
+    "spread": 20.0,
+    "best_format": "xml_schema",
+    "params_range": [
+     106.0,
+     106.0
+    ]
+   },
+   {
+    "label": "Gemma 4",
+    "family": "gemma4",
+    "kind": "open",
+    "effort": null,
+    "checkpoints": 5,
+    "params": "5.1-31",
+    "accuracy": {
+     "xml_schema": 83.7,
+     "natural_language": 78.5,
+     "python_stub": 72.9,
+     "json_schema_openai": 81.7,
+     "yaml_schema": 72.0,
+     "typescript": 70.4,
+     "markdown_table": 67.5,
+     "json_minimal": 54.7
+    },
+    "mean": 72.7,
+    "spread": 29.1,
+    "best_format": "xml_schema",
+    "params_range": [
+     5.1,
+     31.0
+    ]
+   },
+   {
+    "label": "Mistral",
+    "family": "mistral",
+    "kind": "open",
+    "effort": null,
+    "checkpoints": 3,
+    "params": "7-24",
+    "accuracy": {
+     "xml_schema": 85.1,
+     "natural_language": 64.7,
+     "python_stub": 60.9,
+     "json_schema_openai": 62.9,
+     "yaml_schema": 62.2,
+     "typescript": 50.4,
+     "markdown_table": 55.1,
+     "json_minimal": 47.6
+    },
+    "mean": 61.1,
+    "spread": 37.6,
+    "best_format": "xml_schema",
+    "params_range": [
+     7.0,
+     24.0
+    ]
+   },
+   {
+    "label": "Qwen 3.5",
+    "family": "qwen3.5",
+    "kind": "open",
+    "effort": null,
+    "checkpoints": 6,
+    "params": "0.8-35",
+    "accuracy": {
+     "xml_schema": 73.0,
+     "natural_language": 61.2,
+     "python_stub": 56.3,
+     "json_schema_openai": 65.4,
+     "yaml_schema": 57.0,
+     "typescript": 56.7,
+     "markdown_table": 53.8,
+     "json_minimal": 42.8
+    },
+    "mean": 58.3,
+    "spread": 30.2,
+    "best_format": "xml_schema",
+    "params_range": [
+     0.8,
+     35.0
+    ]
+   },
+   {
+    "label": "DeepSeek-R1 distil",
+    "family": "deepseek-r1",
+    "kind": "open",
+    "effort": null,
+    "checkpoints": 1,
+    "params": "70",
+    "accuracy": {
+     "xml_schema": 72.7,
+     "natural_language": 68.0,
+     "python_stub": 68.7,
+     "json_schema_openai": 50.7,
+     "yaml_schema": 38.7,
+     "typescript": 70.0,
+     "markdown_table": 53.3,
+     "json_minimal": 41.3
+    },
+    "mean": 57.9,
+    "spread": 34.0,
+    "best_format": "xml_schema",
+    "params_range": [
+     70.0,
+     70.0
+    ]
+   },
+   {
+    "label": "gpt-oss",
+    "family": "gpt-oss",
+    "kind": "open",
+    "effort": null,
+    "checkpoints": 2,
+    "params": "21-117",
+    "accuracy": {
+     "xml_schema": 42.7,
+     "natural_language": 57.7,
+     "python_stub": 75.0,
+     "json_schema_openai": 59.7,
+     "yaml_schema": 57.7,
+     "typescript": 71.0,
+     "markdown_table": 61.7,
+     "json_minimal": 32.3
+    },
+    "mean": 57.2,
+    "spread": 42.7,
+    "best_format": "python_stub",
+    "params_range": [
+     21.0,
+     117.0
+    ]
+   },
+   {
+    "label": "Qwen 3",
+    "family": "qwen3",
+    "kind": "open",
+    "effort": null,
+    "checkpoints": 7,
+    "params": "0.6-32",
+    "accuracy": {
+     "xml_schema": 77.7,
+     "natural_language": 63.0,
+     "python_stub": 48.4,
+     "json_schema_openai": 57.3,
+     "yaml_schema": 52.6,
+     "typescript": 46.2,
+     "markdown_table": 49.2,
+     "json_minimal": 33.0
+    },
+    "mean": 53.4,
+    "spread": 44.8,
+    "best_format": "xml_schema",
+    "params_range": [
+     0.6,
+     32.0
+    ]
+   },
+   {
+    "label": "Qwen 2.5 Coder",
+    "family": "qwen2.5-coder",
+    "kind": "open",
+    "effort": null,
+    "checkpoints": 1,
+    "params": "7",
+    "accuracy": {
+     "xml_schema": 81.3,
+     "natural_language": 86.7,
+     "python_stub": 56.7,
+     "json_schema_openai": 42.0,
+     "yaml_schema": 46.7,
+     "typescript": 48.0,
+     "markdown_table": 39.3,
+     "json_minimal": 12.7
+    },
+    "mean": 51.7,
+    "spread": 74.0,
+    "best_format": "natural_language",
+    "params_range": [
+     7.0,
+     7.0
+    ]
+   },
+   {
+    "label": "phi",
+    "family": "phi",
+    "kind": "open",
+    "effort": null,
+    "checkpoints": 2,
+    "params": "3.8-14",
+    "accuracy": {
+     "xml_schema": 75.0,
+     "natural_language": 44.7,
+     "python_stub": 62.7,
+     "json_schema_openai": 50.3,
+     "yaml_schema": 46.7,
+     "typescript": 44.3,
+     "markdown_table": 43.7,
+     "json_minimal": 18.7
+    },
+    "mean": 48.2,
+    "spread": 56.3,
+    "best_format": "xml_schema",
+    "params_range": [
+     3.8,
+     14.0
+    ]
+   },
+   {
+    "label": "Qwen 2.5",
+    "family": "qwen2.5",
+    "kind": "open",
+    "effort": null,
+    "checkpoints": 6,
+    "params": "0.5-32",
+    "accuracy": {
+     "xml_schema": 73.7,
+     "natural_language": 54.8,
+     "python_stub": 44.4,
+     "json_schema_openai": 43.0,
+     "yaml_schema": 43.1,
+     "typescript": 40.4,
+     "markdown_table": 39.8,
+     "json_minimal": 28.8
+    },
+    "mean": 46.0,
+    "spread": 44.9,
+    "best_format": "xml_schema",
+    "params_range": [
+     0.5,
+     32.0
+    ]
+   },
+   {
+    "label": "Llama 3",
+    "family": "llama3",
+    "kind": "open",
+    "effort": null,
+    "checkpoints": 4,
+    "params": "1-70",
+    "accuracy": {
+     "xml_schema": 62.8,
+     "natural_language": 50.2,
+     "python_stub": 60.8,
+     "json_schema_openai": 41.3,
+     "yaml_schema": 38.7,
+     "typescript": 43.7,
+     "markdown_table": 38.0,
+     "json_minimal": 29.8
+    },
+    "mean": 45.7,
+    "spread": 33.0,
+    "best_format": "xml_schema",
+    "params_range": [
+     1.0,
+     70.0
+    ]
+   },
+   {
+    "label": "Gemma 3",
+    "family": "gemma3",
+    "kind": "open",
+    "effort": null,
+    "checkpoints": 4,
+    "params": "1-27",
+    "accuracy": {
+     "xml_schema": 54.7,
+     "natural_language": 54.5,
+     "python_stub": 50.5,
+     "json_schema_openai": 47.2,
+     "yaml_schema": 45.2,
+     "typescript": 33.5,
+     "markdown_table": 44.2,
+     "json_minimal": 19.8
+    },
+    "mean": 43.7,
+    "spread": 34.8,
+    "best_format": "xml_schema",
+    "params_range": [
+     1.0,
+     27.0
+    ]
+   },
+   {
+    "label": "xLAM",
+    "family": "xlam",
+    "kind": "open",
+    "effort": null,
+    "checkpoints": 1,
+    "params": "7",
+    "accuracy": {
+     "xml_schema": 24.0,
+     "natural_language": 68.0,
+     "python_stub": 47.3,
+     "json_schema_openai": 39.3,
+     "yaml_schema": 32.0,
+     "typescript": 35.3,
+     "markdown_table": 30.7,
+     "json_minimal": 33.3
+    },
+    "mean": 38.8,
+    "spread": 44.0,
+    "best_format": "natural_language",
+    "params_range": [
+     7.0,
+     7.0
+    ]
+   },
+   {
+    "label": "Llama tool-RL",
+    "family": "llama3-tool",
+    "kind": "open",
+    "effort": null,
+    "checkpoints": 3,
+    "params": "8",
+    "accuracy": {
+     "xml_schema": 40.2,
+     "natural_language": 62.4,
+     "python_stub": 36.9,
+     "json_schema_openai": 27.8,
+     "yaml_schema": 26.2,
+     "typescript": 29.1,
+     "markdown_table": 30.7,
+     "json_minimal": 20.9
+    },
+    "mean": 34.3,
+    "spread": 41.6,
+    "best_format": "natural_language",
+    "params_range": [
+     8.0,
+     8.0
+    ]
+   },
+   {
+    "label": "SmolLM",
+    "family": "smollm",
+    "kind": "open",
+    "effort": null,
+    "checkpoints": 3,
+    "params": "0.36-3",
+    "accuracy": {
+     "xml_schema": 26.9,
+     "natural_language": 22.7,
+     "python_stub": 18.9,
+     "json_schema_openai": 15.8,
+     "yaml_schema": 12.4,
+     "typescript": 8.7,
+     "markdown_table": 12.9,
+     "json_minimal": 9.1
+    },
+    "mean": 15.9,
+    "spread": 18.2,
+    "best_format": "xml_schema",
+    "params_range": [
+     0.36,
+     3.0
+    ]
+   },
+   {
+    "label": "DeepSeek-V4.1-Flash (none)",
+    "family": null,
+    "kind": "anchor_open",
+    "effort": "none",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 90.7,
+     "natural_language": 93.3,
+     "python_stub": 88.0,
+     "json_schema_openai": 93.3,
+     "yaml_schema": 93.3,
+     "typescript": 94.7,
+     "markdown_table": 69.3,
+     "json_minimal": 90.7
+    },
+    "mean": 89.2,
+    "spread": 25.3,
+    "best_format": "typescript"
+   },
+   {
+    "label": "Kimi-K3 (none)",
+    "family": null,
+    "kind": "anchor_open",
+    "effort": "none",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 92.0,
+     "natural_language": 76.0,
+     "python_stub": 88.0,
+     "json_schema_openai": 92.0,
+     "yaml_schema": 96.0,
+     "typescript": 88.0,
+     "markdown_table": 80.0,
+     "json_minimal": 92.0
+    },
+    "mean": 88.0,
+    "spread": 20.0,
+    "best_format": "yaml_schema"
+   },
+   {
+    "label": "GLM-5.3 (low)",
+    "family": null,
+    "kind": "anchor_open",
+    "effort": "low",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 78.7,
+     "natural_language": 80.0,
+     "python_stub": 76.0,
+     "json_schema_openai": 84.0,
+     "yaml_schema": 85.3,
+     "typescript": 85.3,
+     "markdown_table": 85.3,
+     "json_minimal": 81.3
+    },
+    "mean": 82.0,
+    "spread": 9.3,
+    "best_format": "markdown_table"
+   },
+   {
+    "label": "GLM-5.3 (medium)",
+    "family": null,
+    "kind": "anchor_open",
+    "effort": "medium",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 78.7,
+     "natural_language": 68.0,
+     "python_stub": 84.0,
+     "json_schema_openai": 84.0,
+     "yaml_schema": 81.3,
+     "typescript": 74.7,
+     "markdown_table": 78.7,
+     "json_minimal": 80.0
+    },
+    "mean": 78.7,
+    "spread": 16.0,
+    "best_format": "json_schema_openai"
+   },
+   {
+    "label": "GLM-5.3 (high)",
+    "family": null,
+    "kind": "anchor_open",
+    "effort": "high",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 78.7,
+     "natural_language": 69.3,
+     "python_stub": 84.0,
+     "json_schema_openai": 84.0,
+     "yaml_schema": 77.3,
+     "typescript": 85.3,
+     "markdown_table": 82.7,
+     "json_minimal": 78.7
+    },
+    "mean": 80.0,
+    "spread": 16.0,
+    "best_format": "typescript"
+   },
+   {
+    "label": "gpt-oss-120b (low)",
+    "family": null,
+    "kind": "anchor_open",
+    "effort": "low",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 70.7,
+     "natural_language": 57.3,
+     "python_stub": 85.3,
+     "json_schema_openai": 80.0,
+     "yaml_schema": 77.3,
+     "typescript": 74.7,
+     "markdown_table": 64.0,
+     "json_minimal": 42.7
+    },
+    "mean": 69.0,
+    "spread": 42.7,
+    "best_format": "python_stub"
+   },
+   {
+    "label": "gpt-oss-120b (medium)",
+    "family": null,
+    "kind": "anchor_open",
+    "effort": "medium",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 77.3,
+     "natural_language": 60.0,
+     "python_stub": 82.7,
+     "json_schema_openai": 81.3,
+     "yaml_schema": 80.0,
+     "typescript": 84.0,
+     "markdown_table": 70.7,
+     "json_minimal": 64.0
+    },
+    "mean": 75.0,
+    "spread": 24.0,
+    "best_format": "typescript"
+   },
+   {
+    "label": "gpt-oss-120b (high)",
+    "family": null,
+    "kind": "anchor_open",
+    "effort": "high",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 64.0,
+     "natural_language": 30.7,
+     "python_stub": 78.7,
+     "json_schema_openai": 81.3,
+     "yaml_schema": 69.3,
+     "typescript": 74.7,
+     "markdown_table": 58.7,
+     "json_minimal": 57.3
+    },
+    "mean": 64.3,
+    "spread": 50.7,
+    "best_format": "json_schema_openai"
+   },
+   {
+    "label": "GPT-6 astra (low)",
+    "family": null,
+    "kind": "anchor_proprietary",
+    "effort": "low",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 96.0,
+     "natural_language": 49.3,
+     "python_stub": 94.7,
+     "json_schema_openai": 94.7,
+     "yaml_schema": 96.0,
+     "typescript": 94.7,
+     "markdown_table": 85.3,
+     "json_minimal": 98.7
+    },
+    "mean": 88.7,
+    "spread": 49.3,
+    "best_format": "json_minimal"
+   },
+   {
+    "label": "GPT-5.6 luna (none)",
+    "family": null,
+    "kind": "anchor_proprietary",
+    "effort": "none",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 88.0,
+     "natural_language": 78.7,
+     "python_stub": 88.0,
+     "json_schema_openai": 86.7,
+     "yaml_schema": 86.7,
+     "typescript": 92.0,
+     "markdown_table": 81.3,
+     "json_minimal": 94.7
+    },
+    "mean": 87.0,
+    "spread": 16.0,
+    "best_format": "json_minimal"
+   },
+   {
+    "label": "GPT-5.6 terra (none)",
+    "family": null,
+    "kind": "anchor_proprietary",
+    "effort": "none",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 89.3,
+     "natural_language": 44.0,
+     "python_stub": 90.7,
+     "json_schema_openai": 84.0,
+     "yaml_schema": 88.0,
+     "typescript": 90.7,
+     "markdown_table": 69.3,
+     "json_minimal": 88.0
+    },
+    "mean": 80.5,
+    "spread": 46.7,
+    "best_format": "python_stub"
+   },
+   {
+    "label": "GPT-5.6 sol (none)",
+    "family": null,
+    "kind": "anchor_proprietary",
+    "effort": "none",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 90.7,
+     "natural_language": 25.3,
+     "python_stub": 88.0,
+     "json_schema_openai": 94.7,
+     "yaml_schema": 90.7,
+     "typescript": 92.0,
+     "markdown_table": 72.0,
+     "json_minimal": 80.0
+    },
+    "mean": 79.2,
+    "spread": 69.3,
+    "best_format": "json_schema_openai"
+   },
+   {
+    "label": "Claude Fable 5.1 (medium)",
+    "family": null,
+    "kind": "anchor_proprietary",
+    "effort": "medium",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 100.0,
+     "natural_language": 100.0,
+     "python_stub": 100.0,
+     "json_schema_openai": 100.0,
+     "yaml_schema": 100.0,
+     "typescript": 96.0,
+     "markdown_table": 100.0,
+     "json_minimal": 100.0
+    },
+    "mean": 99.5,
+    "spread": 4.0,
+    "best_format": "json_minimal"
+   },
+   {
+    "label": "Claude Opus 5.5 (medium)",
+    "family": null,
+    "kind": "anchor_proprietary",
+    "effort": "medium",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 98.7,
+     "natural_language": 98.7,
+     "python_stub": 98.7,
+     "json_schema_openai": 98.7,
+     "yaml_schema": 97.3,
+     "typescript": 97.3,
+     "markdown_table": 98.7,
+     "json_minimal": 98.7
+    },
+    "mean": 98.3,
+    "spread": 1.3,
+    "best_format": "json_minimal"
+   },
+   {
+    "label": "Claude Opus 5.5 (low)",
+    "family": null,
+    "kind": "anchor_proprietary",
+    "effort": "low",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 98.7,
+     "natural_language": 98.7,
+     "python_stub": 98.7,
+     "json_schema_openai": 98.7,
+     "yaml_schema": 98.7,
+     "typescript": 98.7,
+     "markdown_table": 98.7,
+     "json_minimal": 96.0
+    },
+    "mean": 98.3,
+    "spread": 2.7,
+    "best_format": "json_schema_openai"
+   },
+   {
+    "label": "Claude Opus 5 (low)",
+    "family": null,
+    "kind": "anchor_proprietary",
+    "effort": "low",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 98.7,
+     "natural_language": 28.0,
+     "python_stub": 97.3,
+     "json_schema_openai": 97.3,
+     "yaml_schema": 97.3,
+     "typescript": 97.3,
+     "markdown_table": 92.0,
+     "json_minimal": 92.0
+    },
+    "mean": 87.5,
+    "spread": 70.7,
+    "best_format": "xml_schema"
+   },
+   {
+    "label": "Claude Opus 5 (medium)",
+    "family": null,
+    "kind": "anchor_proprietary",
+    "effort": "medium",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 98.7,
+     "natural_language": 25.3,
+     "python_stub": 97.3,
+     "json_schema_openai": 96.0,
+     "yaml_schema": 97.3,
+     "typescript": 96.0,
+     "markdown_table": 97.3,
+     "json_minimal": 93.3
+    },
+    "mean": 87.7,
+    "spread": 73.3,
+    "best_format": "xml_schema"
+   },
+   {
+    "label": "Claude Sonnet 5 (low)",
+    "family": null,
+    "kind": "anchor_proprietary",
+    "effort": "low",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 89.3,
+     "natural_language": 49.3,
+     "python_stub": 92.0,
+     "json_schema_openai": 94.7,
+     "yaml_schema": 93.3,
+     "typescript": 94.7,
+     "markdown_table": 93.3,
+     "json_minimal": 92.0
+    },
+    "mean": 87.3,
+    "spread": 45.3,
+    "best_format": "json_schema_openai"
+   },
+   {
+    "label": "Claude Sonnet 5 (medium)",
+    "family": null,
+    "kind": "anchor_proprietary",
+    "effort": "medium",
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 94.7,
+     "natural_language": 40.0,
+     "python_stub": 93.3,
+     "json_schema_openai": 96.0,
+     "yaml_schema": 93.3,
+     "typescript": 93.3,
+     "markdown_table": 90.7,
+     "json_minimal": 96.0
+    },
+    "mean": 87.2,
+    "spread": 56.0,
+    "best_format": "json_minimal"
+   },
+   {
+    "label": "Claude Haiku 4.5",
+    "family": null,
+    "kind": "anchor_proprietary",
+    "effort": null,
+    "checkpoints": 1,
+    "params": null,
+    "accuracy": {
+     "xml_schema": 86.7,
+     "natural_language": 81.3,
+     "python_stub": 84.0,
+     "json_schema_openai": 84.0,
+     "yaml_schema": 88.0,
+     "typescript": 86.7,
+     "markdown_table": 80.0,
+     "json_minimal": 72.0
+    },
+    "mean": 82.8,
+    "spread": 16.0,
+    "best_format": "yaml_schema"
+   }
+  ],
+  "checkpoints": [
+   {
+    "id": "Qwen/Qwen3.5-122B-A10B-GPTQ-Int4",
+    "family": "qwen3.5-large",
+    "family_label": "Qwen 3.5 122B",
+    "params_b": 122.0,
+    "accuracy": {
+     "xml_schema": 86.7,
+     "natural_language": 83.3,
+     "python_stub": 89.3,
+     "json_schema_openai": 87.3,
+     "yaml_schema": 87.3,
+     "typescript": 82.7,
+     "markdown_table": 87.3,
+     "json_minimal": 66.7
+    },
+    "mean": 83.8,
+    "spread": 22.7,
+    "best_format": "python_stub"
+   },
+   {
+    "id": "Qwen/Qwen3.5-122B-A10B-FP8",
+    "family": "qwen3.5-large",
+    "family_label": "Qwen 3.5 122B",
+    "params_b": 122.0,
+    "accuracy": {
+     "xml_schema": 86.7,
+     "natural_language": 82.7,
+     "python_stub": 88.7,
+     "json_schema_openai": 86.7,
+     "yaml_schema": 87.3,
+     "typescript": 82.7,
+     "markdown_table": 86.0,
+     "json_minimal": 67.3
+    },
+    "mean": 83.5,
+    "spread": 21.3,
+    "best_format": "python_stub"
+   },
+   {
+    "id": "zai-org/GLM-4.5-Air-FP8",
+    "family": "glm",
+    "family_label": "GLM",
+    "params_b": 106.0,
+    "accuracy": {
+     "xml_schema": 87.3,
+     "natural_language": 84.0,
+     "python_stub": 80.0,
+     "json_schema_openai": 79.3,
+     "yaml_schema": 80.7,
+     "typescript": 67.3,
+     "markdown_table": 72.0,
+     "json_minimal": 71.3
+    },
+    "mean": 77.8,
+    "spread": 20.0,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "google/gemma-4-31b-it",
+    "family": "gemma4",
+    "family_label": "Gemma 4",
+    "params_b": 31.0,
+    "accuracy": {
+     "xml_schema": 88.7,
+     "natural_language": 88.0,
+     "python_stub": 91.3,
+     "json_schema_openai": 89.3,
+     "yaml_schema": 88.0,
+     "typescript": 83.3,
+     "markdown_table": 90.0,
+     "json_minimal": 76.7
+    },
+    "mean": 86.9,
+    "spread": 14.7,
+    "best_format": "python_stub"
+   },
+   {
+    "id": "google/gemma-4-12b-it",
+    "family": "gemma4",
+    "family_label": "Gemma 4",
+    "params_b": 12.0,
+    "accuracy": {
+     "xml_schema": 88.0,
+     "natural_language": 84.7,
+     "python_stub": 84.0,
+     "json_schema_openai": 88.7,
+     "yaml_schema": 84.7,
+     "typescript": 80.0,
+     "markdown_table": 84.0,
+     "json_minimal": 66.7
+    },
+    "mean": 82.6,
+    "spread": 22.0,
+    "best_format": "json_schema_openai"
+   },
+   {
+    "id": "google/gemma-4-e4b-it",
+    "family": "gemma4",
+    "family_label": "Gemma 4",
+    "params_b": 8.0,
+    "accuracy": {
+     "xml_schema": 89.3,
+     "natural_language": 60.0,
+     "python_stub": 78.0,
+     "json_schema_openai": 88.0,
+     "yaml_schema": 87.3,
+     "typescript": 81.3,
+     "markdown_table": 78.7,
+     "json_minimal": 52.0
+    },
+    "mean": 76.8,
+    "spread": 37.3,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "google/gemma-4-26b-a4b-it",
+    "family": "gemma4",
+    "family_label": "Gemma 4",
+    "params_b": 26.0,
+    "accuracy": {
+     "xml_schema": 80.0,
+     "natural_language": 84.7,
+     "python_stub": 84.0,
+     "json_schema_openai": 67.3,
+     "yaml_schema": 39.3,
+     "typescript": 57.3,
+     "markdown_table": 40.0,
+     "json_minimal": 57.3
+    },
+    "mean": 63.8,
+    "spread": 45.3,
+    "best_format": "natural_language"
+   },
+   {
+    "id": "google/gemma-4-e2b-it",
+    "family": "gemma4",
+    "family_label": "Gemma 4",
+    "params_b": 5.1,
+    "accuracy": {
+     "xml_schema": 72.7,
+     "natural_language": 75.3,
+     "python_stub": 27.3,
+     "json_schema_openai": 75.3,
+     "yaml_schema": 60.7,
+     "typescript": 50.0,
+     "markdown_table": 44.7,
+     "json_minimal": 20.7
+    },
+    "mean": 53.3,
+    "spread": 54.7,
+    "best_format": "natural_language"
+   },
+   {
+    "id": "mistralai/Mistral-Small-24B-Instruct-2501",
+    "family": "mistral",
+    "family_label": "Mistral",
+    "params_b": 24.0,
+    "accuracy": {
+     "xml_schema": 90.0,
+     "natural_language": 73.3,
+     "python_stub": 88.7,
+     "json_schema_openai": 83.3,
+     "yaml_schema": 78.7,
+     "typescript": 73.3,
+     "markdown_table": 80.7,
+     "json_minimal": 62.0
+    },
+    "mean": 78.8,
+    "spread": 28.0,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "mistralai/Ministral-8B-Instruct-2410",
+    "family": "mistral",
+    "family_label": "Mistral",
+    "params_b": 8.0,
+    "accuracy": {
+     "xml_schema": 86.0,
+     "natural_language": 76.7,
+     "python_stub": 50.7,
+     "json_schema_openai": 55.3,
+     "yaml_schema": 63.3,
+     "typescript": 54.7,
+     "markdown_table": 40.7,
+     "json_minimal": 36.0
+    },
+    "mean": 57.9,
+    "spread": 50.0,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "mistralai/Mistral-7B-Instruct-v0.3",
+    "family": "mistral",
+    "family_label": "Mistral",
+    "params_b": 7.0,
+    "accuracy": {
+     "xml_schema": 79.3,
+     "natural_language": 44.0,
+     "python_stub": 43.3,
+     "json_schema_openai": 50.0,
+     "yaml_schema": 44.7,
+     "typescript": 23.3,
+     "markdown_table": 44.0,
+     "json_minimal": 44.7
+    },
+    "mean": 46.7,
+    "spread": 56.0,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "Qwen/Qwen3.5-27B",
+    "family": "qwen3.5",
+    "family_label": "Qwen 3.5",
+    "params_b": 27.0,
+    "accuracy": {
+     "xml_schema": 90.0,
+     "natural_language": 77.3,
+     "python_stub": 88.7,
+     "json_schema_openai": 90.0,
+     "yaml_schema": 90.0,
+     "typescript": 84.0,
+     "markdown_table": 88.7,
+     "json_minimal": 91.3
+    },
+    "mean": 87.5,
+    "spread": 14.0,
+    "best_format": "json_minimal"
+   },
+   {
+    "id": "Qwen/Qwen3.5-35B-A3B",
+    "family": "qwen3.5",
+    "family_label": "Qwen 3.5",
+    "params_b": 35.0,
+    "accuracy": {
+     "xml_schema": 84.7,
+     "natural_language": 77.3,
+     "python_stub": 82.0,
+     "json_schema_openai": 83.3,
+     "yaml_schema": 81.3,
+     "typescript": 81.3,
+     "markdown_table": 77.3,
+     "json_minimal": 73.3
+    },
+    "mean": 80.1,
+    "spread": 11.3,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "Qwen/Qwen3.5-9B",
+    "family": "qwen3.5",
+    "family_label": "Qwen 3.5",
+    "params_b": 9.0,
+    "accuracy": {
+     "xml_schema": 84.7,
+     "natural_language": 79.3,
+     "python_stub": 70.7,
+     "json_schema_openai": 76.0,
+     "yaml_schema": 70.7,
+     "typescript": 66.0,
+     "markdown_table": 69.3,
+     "json_minimal": 46.0
+    },
+    "mean": 70.3,
+    "spread": 38.7,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "Qwen/Qwen3.5-4B",
+    "family": "qwen3.5",
+    "family_label": "Qwen 3.5",
+    "params_b": 4.0,
+    "accuracy": {
+     "xml_schema": 82.7,
+     "natural_language": 82.7,
+     "python_stub": 62.0,
+     "json_schema_openai": 69.3,
+     "yaml_schema": 54.7,
+     "typescript": 59.3,
+     "markdown_table": 58.0,
+     "json_minimal": 27.3
+    },
+    "mean": 62.0,
+    "spread": 55.3,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "Qwen/Qwen3.5-2B",
+    "family": "qwen3.5",
+    "family_label": "Qwen 3.5",
+    "params_b": 2.0,
+    "accuracy": {
+     "xml_schema": 68.7,
+     "natural_language": 42.7,
+     "python_stub": 3.3,
+     "json_schema_openai": 40.0,
+     "yaml_schema": 24.7,
+     "typescript": 28.7,
+     "markdown_table": 22.7,
+     "json_minimal": 12.7
+    },
+    "mean": 30.4,
+    "spread": 65.3,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "Qwen/Qwen3.5-0.8B",
+    "family": "qwen3.5",
+    "family_label": "Qwen 3.5",
+    "params_b": 0.8,
+    "accuracy": {
+     "xml_schema": 27.3,
+     "natural_language": 8.0,
+     "python_stub": 31.3,
+     "json_schema_openai": 34.0,
+     "yaml_schema": 20.7,
+     "typescript": 20.7,
+     "markdown_table": 6.7,
+     "json_minimal": 6.0
+    },
+    "mean": 19.3,
+    "spread": 28.0,
+    "best_format": "json_schema_openai"
+   },
+   {
+    "id": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+    "family": "deepseek-r1",
+    "family_label": "DeepSeek-R1 distil",
+    "params_b": 70.0,
+    "accuracy": {
+     "xml_schema": 72.7,
+     "natural_language": 68.0,
+     "python_stub": 68.7,
+     "json_schema_openai": 50.7,
+     "yaml_schema": 38.7,
+     "typescript": 70.0,
+     "markdown_table": 53.3,
+     "json_minimal": 41.3
+    },
+    "mean": 57.9,
+    "spread": 34.0,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "openai/gpt-oss-120b",
+    "family": "gpt-oss",
+    "family_label": "gpt-oss",
+    "params_b": 117.0,
+    "accuracy": {
+     "xml_schema": 72.0,
+     "natural_language": 54.7,
+     "python_stub": 78.0,
+     "json_schema_openai": 76.0,
+     "yaml_schema": 70.7,
+     "typescript": 70.7,
+     "markdown_table": 64.7,
+     "json_minimal": 42.0
+    },
+    "mean": 66.1,
+    "spread": 36.0,
+    "best_format": "python_stub"
+   },
+   {
+    "id": "openai/gpt-oss-20b",
+    "family": "gpt-oss",
+    "family_label": "gpt-oss",
+    "params_b": 21.0,
+    "accuracy": {
+     "xml_schema": 13.3,
+     "natural_language": 60.7,
+     "python_stub": 72.0,
+     "json_schema_openai": 43.3,
+     "yaml_schema": 44.7,
+     "typescript": 71.3,
+     "markdown_table": 58.7,
+     "json_minimal": 22.7
+    },
+    "mean": 48.3,
+    "spread": 58.7,
+    "best_format": "python_stub"
+   },
+   {
+    "id": "Qwen/Qwen3-14B",
+    "family": "qwen3",
+    "family_label": "Qwen 3",
+    "params_b": 14.0,
+    "accuracy": {
+     "xml_schema": 70.0,
+     "natural_language": 85.3,
+     "python_stub": 80.0,
+     "json_schema_openai": 81.3,
+     "yaml_schema": 72.0,
+     "typescript": 58.7,
+     "markdown_table": 78.0,
+     "json_minimal": 46.7
+    },
+    "mean": 71.5,
+    "spread": 38.7,
+    "best_format": "natural_language"
+   },
+   {
+    "id": "Qwen/Qwen3-30B-A3B",
+    "family": "qwen3",
+    "family_label": "Qwen 3",
+    "params_b": 30.0,
+    "accuracy": {
+     "xml_schema": 83.3,
+     "natural_language": 79.3,
+     "python_stub": 69.3,
+     "json_schema_openai": 75.3,
+     "yaml_schema": 74.7,
+     "typescript": 54.0,
+     "markdown_table": 60.0,
+     "json_minimal": 50.7
+    },
+    "mean": 68.3,
+    "spread": 32.7,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "Qwen/Qwen3-32B",
+    "family": "qwen3",
+    "family_label": "Qwen 3",
+    "params_b": 32.0,
+    "accuracy": {
+     "xml_schema": 85.3,
+     "natural_language": 64.0,
+     "python_stub": 83.3,
+     "json_schema_openai": 70.0,
+     "yaml_schema": 60.7,
+     "typescript": 62.7,
+     "markdown_table": 67.3,
+     "json_minimal": 37.3
+    },
+    "mean": 66.3,
+    "spread": 48.0,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "Qwen/Qwen3-8B",
+    "family": "qwen3",
+    "family_label": "Qwen 3",
+    "params_b": 8.0,
+    "accuracy": {
+     "xml_schema": 90.0,
+     "natural_language": 64.7,
+     "python_stub": 64.7,
+     "json_schema_openai": 60.0,
+     "yaml_schema": 54.0,
+     "typescript": 43.3,
+     "markdown_table": 48.0,
+     "json_minimal": 41.3
+    },
+    "mean": 58.2,
+    "spread": 48.7,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "Qwen/Qwen3-4B",
+    "family": "qwen3",
+    "family_label": "Qwen 3",
+    "params_b": 4.0,
+    "accuracy": {
+     "xml_schema": 84.0,
+     "natural_language": 74.7,
+     "python_stub": 28.7,
+     "json_schema_openai": 40.0,
+     "yaml_schema": 40.0,
+     "typescript": 37.3,
+     "markdown_table": 44.0,
+     "json_minimal": 23.3
+    },
+    "mean": 46.5,
+    "spread": 60.7,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "Qwen/Qwen3-1.7B",
+    "family": "qwen3",
+    "family_label": "Qwen 3",
+    "params_b": 1.7,
+    "accuracy": {
+     "xml_schema": 72.7,
+     "natural_language": 52.7,
+     "python_stub": 12.0,
+     "json_schema_openai": 42.0,
+     "yaml_schema": 33.3,
+     "typescript": 36.7,
+     "markdown_table": 34.0,
+     "json_minimal": 18.0
+    },
+    "mean": 37.7,
+    "spread": 60.7,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "Qwen/Qwen3-0.6B",
+    "family": "qwen3",
+    "family_label": "Qwen 3",
+    "params_b": 0.6,
+    "accuracy": {
+     "xml_schema": 58.7,
+     "natural_language": 20.7,
+     "python_stub": 0.7,
+     "json_schema_openai": 32.7,
+     "yaml_schema": 33.3,
+     "typescript": 30.7,
+     "markdown_table": 13.3,
+     "json_minimal": 13.3
+    },
+    "mean": 25.4,
+    "spread": 58.0,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "Qwen/Qwen2.5-Coder-7B-Instruct",
+    "family": "qwen2.5-coder",
+    "family_label": "Qwen 2.5 Coder",
+    "params_b": 7.0,
+    "accuracy": {
+     "xml_schema": 81.3,
+     "natural_language": 86.7,
+     "python_stub": 56.7,
+     "json_schema_openai": 42.0,
+     "yaml_schema": 46.7,
+     "typescript": 48.0,
+     "markdown_table": 39.3,
+     "json_minimal": 12.7
+    },
+    "mean": 51.7,
+    "spread": 74.0,
+    "best_format": "natural_language"
+   },
+   {
+    "id": "microsoft/phi-4",
+    "family": "phi",
+    "family_label": "phi",
+    "params_b": 14.0,
+    "accuracy": {
+     "xml_schema": 85.3,
+     "natural_language": 61.3,
+     "python_stub": 82.0,
+     "json_schema_openai": 69.3,
+     "yaml_schema": 64.7,
+     "typescript": 63.3,
+     "markdown_table": 65.3,
+     "json_minimal": 18.0
+    },
+    "mean": 63.7,
+    "spread": 67.3,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "microsoft/Phi-4-mini-instruct",
+    "family": "phi",
+    "family_label": "phi",
+    "params_b": 3.8,
+    "accuracy": {
+     "xml_schema": 64.7,
+     "natural_language": 28.0,
+     "python_stub": 43.3,
+     "json_schema_openai": 31.3,
+     "yaml_schema": 28.7,
+     "typescript": 25.3,
+     "markdown_table": 22.0,
+     "json_minimal": 19.3
+    },
+    "mean": 32.8,
+    "spread": 45.3,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "Qwen/Qwen2.5-32B-Instruct",
+    "family": "qwen2.5",
+    "family_label": "Qwen 2.5",
+    "params_b": 32.0,
+    "accuracy": {
+     "xml_schema": 90.0,
+     "natural_language": 70.0,
+     "python_stub": 82.0,
+     "json_schema_openai": 78.7,
+     "yaml_schema": 82.7,
+     "typescript": 68.7,
+     "markdown_table": 73.3,
+     "json_minimal": 76.0
+    },
+    "mean": 77.7,
+    "spread": 21.3,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "Qwen/Qwen2.5-14B-Instruct",
+    "family": "qwen2.5",
+    "family_label": "Qwen 2.5",
+    "params_b": 14.0,
+    "accuracy": {
+     "xml_schema": 86.7,
+     "natural_language": 74.7,
+     "python_stub": 72.7,
+     "json_schema_openai": 66.0,
+     "yaml_schema": 60.7,
+     "typescript": 63.3,
+     "markdown_table": 67.3,
+     "json_minimal": 38.0
+    },
+    "mean": 66.2,
+    "spread": 48.7,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "Qwen/Qwen2.5-7B-Instruct",
+    "family": "qwen2.5",
+    "family_label": "Qwen 2.5",
+    "params_b": 7.0,
+    "accuracy": {
+     "xml_schema": 92.7,
+     "natural_language": 84.0,
+     "python_stub": 55.3,
+     "json_schema_openai": 35.3,
+     "yaml_schema": 34.0,
+     "typescript": 42.7,
+     "markdown_table": 38.0,
+     "json_minimal": 20.7
+    },
+    "mean": 50.3,
+    "spread": 72.0,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "Qwen/Qwen2.5-3B-Instruct",
+    "family": "qwen2.5",
+    "family_label": "Qwen 2.5",
+    "params_b": 3.0,
+    "accuracy": {
+     "xml_schema": 68.7,
+     "natural_language": 47.3,
+     "python_stub": 48.0,
+     "json_schema_openai": 28.0,
+     "yaml_schema": 38.0,
+     "typescript": 26.0,
+     "markdown_table": 24.7,
+     "json_minimal": 10.0
+    },
+    "mean": 36.3,
+    "spread": 58.7,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "family": "qwen2.5",
+    "family_label": "Qwen 2.5",
+    "params_b": 1.5,
+    "accuracy": {
+     "xml_schema": 64.0,
+     "natural_language": 36.7,
+     "python_stub": 4.0,
+     "json_schema_openai": 31.3,
+     "yaml_schema": 30.7,
+     "typescript": 30.7,
+     "markdown_table": 26.7,
+     "json_minimal": 17.3
+    },
+    "mean": 30.2,
+    "spread": 60.0,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "family": "qwen2.5",
+    "family_label": "Qwen 2.5",
+    "params_b": 0.5,
+    "accuracy": {
+     "xml_schema": 40.0,
+     "natural_language": 16.0,
+     "python_stub": 4.7,
+     "json_schema_openai": 18.7,
+     "yaml_schema": 12.7,
+     "typescript": 11.3,
+     "markdown_table": 8.7,
+     "json_minimal": 10.7
+    },
+    "mean": 15.3,
+    "spread": 35.3,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "meta-llama/Llama-3.1-70B-Instruct",
+    "family": "llama3",
+    "family_label": "Llama 3",
+    "params_b": 70.0,
+    "accuracy": {
+     "xml_schema": 90.7,
+     "natural_language": 80.7,
+     "python_stub": 84.0,
+     "json_schema_openai": 77.3,
+     "yaml_schema": 60.0,
+     "typescript": 75.3,
+     "markdown_table": 63.3,
+     "json_minimal": 67.3
+    },
+    "mean": 74.8,
+    "spread": 30.7,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "meta-llama/Llama-3.1-8B-Instruct",
+    "family": "llama3",
+    "family_label": "Llama 3",
+    "params_b": 8.0,
+    "accuracy": {
+     "xml_schema": 77.3,
+     "natural_language": 64.0,
+     "python_stub": 70.7,
+     "json_schema_openai": 48.7,
+     "yaml_schema": 44.7,
+     "typescript": 51.3,
+     "markdown_table": 47.3,
+     "json_minimal": 16.0
+    },
+    "mean": 52.5,
+    "spread": 61.3,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "meta-llama/Llama-3.2-3B-Instruct",
+    "family": "llama3",
+    "family_label": "Llama 3",
+    "params_b": 3.0,
+    "accuracy": {
+     "xml_schema": 64.7,
+     "natural_language": 48.0,
+     "python_stub": 64.7,
+     "json_schema_openai": 39.3,
+     "yaml_schema": 44.7,
+     "typescript": 42.0,
+     "markdown_table": 36.7,
+     "json_minimal": 22.0
+    },
+    "mean": 45.2,
+    "spread": 42.7,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "meta-llama/Llama-3.2-1B-Instruct",
+    "family": "llama3",
+    "family_label": "Llama 3",
+    "params_b": 1.0,
+    "accuracy": {
+     "xml_schema": 18.7,
+     "natural_language": 8.0,
+     "python_stub": 24.0,
+     "json_schema_openai": 0.0,
+     "yaml_schema": 5.3,
+     "typescript": 6.0,
+     "markdown_table": 4.7,
+     "json_minimal": 14.0
+    },
+    "mean": 10.1,
+    "spread": 24.0,
+    "best_format": "python_stub"
+   },
+   {
+    "id": "google/gemma-3-27b-it",
+    "family": "gemma3",
+    "family_label": "Gemma 3",
+    "params_b": 27.0,
+    "accuracy": {
+     "xml_schema": 87.3,
+     "natural_language": 84.7,
+     "python_stub": 73.3,
+     "json_schema_openai": 70.7,
+     "yaml_schema": 68.0,
+     "typescript": 54.7,
+     "markdown_table": 67.3,
+     "json_minimal": 38.0
+    },
+    "mean": 68.0,
+    "spread": 49.3,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "google/gemma-3-12b-it",
+    "family": "gemma3",
+    "family_label": "Gemma 3",
+    "params_b": 12.0,
+    "accuracy": {
+     "xml_schema": 69.3,
+     "natural_language": 59.3,
+     "python_stub": 68.0,
+     "json_schema_openai": 67.3,
+     "yaml_schema": 73.3,
+     "typescript": 40.7,
+     "markdown_table": 70.0,
+     "json_minimal": 31.3
+    },
+    "mean": 59.9,
+    "spread": 42.0,
+    "best_format": "yaml_schema"
+   },
+   {
+    "id": "google/gemma-3-4b-it",
+    "family": "gemma3",
+    "family_label": "Gemma 3",
+    "params_b": 4.0,
+    "accuracy": {
+     "xml_schema": 60.0,
+     "natural_language": 72.7,
+     "python_stub": 48.0,
+     "json_schema_openai": 46.0,
+     "yaml_schema": 34.7,
+     "typescript": 36.7,
+     "markdown_table": 38.0,
+     "json_minimal": 7.3
+    },
+    "mean": 42.9,
+    "spread": 65.3,
+    "best_format": "natural_language"
+   },
+   {
+    "id": "google/gemma-3-1b-it",
+    "family": "gemma3",
+    "family_label": "Gemma 3",
+    "params_b": 1.0,
+    "accuracy": {
+     "xml_schema": 2.0,
+     "natural_language": 1.3,
+     "python_stub": 12.7,
+     "json_schema_openai": 4.7,
+     "yaml_schema": 4.7,
+     "typescript": 2.0,
+     "markdown_table": 1.3,
+     "json_minimal": 2.7
+    },
+    "mean": 3.9,
+    "spread": 11.3,
+    "best_format": "python_stub"
+   },
+   {
+    "id": "Salesforce/xLAM-7b-r",
+    "family": "xlam",
+    "family_label": "xLAM",
+    "params_b": 7.0,
+    "accuracy": {
+     "xml_schema": 24.0,
+     "natural_language": 68.0,
+     "python_stub": 47.3,
+     "json_schema_openai": 39.3,
+     "yaml_schema": 32.0,
+     "typescript": 35.3,
+     "markdown_table": 30.7,
+     "json_minimal": 33.3
+    },
+    "mean": 38.8,
+    "spread": 44.0,
+    "best_format": "natural_language"
+   },
+   {
+    "id": "NousResearch/Hermes-3-Llama-3.1-8B",
+    "family": "llama3-tool",
+    "family_label": "Llama tool-RL",
+    "params_b": 8.0,
+    "accuracy": {
+     "xml_schema": 86.7,
+     "natural_language": 81.3,
+     "python_stub": 44.0,
+     "json_schema_openai": 40.7,
+     "yaml_schema": 42.7,
+     "typescript": 56.0,
+     "markdown_table": 50.7,
+     "json_minimal": 38.0
+    },
+    "mean": 55.0,
+    "spread": 48.7,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "Salesforce/Llama-xLAM-2-8b-fc-r",
+    "family": "llama3-tool",
+    "family_label": "Llama tool-RL",
+    "params_b": 8.0,
+    "accuracy": {
+     "xml_schema": 32.0,
+     "natural_language": 48.7,
+     "python_stub": 7.3,
+     "json_schema_openai": 24.7,
+     "yaml_schema": 24.7,
+     "typescript": 27.3,
+     "markdown_table": 34.0,
+     "json_minimal": 24.7
+    },
+    "mean": 27.9,
+    "spread": 41.3,
+    "best_format": "natural_language"
+   },
+   {
+    "id": "watt-ai/watt-tool-8B",
+    "family": "llama3-tool",
+    "family_label": "Llama tool-RL",
+    "params_b": 8.0,
+    "accuracy": {
+     "xml_schema": 2.0,
+     "natural_language": 57.3,
+     "python_stub": 59.3,
+     "json_schema_openai": 18.0,
+     "yaml_schema": 11.3,
+     "typescript": 4.0,
+     "markdown_table": 7.3,
+     "json_minimal": 0.0
+    },
+    "mean": 19.9,
+    "spread": 59.3,
+    "best_format": "python_stub"
+   },
+   {
+    "id": "HuggingFaceTB/SmolLM3-3B",
+    "family": "smollm",
+    "family_label": "SmolLM",
+    "params_b": 3.0,
+    "accuracy": {
+     "xml_schema": 43.3,
+     "natural_language": 58.7,
+     "python_stub": 32.7,
+     "json_schema_openai": 28.7,
+     "yaml_schema": 22.0,
+     "typescript": 19.3,
+     "markdown_table": 20.7,
+     "json_minimal": 13.3
+    },
+    "mean": 29.8,
+    "spread": 45.3,
+    "best_format": "natural_language"
+   },
+   {
+    "id": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+    "family": "smollm",
+    "family_label": "SmolLM",
+    "params_b": 1.7,
+    "accuracy": {
+     "xml_schema": 37.3,
+     "natural_language": 9.3,
+     "python_stub": 22.0,
+     "json_schema_openai": 14.7,
+     "yaml_schema": 13.3,
+     "typescript": 6.0,
+     "markdown_table": 16.7,
+     "json_minimal": 12.0
+    },
+    "mean": 16.4,
+    "spread": 31.3,
+    "best_format": "xml_schema"
+   },
+   {
+    "id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+    "family": "smollm",
+    "family_label": "SmolLM",
+    "params_b": 0.36,
+    "accuracy": {
+     "xml_schema": 0.0,
+     "natural_language": 0.0,
+     "python_stub": 2.0,
+     "json_schema_openai": 4.0,
+     "yaml_schema": 2.0,
+     "typescript": 0.7,
+     "markdown_table": 1.3,
+     "json_minimal": 2.0
+    },
+    "mean": 1.5,
+    "spread": 4.0,
+    "best_format": "json_schema_openai"
+   }
+  ]
+ }
+}

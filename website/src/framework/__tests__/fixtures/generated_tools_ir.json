@@ -1,0 +1,10133 @@
+{
+ "universe_id": "generated",
+ "seed": null,
+ "meta": {},
+ "tools": [
+  {
+   "name": "calendar_schedule",
+   "description": "Put a new meeting on the calendar.",
+   "params": [
+    {
+     "name": "title",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Name of the meeting.",
+     "example": "Budget review"
+    },
+    {
+     "name": "day",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Calendar date in YYYY-MM-DD form.",
+     "example": "2027-03-04"
+    },
+    {
+     "name": "start_hour",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 23
+      }
+     },
+     "required": true,
+     "description": "Hour the meeting starts, 0-23.",
+     "example": 9
+    },
+    {
+     "name": "duration_minutes",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 5,
+       "maximum": 480
+      }
+     },
+     "required": false,
+     "description": "How long the meeting runs.",
+     "default": 15,
+     "example": 15
+    }
+   ],
+   "domain": "calendar",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the id of the new meeting",
+   "tags": [
+    "calendar",
+    "schedule",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "calendar",
+    "cfg": {
+     "key": "title"
+    },
+    "paths": {
+     "title": [
+      "title"
+     ],
+     "day": [
+      "day"
+     ],
+     "start_hour": [
+      "start_hour"
+     ],
+     "duration_minutes": [
+      "duration_minutes"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Put {title} on the calendar for {day} starting at {start_hour}.",
+     "Book a meeting called {title} on {day} at {start_hour}."
+    ]
+   }
+  },
+  {
+   "name": "calendar_find",
+   "description": "List meetings that match a day and optional filters.",
+   "params": [
+    {
+     "name": "day",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Calendar date in YYYY-MM-DD form.",
+     "example": "2027-03-04"
+    },
+    {
+     "name": "room",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Room to book.",
+     "default": "Aspen",
+     "example": "Aspen"
+    },
+    {
+     "name": "title",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Name of the meeting.",
+     "default": "Budget review",
+     "example": "Budget review"
+    },
+    {
+     "name": "start_hour",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 23
+      }
+     },
+     "required": false,
+     "description": "Hour the meeting starts, 0-23.",
+     "default": 9,
+     "example": 9
+    }
+   ],
+   "domain": "calendar",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of matching meetings",
+   "tags": [
+    "calendar",
+    "find",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "calendar",
+    "cfg": {
+     "key": "day"
+    },
+    "paths": {
+     "day": [
+      "day"
+     ],
+     "room": [
+      "room"
+     ],
+     "title": [
+      "title"
+     ],
+     "start_hour": [
+      "start_hour"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What is on the calendar for {day}?",
+     "Show me the meetings on {day}."
+    ]
+   }
+  },
+  {
+   "name": "calendar_cancel",
+   "description": "Remove a meeting from the calendar.",
+   "params": [
+    {
+     "name": "record_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the record to act on."
+    },
+    {
+     "name": "title",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Name of the meeting.",
+     "default": "Budget review",
+     "example": "Budget review"
+    },
+    {
+     "name": "day",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Calendar date in YYYY-MM-DD form.",
+     "default": "2027-03-04",
+     "example": "2027-03-04"
+    },
+    {
+     "name": "start_hour",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 23
+      }
+     },
+     "required": false,
+     "description": "Hour the meeting starts, 0-23.",
+     "default": 9,
+     "example": 9
+    }
+   ],
+   "domain": "calendar",
+   "category": "delete",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "whether the meeting was removed",
+   "tags": [
+    "calendar",
+    "cancel",
+    "tier2"
+   ],
+   "kernel": "delete",
+   "kernel_args": {
+    "table": "calendar",
+    "cfg": {
+     "key": "record_id"
+    },
+    "paths": {
+     "record_id": [
+      "record_id"
+     ],
+     "title": [
+      "title"
+     ],
+     "day": [
+      "day"
+     ],
+     "start_hour": [
+      "start_hour"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Cancel meeting {record_id}.",
+     "Drop the meeting with id {record_id}."
+    ]
+   }
+  },
+  {
+   "name": "calendar_move",
+   "description": "Change the start time of an existing meeting.",
+   "params": [
+    {
+     "name": "record_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the record to act on."
+    },
+    {
+     "name": "start_hour",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 23
+      }
+     },
+     "required": true,
+     "description": "Hour the meeting starts, 0-23.",
+     "example": 9
+    },
+    {
+     "name": "title",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Name of the meeting.",
+     "default": "Budget review",
+     "example": "Budget review"
+    },
+    {
+     "name": "day",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Calendar date in YYYY-MM-DD form.",
+     "default": "2027-03-04",
+     "example": "2027-03-04"
+    }
+   ],
+   "domain": "calendar",
+   "category": "update",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the updated meeting",
+   "tags": [
+    "calendar",
+    "move",
+    "tier2"
+   ],
+   "kernel": "update",
+   "kernel_args": {
+    "table": "calendar",
+    "cfg": {
+     "field": "start_hour",
+     "key": "record_id"
+    },
+    "paths": {
+     "record_id": [
+      "record_id"
+     ],
+     "start_hour": [
+      "start_hour"
+     ],
+     "title": [
+      "title"
+     ],
+     "day": [
+      "day"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Move meeting {record_id} to start at {start_hour}."
+    ]
+   }
+  },
+  {
+   "name": "calendar_count",
+   "description": "Count how many meetings fall on a day.",
+   "params": [
+    {
+     "name": "day",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Calendar date in YYYY-MM-DD form.",
+     "example": "2027-03-04"
+    },
+    {
+     "name": "room",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Room to book.",
+     "default": "Aspen",
+     "example": "Aspen"
+    },
+    {
+     "name": "title",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Name of the meeting.",
+     "default": "Budget review",
+     "example": "Budget review"
+    },
+    {
+     "name": "start_hour",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 23
+      }
+     },
+     "required": false,
+     "description": "Hour the meeting starts, 0-23.",
+     "default": 9,
+     "example": 9
+    }
+   ],
+   "domain": "calendar",
+   "category": "count",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a count",
+   "tags": [
+    "calendar",
+    "count",
+    "tier2"
+   ],
+   "kernel": "count",
+   "kernel_args": {
+    "table": "calendar",
+    "cfg": {
+     "key": "day"
+    },
+    "paths": {
+     "day": [
+      "day"
+     ],
+     "room": [
+      "room"
+     ],
+     "title": [
+      "title"
+     ],
+     "start_hour": [
+      "start_hour"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "How many meetings are there on {day}?"
+    ]
+   }
+  },
+  {
+   "name": "inventory_add_stock",
+   "description": "Record new stock arriving at a warehouse.",
+   "params": [
+    {
+     "name": "sku",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Stock keeping unit code.",
+     "example": "SKU-1180"
+    },
+    {
+     "name": "warehouse",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "north",
+       "south",
+       "east",
+       "west"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Which warehouse holds the stock."
+    },
+    {
+     "name": "quantity",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 100000
+      }
+     },
+     "required": true,
+     "description": "Number of units.",
+     "example": 4
+    },
+    {
+     "name": "unit_price",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": false,
+     "description": "Price per unit in dollars.",
+     "default": 3.5,
+     "example": 3.5
+    }
+   ],
+   "domain": "inventory",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the id of the stock record",
+   "tags": [
+    "inventory",
+    "add_stock",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "inventory",
+    "cfg": {
+     "key": "sku"
+    },
+    "paths": {
+     "sku": [
+      "sku"
+     ],
+     "warehouse": [
+      "warehouse"
+     ],
+     "quantity": [
+      "quantity"
+     ],
+     "unit_price": [
+      "unit_price"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Log {quantity} units of {sku} arriving at the {warehouse} warehouse."
+    ]
+   }
+  },
+  {
+   "name": "inventory_check",
+   "description": "Look up current stock for an item.",
+   "params": [
+    {
+     "name": "sku",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Stock keeping unit code.",
+     "example": "SKU-1180"
+    },
+    {
+     "name": "warehouse",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "north",
+       "south",
+       "east",
+       "west"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Which warehouse holds the stock.",
+     "default": "north"
+    },
+    {
+     "name": "quantity",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 100000
+      }
+     },
+     "required": false,
+     "description": "Number of units.",
+     "default": 4,
+     "example": 4
+    },
+    {
+     "name": "unit_price",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": false,
+     "description": "Price per unit in dollars.",
+     "default": 3.5,
+     "example": 3.5
+    }
+   ],
+   "domain": "inventory",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "matching stock records",
+   "tags": [
+    "inventory",
+    "check",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "inventory",
+    "cfg": {
+     "key": "sku"
+    },
+    "paths": {
+     "sku": [
+      "sku"
+     ],
+     "warehouse": [
+      "warehouse"
+     ],
+     "quantity": [
+      "quantity"
+     ],
+     "unit_price": [
+      "unit_price"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "How much {sku} do we have?",
+     "Check stock for {sku}."
+    ]
+   }
+  },
+  {
+   "name": "inventory_adjust",
+   "description": "Set the quantity on an existing stock record.",
+   "params": [
+    {
+     "name": "record_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the record to act on."
+    },
+    {
+     "name": "quantity",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 100000
+      }
+     },
+     "required": true,
+     "description": "Number of units.",
+     "example": 4
+    },
+    {
+     "name": "sku",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Stock keeping unit code.",
+     "default": "SKU-1180",
+     "example": "SKU-1180"
+    },
+    {
+     "name": "warehouse",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "north",
+       "south",
+       "east",
+       "west"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Which warehouse holds the stock.",
+     "default": "north"
+    }
+   ],
+   "domain": "inventory",
+   "category": "update",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the updated record",
+   "tags": [
+    "inventory",
+    "adjust",
+    "tier2"
+   ],
+   "kernel": "update",
+   "kernel_args": {
+    "table": "inventory",
+    "cfg": {
+     "field": "quantity",
+     "key": "record_id"
+    },
+    "paths": {
+     "record_id": [
+      "record_id"
+     ],
+     "quantity": [
+      "quantity"
+     ],
+     "sku": [
+      "sku"
+     ],
+     "warehouse": [
+      "warehouse"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Set the quantity on record {record_id} to {quantity}."
+    ]
+   }
+  },
+  {
+   "name": "inventory_value",
+   "description": "Total the units held in a warehouse.",
+   "params": [
+    {
+     "name": "warehouse",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "north",
+       "south",
+       "east",
+       "west"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Which warehouse holds the stock."
+    },
+    {
+     "name": "category",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Product category.",
+     "default": "tools"
+    },
+    {
+     "name": "sku",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Stock keeping unit code.",
+     "default": "SKU-1180",
+     "example": "SKU-1180"
+    },
+    {
+     "name": "quantity",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 100000
+      }
+     },
+     "required": false,
+     "description": "Number of units.",
+     "default": 4,
+     "example": 4
+    }
+   ],
+   "domain": "inventory",
+   "category": "aggregate",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a total",
+   "tags": [
+    "inventory",
+    "value",
+    "tier2"
+   ],
+   "kernel": "aggregate",
+   "kernel_args": {
+    "table": "inventory",
+    "cfg": {
+     "field": "quantity",
+     "agg": "sum",
+     "key": "warehouse"
+    },
+    "paths": {
+     "warehouse": [
+      "warehouse"
+     ],
+     "category": [
+      "category"
+     ],
+     "sku": [
+      "sku"
+     ],
+     "quantity": [
+      "quantity"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What is the total stock in the {warehouse} warehouse?"
+    ]
+   }
+  },
+  {
+   "name": "inventory_low_stock",
+   "description": "List the items with the least stock first.",
+   "params": [
+    {
+     "name": "warehouse",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "north",
+       "south",
+       "east",
+       "west"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Which warehouse holds the stock."
+    },
+    {
+     "name": "limit",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 100
+      }
+     },
+     "required": false,
+     "description": "How many results to return.",
+     "default": 3,
+     "example": 3
+    },
+    {
+     "name": "sku",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Stock keeping unit code.",
+     "default": "SKU-1180",
+     "example": "SKU-1180"
+    },
+    {
+     "name": "quantity",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 100000
+      }
+     },
+     "required": false,
+     "description": "Number of units.",
+     "default": 4,
+     "example": 4
+    }
+   ],
+   "domain": "inventory",
+   "category": "rank",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a ranked list",
+   "tags": [
+    "inventory",
+    "low_stock",
+    "tier2"
+   ],
+   "kernel": "rank",
+   "kernel_args": {
+    "table": "inventory",
+    "cfg": {
+     "field": "quantity",
+     "order": "asc",
+     "key": "warehouse"
+    },
+    "paths": {
+     "warehouse": [
+      "warehouse"
+     ],
+     "limit": [
+      "limit"
+     ],
+     "sku": [
+      "sku"
+     ],
+     "quantity": [
+      "quantity"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Which items are running low in {warehouse}?"
+    ]
+   }
+  },
+  {
+   "name": "geo_locate",
+   "description": "Get the coordinates of a named place.",
+   "params": [
+    {
+     "name": "place",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Name of a city.",
+     "example": "Nairobi"
+    },
+    {
+     "name": "country",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Country the city is in.",
+     "default": "Kenya",
+     "example": "Kenya"
+    },
+    {
+     "name": "latitude",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": -90,
+       "maximum": 90
+      }
+     },
+     "required": false,
+     "description": "Latitude in degrees.",
+     "default": -1.29,
+     "example": -1.29
+    },
+    {
+     "name": "longitude",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": -180,
+       "maximum": 180
+      }
+     },
+     "required": false,
+     "description": "Longitude in degrees.",
+     "default": 36.82,
+     "example": 36.82
+    }
+   ],
+   "domain": "geo",
+   "category": "lookup",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "coordinates and country",
+   "tags": [
+    "geo",
+    "locate",
+    "tier2"
+   ],
+   "kernel": "lookup",
+   "kernel_args": {
+    "table": "geo",
+    "cfg": {
+     "key": "place"
+    },
+    "paths": {
+     "place": [
+      "place"
+     ],
+     "country": [
+      "country"
+     ],
+     "latitude": [
+      "latitude"
+     ],
+     "longitude": [
+      "longitude"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Where is {place}?",
+     "Get the coordinates for {place}."
+    ]
+   }
+  },
+  {
+   "name": "geo_distance",
+   "description": "Measure the distance between two places.",
+   "params": [
+    {
+     "name": "place",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Name of a city.",
+     "example": "Nairobi"
+    },
+    {
+     "name": "country",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Country the city is in.",
+     "example": "Kenya"
+    },
+    {
+     "name": "units",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "km",
+       "miles"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Distance unit to answer in.",
+     "default": "km"
+    },
+    {
+     "name": "latitude",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": -90,
+       "maximum": 90
+      }
+     },
+     "required": false,
+     "description": "Latitude in degrees.",
+     "default": -1.29,
+     "example": -1.29
+    }
+   ],
+   "domain": "geo",
+   "category": "compute",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a distance",
+   "tags": [
+    "geo",
+    "distance",
+    "tier2"
+   ],
+   "kernel": "compute",
+   "kernel_args": {
+    "table": "geo",
+    "cfg": {
+     "op": "distance",
+     "key": "place"
+    },
+    "paths": {
+     "place": [
+      "place"
+     ],
+     "country": [
+      "country"
+     ],
+     "units": [
+      "units"
+     ],
+     "latitude": [
+      "latitude"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "How far is it from {place} to somewhere in {country}?"
+    ]
+   }
+  },
+  {
+   "name": "geo_nearby",
+   "description": "Find places within a radius of a starting point.",
+   "params": [
+    {
+     "name": "place",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Name of a city.",
+     "example": "Nairobi"
+    },
+    {
+     "name": "radius",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 20000
+      }
+     },
+     "required": true,
+     "description": "Search radius.",
+     "example": 5
+    },
+    {
+     "name": "units",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "km",
+       "miles"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Distance unit to answer in.",
+     "default": "km"
+    },
+    {
+     "name": "country",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Country the city is in.",
+     "default": "Kenya",
+     "example": "Kenya"
+    }
+   ],
+   "domain": "geo",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of nearby places",
+   "tags": [
+    "geo",
+    "nearby",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "geo",
+    "cfg": {
+     "key": "place"
+    },
+    "paths": {
+     "place": [
+      "place"
+     ],
+     "radius": [
+      "radius"
+     ],
+     "units": [
+      "units"
+     ],
+     "country": [
+      "country"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What is within {radius} of {place}?"
+    ]
+   }
+  },
+  {
+   "name": "finance_transfer",
+   "description": "Move money out of an account.",
+   "params": [
+    {
+     "name": "account",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Account number.",
+     "example": "ACC-4410"
+    },
+    {
+     "name": "amount",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": true,
+     "description": "Amount of money.",
+     "example": 12.5
+    },
+    {
+     "name": "currency",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "USD",
+       "EUR",
+       "JPY",
+       "GBP"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Currency code."
+    },
+    {
+     "name": "counterparty",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Who the money goes to or comes from.",
+     "default": "Ridgeway Ltd",
+     "example": "Ridgeway Ltd"
+    }
+   ],
+   "domain": "finance",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the id of the new transaction",
+   "tags": [
+    "finance",
+    "transfer",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "finance",
+    "cfg": {
+     "key": "account"
+    },
+    "paths": {
+     "account": [
+      "account"
+     ],
+     "amount": [
+      "amount"
+     ],
+     "currency": [
+      "currency"
+     ],
+     "counterparty": [
+      "counterparty"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Send {amount} {currency} from {account}."
+    ]
+   }
+  },
+  {
+   "name": "finance_history",
+   "description": "List transactions on an account.",
+   "params": [
+    {
+     "name": "account",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Account number.",
+     "example": "ACC-4410"
+    },
+    {
+     "name": "category",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "payroll",
+       "supplies",
+       "travel",
+       "utilities"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Spending category.",
+     "default": "payroll"
+    },
+    {
+     "name": "amount",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": false,
+     "description": "Amount of money.",
+     "default": 12.5,
+     "example": 12.5
+    },
+    {
+     "name": "currency",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Currency code.",
+     "default": "USD"
+    }
+   ],
+   "domain": "finance",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of transactions",
+   "tags": [
+    "finance",
+    "history",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "finance",
+    "cfg": {
+     "key": "account"
+    },
+    "paths": {
+     "account": [
+      "account"
+     ],
+     "category": [
+      "category"
+     ],
+     "amount": [
+      "amount"
+     ],
+     "currency": [
+      "currency"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Show the transactions on {account}."
+    ]
+   }
+  },
+  {
+   "name": "finance_balance",
+   "description": "Total the amounts on an account.",
+   "params": [
+    {
+     "name": "account",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Account number.",
+     "example": "ACC-4410"
+    },
+    {
+     "name": "category",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "payroll",
+       "supplies",
+       "travel",
+       "utilities"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Spending category.",
+     "default": "payroll"
+    },
+    {
+     "name": "amount",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": false,
+     "description": "Amount of money.",
+     "default": 12.5,
+     "example": 12.5
+    },
+    {
+     "name": "currency",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Currency code.",
+     "default": "USD"
+    }
+   ],
+   "domain": "finance",
+   "category": "aggregate",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a total amount",
+   "tags": [
+    "finance",
+    "balance",
+    "tier2"
+   ],
+   "kernel": "aggregate",
+   "kernel_args": {
+    "table": "finance",
+    "cfg": {
+     "field": "amount",
+     "agg": "sum",
+     "key": "account"
+    },
+    "paths": {
+     "account": [
+      "account"
+     ],
+     "category": [
+      "category"
+     ],
+     "amount": [
+      "amount"
+     ],
+     "currency": [
+      "currency"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What is the balance on {account}?"
+    ]
+   }
+  },
+  {
+   "name": "finance_convert",
+   "description": "Convert an amount between currencies.",
+   "params": [
+    {
+     "name": "amount",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": true,
+     "description": "Amount of money.",
+     "example": 12.5
+    },
+    {
+     "name": "currency",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "USD",
+       "EUR",
+       "JPY",
+       "GBP"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Currency code."
+    },
+    {
+     "name": "category",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Spending category.",
+     "default": "payroll"
+    },
+    {
+     "name": "account",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Account number.",
+     "default": "ACC-4410",
+     "example": "ACC-4410"
+    }
+   ],
+   "domain": "finance",
+   "category": "convert",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the converted amount",
+   "tags": [
+    "finance",
+    "convert",
+    "tier2"
+   ],
+   "kernel": "convert",
+   "kernel_args": {
+    "table": "finance",
+    "cfg": {
+     "from": "currency",
+     "key": "amount"
+    },
+    "paths": {
+     "amount": [
+      "amount"
+     ],
+     "currency": [
+      "currency"
+     ],
+     "category": [
+      "category"
+     ],
+     "account": [
+      "account"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Convert {amount} {currency} to another currency."
+    ]
+   }
+  },
+  {
+   "name": "finance_largest",
+   "description": "List the biggest transactions first.",
+   "params": [
+    {
+     "name": "account",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Account number.",
+     "example": "ACC-4410"
+    },
+    {
+     "name": "limit",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 100
+      }
+     },
+     "required": false,
+     "description": "How many results to return.",
+     "default": 3,
+     "example": 3
+    },
+    {
+     "name": "amount",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": false,
+     "description": "Amount of money.",
+     "default": 12.5,
+     "example": 12.5
+    },
+    {
+     "name": "currency",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "USD",
+       "EUR",
+       "JPY",
+       "GBP"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Currency code.",
+     "default": "USD"
+    }
+   ],
+   "domain": "finance",
+   "category": "rank",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a ranked list",
+   "tags": [
+    "finance",
+    "largest",
+    "tier2"
+   ],
+   "kernel": "rank",
+   "kernel_args": {
+    "table": "finance",
+    "cfg": {
+     "field": "amount",
+     "order": "desc",
+     "key": "account"
+    },
+    "paths": {
+     "account": [
+      "account"
+     ],
+     "limit": [
+      "limit"
+     ],
+     "amount": [
+      "amount"
+     ],
+     "currency": [
+      "currency"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What were the biggest charges on {account}?"
+    ]
+   }
+  },
+  {
+   "name": "messaging_send",
+   "description": "Send a message to someone.",
+   "params": [
+    {
+     "name": "recipient",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Who receives the message.",
+     "example": "dana"
+    },
+    {
+     "name": "channel",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "email",
+       "sms",
+       "chat",
+       "push"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "How to deliver it."
+    },
+    {
+     "name": "body",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Message text.",
+     "example": "Numbers look good."
+    },
+    {
+     "name": "subject",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Subject line.",
+     "default": "Weekly update",
+     "example": "Weekly update"
+    }
+   ],
+   "domain": "messaging",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the id of the sent message",
+   "tags": [
+    "messaging",
+    "send",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "messaging",
+    "cfg": {
+     "key": "recipient"
+    },
+    "paths": {
+     "recipient": [
+      "recipient"
+     ],
+     "channel": [
+      "channel"
+     ],
+     "body": [
+      "body"
+     ],
+     "subject": [
+      "subject"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Send {recipient} a {channel} saying {body}."
+    ]
+   }
+  },
+  {
+   "name": "messaging_search",
+   "description": "Find messages to or from a person.",
+   "params": [
+    {
+     "name": "recipient",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Who receives the message.",
+     "example": "dana"
+    },
+    {
+     "name": "channel",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "email",
+       "sms",
+       "chat",
+       "push"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "How to deliver it.",
+     "default": "email"
+    },
+    {
+     "name": "subject",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Subject line.",
+     "default": "Weekly update",
+     "example": "Weekly update"
+    },
+    {
+     "name": "body",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Message text.",
+     "default": "Numbers look good.",
+     "example": "Numbers look good."
+    }
+   ],
+   "domain": "messaging",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of messages",
+   "tags": [
+    "messaging",
+    "search",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "messaging",
+    "cfg": {
+     "key": "recipient"
+    },
+    "paths": {
+     "recipient": [
+      "recipient"
+     ],
+     "channel": [
+      "channel"
+     ],
+     "subject": [
+      "subject"
+     ],
+     "body": [
+      "body"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Find the messages I sent to {recipient}."
+    ]
+   }
+  },
+  {
+   "name": "messaging_unread_count",
+   "description": "Count messages waiting for someone.",
+   "params": [
+    {
+     "name": "recipient",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Who receives the message.",
+     "example": "dana"
+    },
+    {
+     "name": "channel",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "email",
+       "sms",
+       "chat",
+       "push"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "How to deliver it.",
+     "default": "email"
+    },
+    {
+     "name": "subject",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Subject line.",
+     "default": "Weekly update",
+     "example": "Weekly update"
+    },
+    {
+     "name": "body",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Message text.",
+     "default": "Numbers look good.",
+     "example": "Numbers look good."
+    }
+   ],
+   "domain": "messaging",
+   "category": "count",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a count",
+   "tags": [
+    "messaging",
+    "unread_count",
+    "tier2"
+   ],
+   "kernel": "count",
+   "kernel_args": {
+    "table": "messaging",
+    "cfg": {
+     "key": "recipient"
+    },
+    "paths": {
+     "recipient": [
+      "recipient"
+     ],
+     "channel": [
+      "channel"
+     ],
+     "subject": [
+      "subject"
+     ],
+     "body": [
+      "body"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "How many messages is {recipient} waiting on?"
+    ]
+   }
+  },
+  {
+   "name": "devices_set_state",
+   "description": "Turn a device on or off.",
+   "params": [
+    {
+     "name": "device_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the device.",
+     "example": "thermo-01"
+    },
+    {
+     "name": "state",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "on",
+       "off",
+       "standby"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Power state."
+    },
+    {
+     "name": "room",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Where the device is.",
+     "default": "kitchen"
+    },
+    {
+     "name": "target_value",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": -40,
+       "maximum": 200
+      }
+     },
+     "required": false,
+     "description": "Setpoint for the device.",
+     "default": 16.5,
+     "example": 16.5
+    }
+   ],
+   "domain": "devices",
+   "category": "update",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the new device state",
+   "tags": [
+    "devices",
+    "set_state",
+    "tier2"
+   ],
+   "kernel": "update",
+   "kernel_args": {
+    "table": "devices",
+    "cfg": {
+     "field": "state",
+     "key": "device_id"
+    },
+    "paths": {
+     "device_id": [
+      "device_id"
+     ],
+     "state": [
+      "state"
+     ],
+     "room": [
+      "room"
+     ],
+     "target_value": [
+      "target_value"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Turn the {device_id} {state}."
+    ]
+   }
+  },
+  {
+   "name": "devices_set_target",
+   "description": "Set a device's target value.",
+   "params": [
+    {
+     "name": "device_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the device.",
+     "example": "thermo-01"
+    },
+    {
+     "name": "target_value",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": -40,
+       "maximum": 200
+      }
+     },
+     "required": true,
+     "description": "Setpoint for the device.",
+     "example": 16.5
+    },
+    {
+     "name": "room",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "kitchen",
+       "garage",
+       "study",
+       "hallway"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Where the device is.",
+     "default": "kitchen"
+    },
+    {
+     "name": "state",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Power state.",
+     "default": "on"
+    }
+   ],
+   "domain": "devices",
+   "category": "update",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the new setpoint",
+   "tags": [
+    "devices",
+    "set_target",
+    "tier2"
+   ],
+   "kernel": "update",
+   "kernel_args": {
+    "table": "devices",
+    "cfg": {
+     "field": "target_value",
+     "key": "device_id"
+    },
+    "paths": {
+     "device_id": [
+      "device_id"
+     ],
+     "target_value": [
+      "target_value"
+     ],
+     "room": [
+      "room"
+     ],
+     "state": [
+      "state"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Set {device_id} to {target_value}."
+    ]
+   }
+  },
+  {
+   "name": "devices_status",
+   "description": "Read the current state of a device.",
+   "params": [
+    {
+     "name": "device_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the device.",
+     "example": "thermo-01"
+    },
+    {
+     "name": "room",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "kitchen",
+       "garage",
+       "study",
+       "hallway"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Where the device is.",
+     "default": "kitchen"
+    },
+    {
+     "name": "state",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Power state.",
+     "default": "on"
+    },
+    {
+     "name": "target_value",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": -40,
+       "maximum": 200
+      }
+     },
+     "required": false,
+     "description": "Setpoint for the device.",
+     "default": 16.5,
+     "example": 16.5
+    }
+   ],
+   "domain": "devices",
+   "category": "lookup",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the device record",
+   "tags": [
+    "devices",
+    "status",
+    "tier2"
+   ],
+   "kernel": "lookup",
+   "kernel_args": {
+    "table": "devices",
+    "cfg": {
+     "key": "device_id"
+    },
+    "paths": {
+     "device_id": [
+      "device_id"
+     ],
+     "room": [
+      "room"
+     ],
+     "state": [
+      "state"
+     ],
+     "target_value": [
+      "target_value"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What is {device_id} doing right now?"
+    ]
+   }
+  },
+  {
+   "name": "devices_list_room",
+   "description": "List the devices in a room.",
+   "params": [
+    {
+     "name": "room",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "kitchen",
+       "garage",
+       "study",
+       "hallway"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Where the device is."
+    },
+    {
+     "name": "state",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Power state.",
+     "default": "on"
+    },
+    {
+     "name": "device_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Identifier of the device.",
+     "default": "thermo-01",
+     "example": "thermo-01"
+    },
+    {
+     "name": "target_value",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": -40,
+       "maximum": 200
+      }
+     },
+     "required": false,
+     "description": "Setpoint for the device.",
+     "default": 16.5,
+     "example": 16.5
+    }
+   ],
+   "domain": "devices",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of devices",
+   "tags": [
+    "devices",
+    "list_room",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "devices",
+    "cfg": {
+     "key": "room"
+    },
+    "paths": {
+     "room": [
+      "room"
+     ],
+     "state": [
+      "state"
+     ],
+     "device_id": [
+      "device_id"
+     ],
+     "target_value": [
+      "target_value"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What devices are in the {room}?"
+    ]
+   }
+  },
+  {
+   "name": "travel_book",
+   "description": "Book travel between two places.",
+   "params": [
+    {
+     "name": "origin",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Where the trip starts.",
+     "example": "Denver"
+    },
+    {
+     "name": "destination",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Where the trip ends.",
+     "example": "Reykjavik"
+    },
+    {
+     "name": "depart_on",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Departure date.",
+     "example": "2027-06-03"
+    },
+    {
+     "name": "cabin",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "economy",
+       "premium",
+       "business",
+       "first"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Cabin class.",
+     "default": "economy"
+    }
+   ],
+   "domain": "travel",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the booking id",
+   "tags": [
+    "travel",
+    "book",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "travel",
+    "cfg": {
+     "key": "origin"
+    },
+    "paths": {
+     "origin": [
+      "origin"
+     ],
+     "destination": [
+      "destination"
+     ],
+     "depart_on": [
+      "depart_on"
+     ],
+     "cabin": [
+      "cabin"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Book me from {origin} to {destination} on {depart_on}."
+    ]
+   }
+  },
+  {
+   "name": "travel_search",
+   "description": "Search for available trips.",
+   "params": [
+    {
+     "name": "origin",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Where the trip starts.",
+     "example": "Denver"
+    },
+    {
+     "name": "destination",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Where the trip ends.",
+     "example": "Reykjavik"
+    },
+    {
+     "name": "cabin",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "economy",
+       "premium",
+       "business",
+       "first"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Cabin class.",
+     "default": "economy"
+    },
+    {
+     "name": "depart_on",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Departure date.",
+     "default": "2027-06-03",
+     "example": "2027-06-03"
+    }
+   ],
+   "domain": "travel",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of options",
+   "tags": [
+    "travel",
+    "search",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "travel",
+    "cfg": {
+     "key": "origin"
+    },
+    "paths": {
+     "origin": [
+      "origin"
+     ],
+     "destination": [
+      "destination"
+     ],
+     "cabin": [
+      "cabin"
+     ],
+     "depart_on": [
+      "depart_on"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Find trips from {origin} to {destination}."
+    ]
+   }
+  },
+  {
+   "name": "travel_cancel",
+   "description": "Cancel an existing booking.",
+   "params": [
+    {
+     "name": "record_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the record to act on."
+    },
+    {
+     "name": "origin",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Where the trip starts.",
+     "default": "Denver",
+     "example": "Denver"
+    },
+    {
+     "name": "destination",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Where the trip ends.",
+     "default": "Reykjavik",
+     "example": "Reykjavik"
+    },
+    {
+     "name": "depart_on",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Departure date.",
+     "default": "2027-06-03",
+     "example": "2027-06-03"
+    }
+   ],
+   "domain": "travel",
+   "category": "delete",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "whether it was cancelled",
+   "tags": [
+    "travel",
+    "cancel",
+    "tier2"
+   ],
+   "kernel": "delete",
+   "kernel_args": {
+    "table": "travel",
+    "cfg": {
+     "key": "record_id"
+    },
+    "paths": {
+     "record_id": [
+      "record_id"
+     ],
+     "origin": [
+      "origin"
+     ],
+     "destination": [
+      "destination"
+     ],
+     "depart_on": [
+      "depart_on"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Cancel booking {record_id}."
+    ]
+   }
+  },
+  {
+   "name": "travel_cheapest",
+   "description": "Rank trips by price, cheapest first.",
+   "params": [
+    {
+     "name": "destination",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Where the trip ends.",
+     "example": "Reykjavik"
+    },
+    {
+     "name": "limit",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 100
+      }
+     },
+     "required": false,
+     "description": "How many results to return.",
+     "default": 3,
+     "example": 3
+    },
+    {
+     "name": "origin",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Where the trip starts.",
+     "default": "Denver",
+     "example": "Denver"
+    },
+    {
+     "name": "depart_on",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Departure date.",
+     "default": "2027-06-03",
+     "example": "2027-06-03"
+    }
+   ],
+   "domain": "travel",
+   "category": "rank",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a ranked list",
+   "tags": [
+    "travel",
+    "cheapest",
+    "tier2"
+   ],
+   "kernel": "rank",
+   "kernel_args": {
+    "table": "travel",
+    "cfg": {
+     "field": "max_price",
+     "order": "asc",
+     "key": "destination"
+    },
+    "paths": {
+     "destination": [
+      "destination"
+     ],
+     "limit": [
+      "limit"
+     ],
+     "origin": [
+      "origin"
+     ],
+     "depart_on": [
+      "depart_on"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What is the cheapest way to get to {destination}?"
+    ]
+   }
+  },
+  {
+   "name": "library_borrow",
+   "description": "Check a book out to someone.",
+   "params": [
+    {
+     "name": "title",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Book title.",
+     "example": "Tidal Grammar"
+    },
+    {
+     "name": "borrower",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Who has it out.",
+     "example": "hal"
+    },
+    {
+     "name": "shelf",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "fiction",
+       "reference",
+       "archive",
+       "children"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Which section it lives in.",
+     "default": "fiction"
+    },
+    {
+     "name": "author",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Author name.",
+     "default": "Vela Sunder",
+     "example": "Vela Sunder"
+    }
+   ],
+   "domain": "library",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the loan id",
+   "tags": [
+    "library",
+    "borrow",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "library",
+    "cfg": {
+     "key": "title"
+    },
+    "paths": {
+     "title": [
+      "title"
+     ],
+     "borrower": [
+      "borrower"
+     ],
+     "shelf": [
+      "shelf"
+     ],
+     "author": [
+      "author"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Check out {title} for {borrower}."
+    ]
+   }
+  },
+  {
+   "name": "library_find",
+   "description": "Search the catalogue.",
+   "params": [
+    {
+     "name": "author",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Author name.",
+     "example": "Vela Sunder"
+    },
+    {
+     "name": "shelf",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "fiction",
+       "reference",
+       "archive",
+       "children"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Which section it lives in.",
+     "default": "fiction"
+    },
+    {
+     "name": "title",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Book title.",
+     "default": "Tidal Grammar",
+     "example": "Tidal Grammar"
+    },
+    {
+     "name": "year",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1400,
+       "maximum": 2100
+      }
+     },
+     "required": false,
+     "description": "Year of publication.",
+     "default": 1974,
+     "example": 1974
+    }
+   ],
+   "domain": "library",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "matching books",
+   "tags": [
+    "library",
+    "find",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "library",
+    "cfg": {
+     "key": "author"
+    },
+    "paths": {
+     "author": [
+      "author"
+     ],
+     "shelf": [
+      "shelf"
+     ],
+     "title": [
+      "title"
+     ],
+     "year": [
+      "year"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What do we have by {author}?"
+    ]
+   }
+  },
+  {
+   "name": "library_return_book",
+   "description": "Close out a loan.",
+   "params": [
+    {
+     "name": "record_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the record to act on."
+    },
+    {
+     "name": "title",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Book title.",
+     "default": "Tidal Grammar",
+     "example": "Tidal Grammar"
+    },
+    {
+     "name": "author",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Author name.",
+     "default": "Vela Sunder",
+     "example": "Vela Sunder"
+    },
+    {
+     "name": "shelf",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "fiction",
+       "reference",
+       "archive",
+       "children"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Which section it lives in.",
+     "default": "fiction"
+    }
+   ],
+   "domain": "library",
+   "category": "delete",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "whether the loan closed",
+   "tags": [
+    "library",
+    "return_book",
+    "tier2"
+   ],
+   "kernel": "delete",
+   "kernel_args": {
+    "table": "library",
+    "cfg": {
+     "key": "record_id"
+    },
+    "paths": {
+     "record_id": [
+      "record_id"
+     ],
+     "title": [
+      "title"
+     ],
+     "author": [
+      "author"
+     ],
+     "shelf": [
+      "shelf"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Return loan {record_id}."
+    ]
+   }
+  },
+  {
+   "name": "library_count_shelf",
+   "description": "Count the books on a shelf.",
+   "params": [
+    {
+     "name": "shelf",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "fiction",
+       "reference",
+       "archive",
+       "children"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Which section it lives in."
+    },
+    {
+     "name": "year",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1400,
+       "maximum": 2100
+      }
+     },
+     "required": false,
+     "description": "Year of publication.",
+     "default": 1974,
+     "example": 1974
+    },
+    {
+     "name": "title",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Book title.",
+     "default": "Tidal Grammar",
+     "example": "Tidal Grammar"
+    },
+    {
+     "name": "author",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Author name.",
+     "default": "Vela Sunder",
+     "example": "Vela Sunder"
+    }
+   ],
+   "domain": "library",
+   "category": "count",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a count",
+   "tags": [
+    "library",
+    "count_shelf",
+    "tier2"
+   ],
+   "kernel": "count",
+   "kernel_args": {
+    "table": "library",
+    "cfg": {
+     "key": "shelf"
+    },
+    "paths": {
+     "shelf": [
+      "shelf"
+     ],
+     "year": [
+      "year"
+     ],
+     "title": [
+      "title"
+     ],
+     "author": [
+      "author"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "How many books are on the {shelf} shelf?"
+    ]
+   }
+  },
+  {
+   "name": "health_log",
+   "description": "Record a health measurement.",
+   "params": [
+    {
+     "name": "patient",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Patient identifier.",
+     "example": "p-2201"
+    },
+    {
+     "name": "metric",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "weight",
+       "heart_rate",
+       "steps",
+       "sleep_hours"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Which measurement."
+    },
+    {
+     "name": "value",
+     "type": {
+      "kind": "number"
+     },
+     "required": true,
+     "description": "Recorded value.",
+     "example": 62.4
+    },
+    {
+     "name": "taken_on",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Date of the reading.",
+     "default": "2027-02-02",
+     "example": "2027-02-02"
+    }
+   ],
+   "domain": "health",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the record id",
+   "tags": [
+    "health",
+    "log",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "health",
+    "cfg": {
+     "key": "patient"
+    },
+    "paths": {
+     "patient": [
+      "patient"
+     ],
+     "metric": [
+      "metric"
+     ],
+     "value": [
+      "value"
+     ],
+     "taken_on": [
+      "taken_on"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Log a {metric} of {value} for {patient}."
+    ]
+   }
+  },
+  {
+   "name": "health_history",
+   "description": "Pull a patient's past readings.",
+   "params": [
+    {
+     "name": "patient",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Patient identifier.",
+     "example": "p-2201"
+    },
+    {
+     "name": "metric",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "weight",
+       "heart_rate",
+       "steps",
+       "sleep_hours"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Which measurement.",
+     "default": "weight"
+    },
+    {
+     "name": "clinic",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Which clinic.",
+     "default": "general"
+    },
+    {
+     "name": "value",
+     "type": {
+      "kind": "number"
+     },
+     "required": false,
+     "description": "Recorded value.",
+     "default": 62.4,
+     "example": 62.4
+    }
+   ],
+   "domain": "health",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of readings",
+   "tags": [
+    "health",
+    "history",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "health",
+    "cfg": {
+     "key": "patient"
+    },
+    "paths": {
+     "patient": [
+      "patient"
+     ],
+     "metric": [
+      "metric"
+     ],
+     "clinic": [
+      "clinic"
+     ],
+     "value": [
+      "value"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Show {patient}'s readings."
+    ]
+   }
+  },
+  {
+   "name": "health_average",
+   "description": "Average a patient's readings for one metric.",
+   "params": [
+    {
+     "name": "patient",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Patient identifier.",
+     "example": "p-2201"
+    },
+    {
+     "name": "metric",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "weight",
+       "heart_rate",
+       "steps",
+       "sleep_hours"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Which measurement."
+    },
+    {
+     "name": "clinic",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Which clinic.",
+     "default": "general"
+    },
+    {
+     "name": "value",
+     "type": {
+      "kind": "number"
+     },
+     "required": false,
+     "description": "Recorded value.",
+     "default": 62.4,
+     "example": 62.4
+    }
+   ],
+   "domain": "health",
+   "category": "aggregate",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "an average",
+   "tags": [
+    "health",
+    "average",
+    "tier2"
+   ],
+   "kernel": "aggregate",
+   "kernel_args": {
+    "table": "health",
+    "cfg": {
+     "field": "value",
+     "agg": "mean",
+     "key": "patient"
+    },
+    "paths": {
+     "patient": [
+      "patient"
+     ],
+     "metric": [
+      "metric"
+     ],
+     "clinic": [
+      "clinic"
+     ],
+     "value": [
+      "value"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What is {patient}'s average {metric}?"
+    ]
+   }
+  },
+  {
+   "name": "tickets_open",
+   "description": "Open a new support ticket.",
+   "params": [
+    {
+     "name": "requester",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Who opened it.",
+     "example": "kai"
+    },
+    {
+     "name": "summary",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "One-line summary.",
+     "example": "Printer offline"
+    },
+    {
+     "name": "queue",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "billing",
+       "network",
+       "hardware",
+       "accounts"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Which queue owns it."
+    },
+    {
+     "name": "severity",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "How urgent it is.",
+     "default": "s1"
+    }
+   ],
+   "domain": "tickets",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the ticket id",
+   "tags": [
+    "tickets",
+    "open",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "tickets",
+    "cfg": {
+     "key": "requester"
+    },
+    "paths": {
+     "requester": [
+      "requester"
+     ],
+     "summary": [
+      "summary"
+     ],
+     "queue": [
+      "queue"
+     ],
+     "severity": [
+      "severity"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Open a {queue} ticket for {requester} about {summary}."
+    ]
+   }
+  },
+  {
+   "name": "tickets_triage",
+   "description": "Change a ticket's severity.",
+   "params": [
+    {
+     "name": "record_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the record to act on."
+    },
+    {
+     "name": "severity",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "s1",
+       "s2",
+       "s3",
+       "s4"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "How urgent it is."
+    },
+    {
+     "name": "ticket_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Ticket number.",
+     "default": "T-9001",
+     "example": "T-9001"
+    },
+    {
+     "name": "requester",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Who opened it.",
+     "default": "kai",
+     "example": "kai"
+    }
+   ],
+   "domain": "tickets",
+   "category": "update",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the updated ticket",
+   "tags": [
+    "tickets",
+    "triage",
+    "tier2"
+   ],
+   "kernel": "update",
+   "kernel_args": {
+    "table": "tickets",
+    "cfg": {
+     "field": "severity",
+     "key": "record_id"
+    },
+    "paths": {
+     "record_id": [
+      "record_id"
+     ],
+     "severity": [
+      "severity"
+     ],
+     "ticket_id": [
+      "ticket_id"
+     ],
+     "requester": [
+      "requester"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Set ticket {record_id} to {severity}."
+    ]
+   }
+  },
+  {
+   "name": "tickets_queue_list",
+   "description": "List the tickets in a queue.",
+   "params": [
+    {
+     "name": "queue",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "billing",
+       "network",
+       "hardware",
+       "accounts"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Which queue owns it."
+    },
+    {
+     "name": "severity",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "How urgent it is.",
+     "default": "s1"
+    },
+    {
+     "name": "ticket_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Ticket number.",
+     "default": "T-9001",
+     "example": "T-9001"
+    },
+    {
+     "name": "requester",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Who opened it.",
+     "default": "kai",
+     "example": "kai"
+    }
+   ],
+   "domain": "tickets",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of tickets",
+   "tags": [
+    "tickets",
+    "queue_list",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "tickets",
+    "cfg": {
+     "key": "queue"
+    },
+    "paths": {
+     "queue": [
+      "queue"
+     ],
+     "severity": [
+      "severity"
+     ],
+     "ticket_id": [
+      "ticket_id"
+     ],
+     "requester": [
+      "requester"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What is open in the {queue} queue?"
+    ]
+   }
+  },
+  {
+   "name": "tickets_oldest",
+   "description": "List the longest-open tickets first.",
+   "params": [
+    {
+     "name": "queue",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "billing",
+       "network",
+       "hardware",
+       "accounts"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Which queue owns it."
+    },
+    {
+     "name": "limit",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 100
+      }
+     },
+     "required": false,
+     "description": "How many results to return.",
+     "default": 3,
+     "example": 3
+    },
+    {
+     "name": "ticket_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Ticket number.",
+     "default": "T-9001",
+     "example": "T-9001"
+    },
+    {
+     "name": "requester",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Who opened it.",
+     "default": "kai",
+     "example": "kai"
+    }
+   ],
+   "domain": "tickets",
+   "category": "rank",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a ranked list",
+   "tags": [
+    "tickets",
+    "oldest",
+    "tier2"
+   ],
+   "kernel": "rank",
+   "kernel_args": {
+    "table": "tickets",
+    "cfg": {
+     "field": "age_days",
+     "order": "desc",
+     "key": "queue"
+    },
+    "paths": {
+     "queue": [
+      "queue"
+     ],
+     "limit": [
+      "limit"
+     ],
+     "ticket_id": [
+      "ticket_id"
+     ],
+     "requester": [
+      "requester"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Which {queue} tickets have been open longest?"
+    ]
+   }
+  },
+  {
+   "name": "media_play",
+   "description": "Start playing a track.",
+   "params": [
+    {
+     "name": "track",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Track name.",
+     "example": "Anvil Light"
+    },
+    {
+     "name": "artist",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Performer.",
+     "default": "Cold Meridian",
+     "example": "Cold Meridian"
+    },
+    {
+     "name": "genre",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "ambient",
+       "folk",
+       "techno",
+       "jazz"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Genre label.",
+     "default": "ambient"
+    },
+    {
+     "name": "length_seconds",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1
+      }
+     },
+     "required": false,
+     "description": "Track length.",
+     "default": 143,
+     "example": 143
+    }
+   ],
+   "domain": "media",
+   "category": "lookup",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the now-playing record",
+   "tags": [
+    "media",
+    "play",
+    "tier2"
+   ],
+   "kernel": "lookup",
+   "kernel_args": {
+    "table": "media",
+    "cfg": {
+     "key": "track"
+    },
+    "paths": {
+     "track": [
+      "track"
+     ],
+     "artist": [
+      "artist"
+     ],
+     "genre": [
+      "genre"
+     ],
+     "length_seconds": [
+      "length_seconds"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Play {track}."
+    ]
+   }
+  },
+  {
+   "name": "media_add_to_playlist",
+   "description": "Add a track to a playlist.",
+   "params": [
+    {
+     "name": "track",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Track name.",
+     "example": "Anvil Light"
+    },
+    {
+     "name": "playlist",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Playlist name.",
+     "example": "Morning"
+    },
+    {
+     "name": "rating",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 5
+      }
+     },
+     "required": false,
+     "description": "Star rating.",
+     "default": 1,
+     "example": 1
+    },
+    {
+     "name": "artist",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Performer.",
+     "default": "Cold Meridian",
+     "example": "Cold Meridian"
+    }
+   ],
+   "domain": "media",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the playlist entry id",
+   "tags": [
+    "media",
+    "add_to_playlist",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "media",
+    "cfg": {
+     "key": "track"
+    },
+    "paths": {
+     "track": [
+      "track"
+     ],
+     "playlist": [
+      "playlist"
+     ],
+     "rating": [
+      "rating"
+     ],
+     "artist": [
+      "artist"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Add {track} to my {playlist} playlist."
+    ]
+   }
+  },
+  {
+   "name": "media_browse",
+   "description": "Browse tracks by genre.",
+   "params": [
+    {
+     "name": "genre",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "ambient",
+       "folk",
+       "techno",
+       "jazz"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Genre label."
+    },
+    {
+     "name": "artist",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Performer.",
+     "default": "Cold Meridian",
+     "example": "Cold Meridian"
+    },
+    {
+     "name": "track",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Track name.",
+     "default": "Anvil Light",
+     "example": "Anvil Light"
+    },
+    {
+     "name": "length_seconds",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1
+      }
+     },
+     "required": false,
+     "description": "Track length.",
+     "default": 143,
+     "example": 143
+    }
+   ],
+   "domain": "media",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of tracks",
+   "tags": [
+    "media",
+    "browse",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "media",
+    "cfg": {
+     "key": "genre"
+    },
+    "paths": {
+     "genre": [
+      "genre"
+     ],
+     "artist": [
+      "artist"
+     ],
+     "track": [
+      "track"
+     ],
+     "length_seconds": [
+      "length_seconds"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Show me some {genre}."
+    ]
+   }
+  },
+  {
+   "name": "media_top_rated",
+   "description": "Rank tracks by rating.",
+   "params": [
+    {
+     "name": "genre",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "ambient",
+       "folk",
+       "techno",
+       "jazz"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Genre label."
+    },
+    {
+     "name": "limit",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 100
+      }
+     },
+     "required": false,
+     "description": "How many results to return.",
+     "default": 3,
+     "example": 3
+    },
+    {
+     "name": "track",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Track name.",
+     "default": "Anvil Light",
+     "example": "Anvil Light"
+    },
+    {
+     "name": "artist",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Performer.",
+     "default": "Cold Meridian",
+     "example": "Cold Meridian"
+    }
+   ],
+   "domain": "media",
+   "category": "rank",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a ranked list",
+   "tags": [
+    "media",
+    "top_rated",
+    "tier2"
+   ],
+   "kernel": "rank",
+   "kernel_args": {
+    "table": "media",
+    "cfg": {
+     "field": "rating",
+     "order": "desc",
+     "key": "genre"
+    },
+    "paths": {
+     "genre": [
+      "genre"
+     ],
+     "limit": [
+      "limit"
+     ],
+     "track": [
+      "track"
+     ],
+     "artist": [
+      "artist"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What is the best {genre} we have?"
+    ]
+   }
+  },
+  {
+   "name": "weather_current",
+   "description": "Get the current weather for a city.",
+   "params": [
+    {
+     "name": "city",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "City to report on.",
+     "example": "Wrocław"
+    },
+    {
+     "name": "unit",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "celsius",
+       "fahrenheit",
+       "kelvin"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Temperature unit.",
+     "default": "celsius"
+    },
+    {
+     "name": "days_ahead",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 14
+      }
+     },
+     "required": false,
+     "description": "How far ahead to forecast.",
+     "default": 0,
+     "example": 0
+    },
+    {
+     "name": "temperature",
+     "type": {
+      "kind": "number"
+     },
+     "required": false,
+     "description": "Temperature reading.",
+     "default": -4.0,
+     "example": -4.0
+    }
+   ],
+   "domain": "weather",
+   "category": "lookup",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a weather reading",
+   "tags": [
+    "weather",
+    "current",
+    "tier2"
+   ],
+   "kernel": "lookup",
+   "kernel_args": {
+    "table": "weather",
+    "cfg": {
+     "key": "city"
+    },
+    "paths": {
+     "city": [
+      "city"
+     ],
+     "unit": [
+      "unit"
+     ],
+     "days_ahead": [
+      "days_ahead"
+     ],
+     "temperature": [
+      "temperature"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What is the weather in {city}?"
+    ]
+   }
+  },
+  {
+   "name": "weather_forecast",
+   "description": "Forecast the weather a number of days ahead.",
+   "params": [
+    {
+     "name": "city",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "City to report on.",
+     "example": "Wrocław"
+    },
+    {
+     "name": "days_ahead",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 14
+      }
+     },
+     "required": true,
+     "description": "How far ahead to forecast.",
+     "example": 0
+    },
+    {
+     "name": "unit",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "celsius",
+       "fahrenheit",
+       "kelvin"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Temperature unit.",
+     "default": "celsius"
+    },
+    {
+     "name": "temperature",
+     "type": {
+      "kind": "number"
+     },
+     "required": false,
+     "description": "Temperature reading.",
+     "default": -4.0,
+     "example": -4.0
+    }
+   ],
+   "domain": "weather",
+   "category": "compute",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a forecast",
+   "tags": [
+    "weather",
+    "forecast",
+    "tier2"
+   ],
+   "kernel": "compute",
+   "kernel_args": {
+    "table": "weather",
+    "cfg": {
+     "op": "forecast",
+     "key": "city"
+    },
+    "paths": {
+     "city": [
+      "city"
+     ],
+     "days_ahead": [
+      "days_ahead"
+     ],
+     "unit": [
+      "unit"
+     ],
+     "temperature": [
+      "temperature"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What will it be like in {city} in {days_ahead} days?"
+    ]
+   }
+  },
+  {
+   "name": "weather_convert_temp",
+   "description": "Convert a temperature between units.",
+   "params": [
+    {
+     "name": "temperature",
+     "type": {
+      "kind": "number"
+     },
+     "required": true,
+     "description": "Temperature reading.",
+     "example": -4.0
+    },
+    {
+     "name": "unit",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "celsius",
+       "fahrenheit",
+       "kelvin"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Temperature unit."
+    },
+    {
+     "name": "city",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "City to report on.",
+     "default": "Wrocław",
+     "example": "Wrocław"
+    },
+    {
+     "name": "days_ahead",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 14
+      }
+     },
+     "required": false,
+     "description": "How far ahead to forecast.",
+     "default": 0,
+     "example": 0
+    }
+   ],
+   "domain": "weather",
+   "category": "convert",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the converted temperature",
+   "tags": [
+    "weather",
+    "convert_temp",
+    "tier2"
+   ],
+   "kernel": "convert",
+   "kernel_args": {
+    "table": "weather",
+    "cfg": {
+     "from": "unit",
+     "key": "temperature"
+    },
+    "paths": {
+     "temperature": [
+      "temperature"
+     ],
+     "unit": [
+      "unit"
+     ],
+     "city": [
+      "city"
+     ],
+     "days_ahead": [
+      "days_ahead"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Convert {temperature} to another unit."
+    ]
+   }
+  },
+  {
+   "name": "hr_request_leave",
+   "description": "File a leave request.",
+   "params": [
+    {
+     "name": "employee_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Employee number.",
+     "example": "E-1102"
+    },
+    {
+     "name": "leave_type",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "annual",
+       "sick",
+       "unpaid",
+       "parental"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Type of leave."
+    },
+    {
+     "name": "days",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 365
+      }
+     },
+     "required": true,
+     "description": "Number of days.",
+     "example": 1
+    },
+    {
+     "name": "start_date",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "First day of leave.",
+     "default": "2027-04-05",
+     "example": "2027-04-05"
+    }
+   ],
+   "domain": "hr",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the request id",
+   "tags": [
+    "hr",
+    "request_leave",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "hr",
+    "cfg": {
+     "key": "employee_id"
+    },
+    "paths": {
+     "employee_id": [
+      "employee_id"
+     ],
+     "leave_type": [
+      "leave_type"
+     ],
+     "days": [
+      "days"
+     ],
+     "start_date": [
+      "start_date"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Request {days} days of {leave_type} leave for {employee_id}."
+    ]
+   }
+  },
+  {
+   "name": "hr_directory",
+   "description": "List people in a department.",
+   "params": [
+    {
+     "name": "department",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "engineering",
+       "sales",
+       "support",
+       "legal"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Which department."
+    },
+    {
+     "name": "salary_band",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 12
+      }
+     },
+     "required": false,
+     "description": "Pay band.",
+     "default": 2,
+     "example": 2
+    },
+    {
+     "name": "employee_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Employee number.",
+     "default": "E-1102",
+     "example": "E-1102"
+    },
+    {
+     "name": "leave_type",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Type of leave.",
+     "default": "annual"
+    }
+   ],
+   "domain": "hr",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of employees",
+   "tags": [
+    "hr",
+    "directory",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "hr",
+    "cfg": {
+     "key": "department"
+    },
+    "paths": {
+     "department": [
+      "department"
+     ],
+     "salary_band": [
+      "salary_band"
+     ],
+     "employee_id": [
+      "employee_id"
+     ],
+     "leave_type": [
+      "leave_type"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Who is in {department}?"
+    ]
+   }
+  },
+  {
+   "name": "hr_headcount",
+   "description": "Count the people in a department.",
+   "params": [
+    {
+     "name": "department",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "engineering",
+       "sales",
+       "support",
+       "legal"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Which department."
+    },
+    {
+     "name": "employee_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Employee number.",
+     "default": "E-1102",
+     "example": "E-1102"
+    },
+    {
+     "name": "leave_type",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Type of leave.",
+     "default": "annual"
+    },
+    {
+     "name": "days",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 365
+      }
+     },
+     "required": false,
+     "description": "Number of days.",
+     "default": 1,
+     "example": 1
+    }
+   ],
+   "domain": "hr",
+   "category": "count",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a count",
+   "tags": [
+    "hr",
+    "headcount",
+    "tier2"
+   ],
+   "kernel": "count",
+   "kernel_args": {
+    "table": "hr",
+    "cfg": {
+     "key": "department"
+    },
+    "paths": {
+     "department": [
+      "department"
+     ],
+     "employee_id": [
+      "employee_id"
+     ],
+     "leave_type": [
+      "leave_type"
+     ],
+     "days": [
+      "days"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "How many people are in {department}?"
+    ]
+   }
+  },
+  {
+   "name": "hr_approve",
+   "description": "Approve or reject a pending request.",
+   "params": [
+    {
+     "name": "record_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the record to act on."
+    },
+    {
+     "name": "approved",
+     "type": {
+      "kind": "boolean"
+     },
+     "required": true,
+     "description": "Whether it is approved."
+    },
+    {
+     "name": "employee_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Employee number.",
+     "default": "E-1102",
+     "example": "E-1102"
+    },
+    {
+     "name": "department",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "engineering",
+       "sales",
+       "support",
+       "legal"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Which department.",
+     "default": "engineering"
+    }
+   ],
+   "domain": "hr",
+   "category": "update",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the updated request",
+   "tags": [
+    "hr",
+    "approve",
+    "tier2"
+   ],
+   "kernel": "update",
+   "kernel_args": {
+    "table": "hr",
+    "cfg": {
+     "field": "approved",
+     "key": "record_id"
+    },
+    "paths": {
+     "record_id": [
+      "record_id"
+     ],
+     "approved": [
+      "approved"
+     ],
+     "employee_id": [
+      "employee_id"
+     ],
+     "department": [
+      "department"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Approve request {record_id}."
+    ]
+   }
+  },
+  {
+   "name": "ecommerce_place",
+   "description": "Place a new order.",
+   "params": [
+    {
+     "name": "product",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Product name.",
+     "example": "kettle"
+    },
+    {
+     "name": "quantity",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 999
+      }
+     },
+     "required": true,
+     "description": "How many.",
+     "example": 1
+    },
+    {
+     "name": "address",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Delivery address.",
+     "example": "12 Rowan Way"
+    },
+    {
+     "name": "shipping",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "standard",
+       "express",
+       "overnight",
+       "pickup"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Shipping method.",
+     "default": "standard"
+    }
+   ],
+   "domain": "ecommerce",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the order id",
+   "tags": [
+    "ecommerce",
+    "place",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "ecommerce",
+    "cfg": {
+     "key": "product"
+    },
+    "paths": {
+     "product": [
+      "product"
+     ],
+     "quantity": [
+      "quantity"
+     ],
+     "address": [
+      "address"
+     ],
+     "shipping": [
+      "shipping"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Order {quantity} {product} to {address}."
+    ]
+   }
+  },
+  {
+   "name": "ecommerce_track",
+   "description": "Check where an order is.",
+   "params": [
+    {
+     "name": "order_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Order number.",
+     "example": "ORD-7781"
+    },
+    {
+     "name": "product",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Product name.",
+     "default": "kettle",
+     "example": "kettle"
+    },
+    {
+     "name": "quantity",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 999
+      }
+     },
+     "required": false,
+     "description": "How many.",
+     "default": 1,
+     "example": 1
+    },
+    {
+     "name": "shipping",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "standard",
+       "express",
+       "overnight",
+       "pickup"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Shipping method.",
+     "default": "standard"
+    }
+   ],
+   "domain": "ecommerce",
+   "category": "lookup",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the order record",
+   "tags": [
+    "ecommerce",
+    "track",
+    "tier2"
+   ],
+   "kernel": "lookup",
+   "kernel_args": {
+    "table": "ecommerce",
+    "cfg": {
+     "key": "order_id"
+    },
+    "paths": {
+     "order_id": [
+      "order_id"
+     ],
+     "product": [
+      "product"
+     ],
+     "quantity": [
+      "quantity"
+     ],
+     "shipping": [
+      "shipping"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Where is order {order_id}?"
+    ]
+   }
+  },
+  {
+   "name": "ecommerce_refund",
+   "description": "Refund and close an order.",
+   "params": [
+    {
+     "name": "record_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the record to act on."
+    },
+    {
+     "name": "order_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Order number.",
+     "default": "ORD-7781",
+     "example": "ORD-7781"
+    },
+    {
+     "name": "product",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Product name.",
+     "default": "kettle",
+     "example": "kettle"
+    },
+    {
+     "name": "quantity",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 999
+      }
+     },
+     "required": false,
+     "description": "How many.",
+     "default": 1,
+     "example": 1
+    }
+   ],
+   "domain": "ecommerce",
+   "category": "delete",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "whether it was refunded",
+   "tags": [
+    "ecommerce",
+    "refund",
+    "tier2"
+   ],
+   "kernel": "delete",
+   "kernel_args": {
+    "table": "ecommerce",
+    "cfg": {
+     "key": "record_id"
+    },
+    "paths": {
+     "record_id": [
+      "record_id"
+     ],
+     "order_id": [
+      "order_id"
+     ],
+     "product": [
+      "product"
+     ],
+     "quantity": [
+      "quantity"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Refund order {record_id}."
+    ]
+   }
+  },
+  {
+   "name": "ecommerce_spend",
+   "description": "Total spending for an address.",
+   "params": [
+    {
+     "name": "address",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Delivery address.",
+     "example": "12 Rowan Way"
+    },
+    {
+     "name": "shipping",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "standard",
+       "express",
+       "overnight",
+       "pickup"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Shipping method.",
+     "default": "standard"
+    },
+    {
+     "name": "order_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Order number.",
+     "default": "ORD-7781",
+     "example": "ORD-7781"
+    },
+    {
+     "name": "product",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Product name.",
+     "default": "kettle",
+     "example": "kettle"
+    }
+   ],
+   "domain": "ecommerce",
+   "category": "aggregate",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a total",
+   "tags": [
+    "ecommerce",
+    "spend",
+    "tier2"
+   ],
+   "kernel": "aggregate",
+   "kernel_args": {
+    "table": "ecommerce",
+    "cfg": {
+     "field": "total",
+     "agg": "sum",
+     "key": "address"
+    },
+    "paths": {
+     "address": [
+      "address"
+     ],
+     "shipping": [
+      "shipping"
+     ],
+     "order_id": [
+      "order_id"
+     ],
+     "product": [
+      "product"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "How much has been spent shipping to {address}?"
+    ]
+   }
+  },
+  {
+   "name": "devops_deploy",
+   "description": "Deploy a version of a service.",
+   "params": [
+    {
+     "name": "service",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Service name.",
+     "example": "auth-api"
+    },
+    {
+     "name": "environment",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "dev",
+       "staging",
+       "prod"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Which environment."
+    },
+    {
+     "name": "version",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Version tag to deploy.",
+     "example": "1.4.2"
+    },
+    {
+     "name": "replicas",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 500
+      }
+     },
+     "required": false,
+     "description": "How many replicas.",
+     "default": 1,
+     "example": 1
+    }
+   ],
+   "domain": "devops",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the deployment id",
+   "tags": [
+    "devops",
+    "deploy",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "devops",
+    "cfg": {
+     "key": "service"
+    },
+    "paths": {
+     "service": [
+      "service"
+     ],
+     "environment": [
+      "environment"
+     ],
+     "version": [
+      "version"
+     ],
+     "replicas": [
+      "replicas"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Deploy {service} {version} to {environment}."
+    ]
+   }
+  },
+  {
+   "name": "devops_scale",
+   "description": "Change the replica count of a deployment.",
+   "params": [
+    {
+     "name": "record_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the record to act on."
+    },
+    {
+     "name": "replicas",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 500
+      }
+     },
+     "required": true,
+     "description": "How many replicas.",
+     "example": 1
+    },
+    {
+     "name": "service",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Service name.",
+     "default": "auth-api",
+     "example": "auth-api"
+    },
+    {
+     "name": "environment",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "dev",
+       "staging",
+       "prod"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Which environment.",
+     "default": "dev"
+    }
+   ],
+   "domain": "devops",
+   "category": "update",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the updated deployment",
+   "tags": [
+    "devops",
+    "scale",
+    "tier2"
+   ],
+   "kernel": "update",
+   "kernel_args": {
+    "table": "devops",
+    "cfg": {
+     "field": "replicas",
+     "key": "record_id"
+    },
+    "paths": {
+     "record_id": [
+      "record_id"
+     ],
+     "replicas": [
+      "replicas"
+     ],
+     "service": [
+      "service"
+     ],
+     "environment": [
+      "environment"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Scale deployment {record_id} to {replicas} replicas."
+    ]
+   }
+  },
+  {
+   "name": "devops_status",
+   "description": "Check the state of a service.",
+   "params": [
+    {
+     "name": "service",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Service name.",
+     "example": "auth-api"
+    },
+    {
+     "name": "environment",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "dev",
+       "staging",
+       "prod"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Which environment.",
+     "default": "dev"
+    },
+    {
+     "name": "version",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Version tag to deploy.",
+     "default": "1.4.2",
+     "example": "1.4.2"
+    },
+    {
+     "name": "replicas",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 500
+      }
+     },
+     "required": false,
+     "description": "How many replicas.",
+     "default": 1,
+     "example": 1
+    }
+   ],
+   "domain": "devops",
+   "category": "lookup",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a status record",
+   "tags": [
+    "devops",
+    "status",
+    "tier2"
+   ],
+   "kernel": "lookup",
+   "kernel_args": {
+    "table": "devops",
+    "cfg": {
+     "key": "service"
+    },
+    "paths": {
+     "service": [
+      "service"
+     ],
+     "environment": [
+      "environment"
+     ],
+     "version": [
+      "version"
+     ],
+     "replicas": [
+      "replicas"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Is {service} healthy?"
+    ]
+   }
+  },
+  {
+   "name": "devops_rollback",
+   "description": "Roll a deployment back.",
+   "params": [
+    {
+     "name": "record_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the record to act on."
+    },
+    {
+     "name": "service",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Service name.",
+     "default": "auth-api",
+     "example": "auth-api"
+    },
+    {
+     "name": "environment",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "dev",
+       "staging",
+       "prod"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Which environment.",
+     "default": "dev"
+    },
+    {
+     "name": "version",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Version tag to deploy.",
+     "default": "1.4.2",
+     "example": "1.4.2"
+    }
+   ],
+   "domain": "devops",
+   "category": "delete",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "whether it rolled back",
+   "tags": [
+    "devops",
+    "rollback",
+    "tier2"
+   ],
+   "kernel": "delete",
+   "kernel_args": {
+    "table": "devops",
+    "cfg": {
+     "key": "record_id"
+    },
+    "paths": {
+     "record_id": [
+      "record_id"
+     ],
+     "service": [
+      "service"
+     ],
+     "environment": [
+      "environment"
+     ],
+     "version": [
+      "version"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Roll back deployment {record_id}."
+    ]
+   }
+  },
+  {
+   "name": "documents_upload",
+   "description": "Add a document to a folder.",
+   "params": [
+    {
+     "name": "path",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Path to the file.",
+     "example": "/reports/q1.md"
+    },
+    {
+     "name": "folder",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "reports",
+       "legal",
+       "photos",
+       "archive"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Which folder."
+    },
+    {
+     "name": "format",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "File format.",
+     "default": "md"
+    },
+    {
+     "name": "size_kb",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": false,
+     "description": "Size in kilobytes.",
+     "default": 12,
+     "example": 12
+    }
+   ],
+   "domain": "documents",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the document id",
+   "tags": [
+    "documents",
+    "upload",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "documents",
+    "cfg": {
+     "key": "path"
+    },
+    "paths": {
+     "path": [
+      "path"
+     ],
+     "folder": [
+      "folder"
+     ],
+     "format": [
+      "format"
+     ],
+     "size_kb": [
+      "size_kb"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Put {path} in the {folder} folder."
+    ]
+   }
+  },
+  {
+   "name": "documents_find",
+   "description": "Search a folder for documents.",
+   "params": [
+    {
+     "name": "folder",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "reports",
+       "legal",
+       "photos",
+       "archive"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Which folder."
+    },
+    {
+     "name": "format",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "File format.",
+     "default": "md"
+    },
+    {
+     "name": "path",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Path to the file.",
+     "default": "/reports/q1.md",
+     "example": "/reports/q1.md"
+    },
+    {
+     "name": "size_kb",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": false,
+     "description": "Size in kilobytes.",
+     "default": 12,
+     "example": 12
+    }
+   ],
+   "domain": "documents",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of documents",
+   "tags": [
+    "documents",
+    "find",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "documents",
+    "cfg": {
+     "key": "folder"
+    },
+    "paths": {
+     "folder": [
+      "folder"
+     ],
+     "format": [
+      "format"
+     ],
+     "path": [
+      "path"
+     ],
+     "size_kb": [
+      "size_kb"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What is in the {folder} folder?"
+    ]
+   }
+  },
+  {
+   "name": "documents_share",
+   "description": "Share a document with someone.",
+   "params": [
+    {
+     "name": "record_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the record to act on."
+    },
+    {
+     "name": "shared_with",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Who it is shared with.",
+     "example": "tomas"
+    },
+    {
+     "name": "path",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Path to the file.",
+     "default": "/reports/q1.md",
+     "example": "/reports/q1.md"
+    },
+    {
+     "name": "folder",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "reports",
+       "legal",
+       "photos",
+       "archive"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Which folder.",
+     "default": "reports"
+    }
+   ],
+   "domain": "documents",
+   "category": "update",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the updated document",
+   "tags": [
+    "documents",
+    "share",
+    "tier2"
+   ],
+   "kernel": "update",
+   "kernel_args": {
+    "table": "documents",
+    "cfg": {
+     "field": "shared_with",
+     "key": "record_id"
+    },
+    "paths": {
+     "record_id": [
+      "record_id"
+     ],
+     "shared_with": [
+      "shared_with"
+     ],
+     "path": [
+      "path"
+     ],
+     "folder": [
+      "folder"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Share document {record_id} with {shared_with}."
+    ]
+   }
+  },
+  {
+   "name": "documents_total_size",
+   "description": "Total the size of a folder.",
+   "params": [
+    {
+     "name": "folder",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "reports",
+       "legal",
+       "photos",
+       "archive"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Which folder."
+    },
+    {
+     "name": "path",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Path to the file.",
+     "default": "/reports/q1.md",
+     "example": "/reports/q1.md"
+    },
+    {
+     "name": "format",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "File format.",
+     "default": "md"
+    },
+    {
+     "name": "size_kb",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": false,
+     "description": "Size in kilobytes.",
+     "default": 12,
+     "example": 12
+    }
+   ],
+   "domain": "documents",
+   "category": "aggregate",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a total size",
+   "tags": [
+    "documents",
+    "total_size",
+    "tier2"
+   ],
+   "kernel": "aggregate",
+   "kernel_args": {
+    "table": "documents",
+    "cfg": {
+     "field": "size_kb",
+     "agg": "sum",
+     "key": "folder"
+    },
+    "paths": {
+     "folder": [
+      "folder"
+     ],
+     "path": [
+      "path"
+     ],
+     "format": [
+      "format"
+     ],
+     "size_kb": [
+      "size_kb"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "How big is the {folder} folder?"
+    ]
+   }
+  },
+  {
+   "name": "education_enrol",
+   "description": "Enrol a student in a course.",
+   "params": [
+    {
+     "name": "student",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Student username.",
+     "example": "ada"
+    },
+    {
+     "name": "course_code",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Course code.",
+     "example": "BIO-210"
+    },
+    {
+     "name": "term",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "fall",
+       "spring",
+       "summer"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Which term."
+    },
+    {
+     "name": "credits",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 12
+      }
+     },
+     "required": false,
+     "description": "Credit hours.",
+     "default": 1,
+     "example": 1
+    }
+   ],
+   "domain": "education",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the enrolment id",
+   "tags": [
+    "education",
+    "enrol",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "education",
+    "cfg": {
+     "key": "student"
+    },
+    "paths": {
+     "student": [
+      "student"
+     ],
+     "course_code": [
+      "course_code"
+     ],
+     "term": [
+      "term"
+     ],
+     "credits": [
+      "credits"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Enrol {student} in {course_code} for {term}."
+    ]
+   }
+  },
+  {
+   "name": "education_transcript",
+   "description": "List a student's courses.",
+   "params": [
+    {
+     "name": "student",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Student username.",
+     "example": "ada"
+    },
+    {
+     "name": "term",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "fall",
+       "spring",
+       "summer"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Which term.",
+     "default": "fall"
+    },
+    {
+     "name": "course_code",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Course code.",
+     "default": "BIO-210",
+     "example": "BIO-210"
+    },
+    {
+     "name": "grade",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 100
+      }
+     },
+     "required": false,
+     "description": "Percentage grade.",
+     "default": 55,
+     "example": 55
+    }
+   ],
+   "domain": "education",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of enrolments",
+   "tags": [
+    "education",
+    "transcript",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "education",
+    "cfg": {
+     "key": "student"
+    },
+    "paths": {
+     "student": [
+      "student"
+     ],
+     "term": [
+      "term"
+     ],
+     "course_code": [
+      "course_code"
+     ],
+     "grade": [
+      "grade"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What has {student} taken?"
+    ]
+   }
+  },
+  {
+   "name": "education_gpa",
+   "description": "Average a student's grades.",
+   "params": [
+    {
+     "name": "student",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Student username.",
+     "example": "ada"
+    },
+    {
+     "name": "term",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "fall",
+       "spring",
+       "summer"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Which term.",
+     "default": "fall"
+    },
+    {
+     "name": "course_code",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Course code.",
+     "default": "BIO-210",
+     "example": "BIO-210"
+    },
+    {
+     "name": "grade",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 100
+      }
+     },
+     "required": false,
+     "description": "Percentage grade.",
+     "default": 55,
+     "example": 55
+    }
+   ],
+   "domain": "education",
+   "category": "aggregate",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "an average",
+   "tags": [
+    "education",
+    "gpa",
+    "tier2"
+   ],
+   "kernel": "aggregate",
+   "kernel_args": {
+    "table": "education",
+    "cfg": {
+     "field": "grade",
+     "agg": "mean",
+     "key": "student"
+    },
+    "paths": {
+     "student": [
+      "student"
+     ],
+     "term": [
+      "term"
+     ],
+     "course_code": [
+      "course_code"
+     ],
+     "grade": [
+      "grade"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What is {student}'s average grade?"
+    ]
+   }
+  },
+  {
+   "name": "education_set_grade",
+   "description": "Record a grade on an enrolment.",
+   "params": [
+    {
+     "name": "record_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the record to act on."
+    },
+    {
+     "name": "grade",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 100
+      }
+     },
+     "required": true,
+     "description": "Percentage grade.",
+     "example": 55
+    },
+    {
+     "name": "course_code",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Course code.",
+     "default": "BIO-210",
+     "example": "BIO-210"
+    },
+    {
+     "name": "student",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Student username.",
+     "default": "ada",
+     "example": "ada"
+    }
+   ],
+   "domain": "education",
+   "category": "update",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the updated enrolment",
+   "tags": [
+    "education",
+    "set_grade",
+    "tier2"
+   ],
+   "kernel": "update",
+   "kernel_args": {
+    "table": "education",
+    "cfg": {
+     "field": "grade",
+     "key": "record_id"
+    },
+    "paths": {
+     "record_id": [
+      "record_id"
+     ],
+     "grade": [
+      "grade"
+     ],
+     "course_code": [
+      "course_code"
+     ],
+     "student": [
+      "student"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Give enrolment {record_id} a grade of {grade}."
+    ]
+   }
+  },
+  {
+   "name": "restaurant_reserve",
+   "description": "Reserve a table.",
+   "params": [
+    {
+     "name": "venue",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Restaurant name.",
+     "example": "Saltbox"
+    },
+    {
+     "name": "party_size",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 40
+      }
+     },
+     "required": true,
+     "description": "How many people.",
+     "example": 2
+    },
+    {
+     "name": "on_date",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Date of the booking.",
+     "example": "2027-05-02"
+    },
+    {
+     "name": "seating",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "indoor",
+       "patio",
+       "bar",
+       "private"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Seating preference.",
+     "default": "indoor"
+    }
+   ],
+   "domain": "restaurant",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the reservation id",
+   "tags": [
+    "restaurant",
+    "reserve",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "restaurant",
+    "cfg": {
+     "key": "venue"
+    },
+    "paths": {
+     "venue": [
+      "venue"
+     ],
+     "party_size": [
+      "party_size"
+     ],
+     "on_date": [
+      "on_date"
+     ],
+     "seating": [
+      "seating"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Book a table for {party_size} at {venue} on {on_date} at {at_time}."
+    ]
+   }
+  },
+  {
+   "name": "restaurant_availability",
+   "description": "Check what is free at a venue.",
+   "params": [
+    {
+     "name": "venue",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Restaurant name.",
+     "example": "Saltbox"
+    },
+    {
+     "name": "on_date",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Date of the booking.",
+     "example": "2027-05-02"
+    },
+    {
+     "name": "party_size",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 40
+      }
+     },
+     "required": false,
+     "description": "How many people.",
+     "default": 2,
+     "example": 2
+    },
+    {
+     "name": "seating",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "indoor",
+       "patio",
+       "bar",
+       "private"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Seating preference.",
+     "default": "indoor"
+    }
+   ],
+   "domain": "restaurant",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of slots",
+   "tags": [
+    "restaurant",
+    "availability",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "restaurant",
+    "cfg": {
+     "key": "venue"
+    },
+    "paths": {
+     "venue": [
+      "venue"
+     ],
+     "on_date": [
+      "on_date"
+     ],
+     "party_size": [
+      "party_size"
+     ],
+     "seating": [
+      "seating"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What is free at {venue} on {on_date}?"
+    ]
+   }
+  },
+  {
+   "name": "restaurant_cancel",
+   "description": "Cancel a reservation.",
+   "params": [
+    {
+     "name": "record_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the record to act on."
+    },
+    {
+     "name": "venue",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Restaurant name.",
+     "default": "Saltbox",
+     "example": "Saltbox"
+    },
+    {
+     "name": "party_size",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 40
+      }
+     },
+     "required": false,
+     "description": "How many people.",
+     "default": 2,
+     "example": 2
+    },
+    {
+     "name": "seating",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "indoor",
+       "patio",
+       "bar",
+       "private"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Seating preference.",
+     "default": "indoor"
+    }
+   ],
+   "domain": "restaurant",
+   "category": "delete",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "whether it was cancelled",
+   "tags": [
+    "restaurant",
+    "cancel",
+    "tier2"
+   ],
+   "kernel": "delete",
+   "kernel_args": {
+    "table": "restaurant",
+    "cfg": {
+     "key": "record_id"
+    },
+    "paths": {
+     "record_id": [
+      "record_id"
+     ],
+     "venue": [
+      "venue"
+     ],
+     "party_size": [
+      "party_size"
+     ],
+     "seating": [
+      "seating"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Cancel reservation {record_id}."
+    ]
+   }
+  },
+  {
+   "name": "fleet_assign",
+   "description": "Assign a driver to a vehicle.",
+   "params": [
+    {
+     "name": "record_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the record to act on."
+    },
+    {
+     "name": "driver",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Assigned driver.",
+     "example": "sam"
+    },
+    {
+     "name": "plate",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Number plate.",
+     "default": "KR-4821",
+     "example": "KR-4821"
+    },
+    {
+     "name": "depot",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "central",
+       "harbour",
+       "airport"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Home depot.",
+     "default": "central"
+    }
+   ],
+   "domain": "fleet",
+   "category": "update",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the updated vehicle",
+   "tags": [
+    "fleet",
+    "assign",
+    "tier2"
+   ],
+   "kernel": "update",
+   "kernel_args": {
+    "table": "fleet",
+    "cfg": {
+     "field": "driver",
+     "key": "record_id"
+    },
+    "paths": {
+     "record_id": [
+      "record_id"
+     ],
+     "driver": [
+      "driver"
+     ],
+     "plate": [
+      "plate"
+     ],
+     "depot": [
+      "depot"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Give vehicle {record_id} to {driver}."
+    ]
+   }
+  },
+  {
+   "name": "fleet_locate",
+   "description": "Find out where a vehicle is.",
+   "params": [
+    {
+     "name": "plate",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Number plate.",
+     "example": "KR-4821"
+    },
+    {
+     "name": "depot",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "central",
+       "harbour",
+       "airport"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Home depot.",
+     "default": "central"
+    },
+    {
+     "name": "fuel_percent",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 100
+      }
+     },
+     "required": false,
+     "description": "Fuel level.",
+     "default": 12,
+     "example": 12
+    },
+    {
+     "name": "driver",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Assigned driver.",
+     "default": "sam",
+     "example": "sam"
+    }
+   ],
+   "domain": "fleet",
+   "category": "lookup",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the vehicle record",
+   "tags": [
+    "fleet",
+    "locate",
+    "tier2"
+   ],
+   "kernel": "lookup",
+   "kernel_args": {
+    "table": "fleet",
+    "cfg": {
+     "key": "plate"
+    },
+    "paths": {
+     "plate": [
+      "plate"
+     ],
+     "depot": [
+      "depot"
+     ],
+     "fuel_percent": [
+      "fuel_percent"
+     ],
+     "driver": [
+      "driver"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Where is {plate}?"
+    ]
+   }
+  },
+  {
+   "name": "fleet_depot_list",
+   "description": "List vehicles at a depot.",
+   "params": [
+    {
+     "name": "depot",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "central",
+       "harbour",
+       "airport"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Home depot."
+    },
+    {
+     "name": "in_service",
+     "type": {
+      "kind": "boolean"
+     },
+     "required": false,
+     "description": "Whether the vehicle is available.",
+     "default": false
+    },
+    {
+     "name": "plate",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Number plate.",
+     "default": "KR-4821",
+     "example": "KR-4821"
+    },
+    {
+     "name": "fuel_percent",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 100
+      }
+     },
+     "required": false,
+     "description": "Fuel level.",
+     "default": 12,
+     "example": 12
+    }
+   ],
+   "domain": "fleet",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of vehicles",
+   "tags": [
+    "fleet",
+    "depot_list",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "fleet",
+    "cfg": {
+     "key": "depot"
+    },
+    "paths": {
+     "depot": [
+      "depot"
+     ],
+     "in_service": [
+      "in_service"
+     ],
+     "plate": [
+      "plate"
+     ],
+     "fuel_percent": [
+      "fuel_percent"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What is parked at {depot}?"
+    ]
+   }
+  },
+  {
+   "name": "fleet_lowest_fuel",
+   "description": "Rank vehicles by fuel, emptiest first.",
+   "params": [
+    {
+     "name": "depot",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "central",
+       "harbour",
+       "airport"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Home depot."
+    },
+    {
+     "name": "limit",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 100
+      }
+     },
+     "required": false,
+     "description": "How many results to return.",
+     "default": 3,
+     "example": 3
+    },
+    {
+     "name": "plate",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Number plate.",
+     "default": "KR-4821",
+     "example": "KR-4821"
+    },
+    {
+     "name": "fuel_percent",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 100
+      }
+     },
+     "required": false,
+     "description": "Fuel level.",
+     "default": 12,
+     "example": 12
+    }
+   ],
+   "domain": "fleet",
+   "category": "rank",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a ranked list",
+   "tags": [
+    "fleet",
+    "lowest_fuel",
+    "tier2"
+   ],
+   "kernel": "rank",
+   "kernel_args": {
+    "table": "fleet",
+    "cfg": {
+     "field": "fuel_percent",
+     "order": "asc",
+     "key": "depot"
+    },
+    "paths": {
+     "depot": [
+      "depot"
+     ],
+     "limit": [
+      "limit"
+     ],
+     "plate": [
+      "plate"
+     ],
+     "fuel_percent": [
+      "fuel_percent"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Which vehicles at {depot} need fuel?"
+    ]
+   }
+  },
+  {
+   "name": "security_raise",
+   "description": "Raise a new security alert.",
+   "params": [
+    {
+     "name": "source",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "firewall",
+       "endpoint",
+       "identity",
+       "cloud"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Where it came from."
+    },
+    {
+     "name": "risk",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Risk level."
+    },
+    {
+     "name": "user",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "User involved.",
+     "example": "wren"
+    },
+    {
+     "name": "count",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1
+      }
+     },
+     "required": false,
+     "description": "How many times it fired.",
+     "default": 1,
+     "example": 1
+    }
+   ],
+   "domain": "security",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the alert id",
+   "tags": [
+    "security",
+    "raise",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "security",
+    "cfg": {
+     "key": "source"
+    },
+    "paths": {
+     "source": [
+      "source"
+     ],
+     "risk": [
+      "risk"
+     ],
+     "user": [
+      "user"
+     ],
+     "count": [
+      "count"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Raise a {risk} {source} alert for {user}."
+    ]
+   }
+  },
+  {
+   "name": "security_acknowledge",
+   "description": "Acknowledge an alert.",
+   "params": [
+    {
+     "name": "record_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the record to act on."
+    },
+    {
+     "name": "acknowledged",
+     "type": {
+      "kind": "boolean"
+     },
+     "required": true,
+     "description": "Whether someone has acknowledged it."
+    },
+    {
+     "name": "alert_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Alert identifier.",
+     "default": "AL-330",
+     "example": "AL-330"
+    },
+    {
+     "name": "source",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "firewall",
+       "endpoint",
+       "identity",
+       "cloud"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Where it came from.",
+     "default": "firewall"
+    }
+   ],
+   "domain": "security",
+   "category": "update",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the updated alert",
+   "tags": [
+    "security",
+    "acknowledge",
+    "tier2"
+   ],
+   "kernel": "update",
+   "kernel_args": {
+    "table": "security",
+    "cfg": {
+     "field": "acknowledged",
+     "key": "record_id"
+    },
+    "paths": {
+     "record_id": [
+      "record_id"
+     ],
+     "acknowledged": [
+      "acknowledged"
+     ],
+     "alert_id": [
+      "alert_id"
+     ],
+     "source": [
+      "source"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Acknowledge alert {record_id}."
+    ]
+   }
+  },
+  {
+   "name": "security_by_source",
+   "description": "List alerts from a source.",
+   "params": [
+    {
+     "name": "source",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "firewall",
+       "endpoint",
+       "identity",
+       "cloud"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Where it came from."
+    },
+    {
+     "name": "risk",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Risk level.",
+     "default": "low"
+    },
+    {
+     "name": "alert_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Alert identifier.",
+     "default": "AL-330",
+     "example": "AL-330"
+    },
+    {
+     "name": "user",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "User involved.",
+     "default": "wren",
+     "example": "wren"
+    }
+   ],
+   "domain": "security",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of alerts",
+   "tags": [
+    "security",
+    "by_source",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "security",
+    "cfg": {
+     "key": "source"
+    },
+    "paths": {
+     "source": [
+      "source"
+     ],
+     "risk": [
+      "risk"
+     ],
+     "alert_id": [
+      "alert_id"
+     ],
+     "user": [
+      "user"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What has {source} reported?"
+    ]
+   }
+  },
+  {
+   "name": "security_noisiest",
+   "description": "Rank alerts by how often they fired.",
+   "params": [
+    {
+     "name": "source",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "firewall",
+       "endpoint",
+       "identity",
+       "cloud"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Where it came from."
+    },
+    {
+     "name": "limit",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 100
+      }
+     },
+     "required": false,
+     "description": "How many results to return.",
+     "default": 3,
+     "example": 3
+    },
+    {
+     "name": "alert_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Alert identifier.",
+     "default": "AL-330",
+     "example": "AL-330"
+    },
+    {
+     "name": "risk",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Risk level.",
+     "default": "low"
+    }
+   ],
+   "domain": "security",
+   "category": "rank",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a ranked list",
+   "tags": [
+    "security",
+    "noisiest",
+    "tier2"
+   ],
+   "kernel": "rank",
+   "kernel_args": {
+    "table": "security",
+    "cfg": {
+     "field": "count",
+     "order": "desc",
+     "key": "source"
+    },
+    "paths": {
+     "source": [
+      "source"
+     ],
+     "limit": [
+      "limit"
+     ],
+     "alert_id": [
+      "alert_id"
+     ],
+     "risk": [
+      "risk"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Which {source} alerts fire most?"
+    ]
+   }
+  },
+  {
+   "name": "agriculture_plant",
+   "description": "Record a planting on a plot.",
+   "params": [
+    {
+     "name": "plot_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Plot identifier.",
+     "example": "PL-08"
+    },
+    {
+     "name": "crop",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "barley",
+       "sorghum",
+       "lentils",
+       "canola"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "What is planted."
+    },
+    {
+     "name": "hectares",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": true,
+     "description": "Area of the plot.",
+     "example": 2.5
+    },
+    {
+     "name": "irrigated",
+     "type": {
+      "kind": "boolean"
+     },
+     "required": false,
+     "description": "Whether the plot is irrigated.",
+     "default": false
+    }
+   ],
+   "domain": "agriculture",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the planting id",
+   "tags": [
+    "agriculture",
+    "plant",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "agriculture",
+    "cfg": {
+     "key": "plot_id"
+    },
+    "paths": {
+     "plot_id": [
+      "plot_id"
+     ],
+     "crop": [
+      "crop"
+     ],
+     "hectares": [
+      "hectares"
+     ],
+     "irrigated": [
+      "irrigated"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Plant {crop} on {hectares} hectares of {plot_id}."
+    ]
+   }
+  },
+  {
+   "name": "agriculture_readings",
+   "description": "List plots growing a crop.",
+   "params": [
+    {
+     "name": "crop",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "barley",
+       "sorghum",
+       "lentils",
+       "canola"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "What is planted."
+    },
+    {
+     "name": "irrigated",
+     "type": {
+      "kind": "boolean"
+     },
+     "required": false,
+     "description": "Whether the plot is irrigated.",
+     "default": false
+    },
+    {
+     "name": "plot_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Plot identifier.",
+     "default": "PL-08",
+     "example": "PL-08"
+    },
+    {
+     "name": "hectares",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": false,
+     "description": "Area of the plot.",
+     "default": 2.5,
+     "example": 2.5
+    }
+   ],
+   "domain": "agriculture",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of plots",
+   "tags": [
+    "agriculture",
+    "readings",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "agriculture",
+    "cfg": {
+     "key": "crop"
+    },
+    "paths": {
+     "crop": [
+      "crop"
+     ],
+     "irrigated": [
+      "irrigated"
+     ],
+     "plot_id": [
+      "plot_id"
+     ],
+     "hectares": [
+      "hectares"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Which plots have {crop}?"
+    ]
+   }
+  },
+  {
+   "name": "agriculture_total_yield",
+   "description": "Total the harvest for a crop.",
+   "params": [
+    {
+     "name": "crop",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "barley",
+       "sorghum",
+       "lentils",
+       "canola"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "What is planted."
+    },
+    {
+     "name": "plot_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Plot identifier.",
+     "default": "PL-08",
+     "example": "PL-08"
+    },
+    {
+     "name": "hectares",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": false,
+     "description": "Area of the plot.",
+     "default": 2.5,
+     "example": 2.5
+    },
+    {
+     "name": "moisture_percent",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 100
+      }
+     },
+     "required": false,
+     "description": "Soil moisture.",
+     "default": 8,
+     "example": 8
+    }
+   ],
+   "domain": "agriculture",
+   "category": "aggregate",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a total",
+   "tags": [
+    "agriculture",
+    "total_yield",
+    "tier2"
+   ],
+   "kernel": "aggregate",
+   "kernel_args": {
+    "table": "agriculture",
+    "cfg": {
+     "field": "yield_tonnes",
+     "agg": "sum",
+     "key": "crop"
+    },
+    "paths": {
+     "crop": [
+      "crop"
+     ],
+     "plot_id": [
+      "plot_id"
+     ],
+     "hectares": [
+      "hectares"
+     ],
+     "moisture_percent": [
+      "moisture_percent"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "How much {crop} did we harvest?"
+    ]
+   }
+  },
+  {
+   "name": "agriculture_driest",
+   "description": "Rank plots by soil moisture, driest first.",
+   "params": [
+    {
+     "name": "crop",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "barley",
+       "sorghum",
+       "lentils",
+       "canola"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "What is planted."
+    },
+    {
+     "name": "limit",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 100
+      }
+     },
+     "required": false,
+     "description": "How many results to return.",
+     "default": 3,
+     "example": 3
+    },
+    {
+     "name": "plot_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Plot identifier.",
+     "default": "PL-08",
+     "example": "PL-08"
+    },
+    {
+     "name": "hectares",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": false,
+     "description": "Area of the plot.",
+     "default": 2.5,
+     "example": 2.5
+    }
+   ],
+   "domain": "agriculture",
+   "category": "rank",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a ranked list",
+   "tags": [
+    "agriculture",
+    "driest",
+    "tier2"
+   ],
+   "kernel": "rank",
+   "kernel_args": {
+    "table": "agriculture",
+    "cfg": {
+     "field": "moisture_percent",
+     "order": "asc",
+     "key": "crop"
+    },
+    "paths": {
+     "crop": [
+      "crop"
+     ],
+     "limit": [
+      "limit"
+     ],
+     "plot_id": [
+      "plot_id"
+     ],
+     "hectares": [
+      "hectares"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Which {crop} plots are driest?"
+    ]
+   }
+  },
+  {
+   "name": "research_fetch",
+   "description": "Fetch the record for a paper.",
+   "params": [
+    {
+     "name": "paper_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Paper identifier.",
+     "example": "arx-4410"
+    },
+    {
+     "name": "topic",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "optics",
+       "genomics",
+       "seismology",
+       "logic"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Research area.",
+     "default": "optics"
+    },
+    {
+     "name": "year",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1900,
+       "maximum": 2100
+      }
+     },
+     "required": false,
+     "description": "Publication year.",
+     "default": 2019,
+     "example": 2019
+    },
+    {
+     "name": "citations",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": false,
+     "description": "Citation count.",
+     "default": 0,
+     "example": 0
+    }
+   ],
+   "domain": "research",
+   "category": "lookup",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the paper record",
+   "tags": [
+    "research",
+    "fetch",
+    "tier2"
+   ],
+   "kernel": "lookup",
+   "kernel_args": {
+    "table": "research",
+    "cfg": {
+     "key": "paper_id"
+    },
+    "paths": {
+     "paper_id": [
+      "paper_id"
+     ],
+     "topic": [
+      "topic"
+     ],
+     "year": [
+      "year"
+     ],
+     "citations": [
+      "citations"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Pull up {paper_id}."
+    ]
+   }
+  },
+  {
+   "name": "research_search",
+   "description": "Search papers by topic.",
+   "params": [
+    {
+     "name": "topic",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "optics",
+       "genomics",
+       "seismology",
+       "logic"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Research area."
+    },
+    {
+     "name": "year",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1900,
+       "maximum": 2100
+      }
+     },
+     "required": false,
+     "description": "Publication year.",
+     "default": 2019,
+     "example": 2019
+    },
+    {
+     "name": "paper_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Paper identifier.",
+     "default": "arx-4410",
+     "example": "arx-4410"
+    },
+    {
+     "name": "citations",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": false,
+     "description": "Citation count.",
+     "default": 0,
+     "example": 0
+    }
+   ],
+   "domain": "research",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of papers",
+   "tags": [
+    "research",
+    "search",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "research",
+    "cfg": {
+     "key": "topic"
+    },
+    "paths": {
+     "topic": [
+      "topic"
+     ],
+     "year": [
+      "year"
+     ],
+     "paper_id": [
+      "paper_id"
+     ],
+     "citations": [
+      "citations"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Find papers on {topic}."
+    ]
+   }
+  },
+  {
+   "name": "research_most_cited",
+   "description": "Rank papers by citations.",
+   "params": [
+    {
+     "name": "topic",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "optics",
+       "genomics",
+       "seismology",
+       "logic"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Research area."
+    },
+    {
+     "name": "limit",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 100
+      }
+     },
+     "required": false,
+     "description": "How many results to return.",
+     "default": 3,
+     "example": 3
+    },
+    {
+     "name": "paper_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Paper identifier.",
+     "default": "arx-4410",
+     "example": "arx-4410"
+    },
+    {
+     "name": "year",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1900,
+       "maximum": 2100
+      }
+     },
+     "required": false,
+     "description": "Publication year.",
+     "default": 2019,
+     "example": 2019
+    }
+   ],
+   "domain": "research",
+   "category": "rank",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a ranked list",
+   "tags": [
+    "research",
+    "most_cited",
+    "tier2"
+   ],
+   "kernel": "rank",
+   "kernel_args": {
+    "table": "research",
+    "cfg": {
+     "field": "citations",
+     "order": "desc",
+     "key": "topic"
+    },
+    "paths": {
+     "topic": [
+      "topic"
+     ],
+     "limit": [
+      "limit"
+     ],
+     "paper_id": [
+      "paper_id"
+     ],
+     "year": [
+      "year"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "What are the most cited {topic} papers?"
+    ]
+   }
+  },
+  {
+   "name": "research_count_by_year",
+   "description": "Count papers in an area.",
+   "params": [
+    {
+     "name": "topic",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "optics",
+       "genomics",
+       "seismology",
+       "logic"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Research area."
+    },
+    {
+     "name": "year",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1900,
+       "maximum": 2100
+      }
+     },
+     "required": false,
+     "description": "Publication year.",
+     "default": 2019,
+     "example": 2019
+    },
+    {
+     "name": "paper_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Paper identifier.",
+     "default": "arx-4410",
+     "example": "arx-4410"
+    },
+    {
+     "name": "citations",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": false,
+     "description": "Citation count.",
+     "default": 0,
+     "example": 0
+    }
+   ],
+   "domain": "research",
+   "category": "count",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a count",
+   "tags": [
+    "research",
+    "count_by_year",
+    "tier2"
+   ],
+   "kernel": "count",
+   "kernel_args": {
+    "table": "research",
+    "cfg": {
+     "key": "topic"
+    },
+    "paths": {
+     "topic": [
+      "topic"
+     ],
+     "year": [
+      "year"
+     ],
+     "paper_id": [
+      "paper_id"
+     ],
+     "citations": [
+      "citations"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "How many {topic} papers are there?"
+    ]
+   }
+  },
+  {
+   "name": "energy_submit_reading",
+   "description": "Submit a meter reading.",
+   "params": [
+    {
+     "name": "meter_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Meter identifier.",
+     "example": "M-1001"
+    },
+    {
+     "name": "kwh",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": true,
+     "description": "Energy used.",
+     "example": 120.5
+    },
+    {
+     "name": "month",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Billing month.",
+     "example": "2027-01"
+    },
+    {
+     "name": "tariff",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "peak",
+       "offpeak",
+       "flat"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Tariff band.",
+     "default": "peak"
+    }
+   ],
+   "domain": "energy",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the reading id",
+   "tags": [
+    "energy",
+    "submit_reading",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "energy",
+    "cfg": {
+     "key": "meter_id"
+    },
+    "paths": {
+     "meter_id": [
+      "meter_id"
+     ],
+     "kwh": [
+      "kwh"
+     ],
+     "month": [
+      "month"
+     ],
+     "tariff": [
+      "tariff"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Record {kwh} kWh on {meter_id} for {month}."
+    ]
+   }
+  },
+  {
+   "name": "energy_usage",
+   "description": "List readings for a site.",
+   "params": [
+    {
+     "name": "site",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "plant_a",
+       "plant_b",
+       "office",
+       "depot"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Which site."
+    },
+    {
+     "name": "tariff",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Tariff band.",
+     "default": "peak"
+    },
+    {
+     "name": "meter_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Meter identifier.",
+     "default": "M-1001",
+     "example": "M-1001"
+    },
+    {
+     "name": "kwh",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": false,
+     "description": "Energy used.",
+     "default": 120.5,
+     "example": 120.5
+    }
+   ],
+   "domain": "energy",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of readings",
+   "tags": [
+    "energy",
+    "usage",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "energy",
+    "cfg": {
+     "key": "site"
+    },
+    "paths": {
+     "site": [
+      "site"
+     ],
+     "tariff": [
+      "tariff"
+     ],
+     "meter_id": [
+      "meter_id"
+     ],
+     "kwh": [
+      "kwh"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Show energy use at {site}."
+    ]
+   }
+  },
+  {
+   "name": "energy_total_usage",
+   "description": "Total energy used at a site.",
+   "params": [
+    {
+     "name": "site",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "plant_a",
+       "plant_b",
+       "office",
+       "depot"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Which site."
+    },
+    {
+     "name": "month",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Billing month.",
+     "default": "2027-01",
+     "example": "2027-01"
+    },
+    {
+     "name": "meter_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Meter identifier.",
+     "default": "M-1001",
+     "example": "M-1001"
+    },
+    {
+     "name": "kwh",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": false,
+     "description": "Energy used.",
+     "default": 120.5,
+     "example": 120.5
+    }
+   ],
+   "domain": "energy",
+   "category": "aggregate",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a total",
+   "tags": [
+    "energy",
+    "total_usage",
+    "tier2"
+   ],
+   "kernel": "aggregate",
+   "kernel_args": {
+    "table": "energy",
+    "cfg": {
+     "field": "kwh",
+     "agg": "sum",
+     "key": "site"
+    },
+    "paths": {
+     "site": [
+      "site"
+     ],
+     "month": [
+      "month"
+     ],
+     "meter_id": [
+      "meter_id"
+     ],
+     "kwh": [
+      "kwh"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "How much energy did {site} use?"
+    ]
+   }
+  },
+  {
+   "name": "legal_draft",
+   "description": "Draft a new contract.",
+   "params": [
+    {
+     "name": "counterparty",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Other party.",
+     "example": "Holt & Vane"
+    },
+    {
+     "name": "value",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": true,
+     "description": "Contract value.",
+     "example": 15000.0
+    },
+    {
+     "name": "term_months",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 600
+      }
+     },
+     "required": true,
+     "description": "Length of the term.",
+     "example": 6
+    },
+    {
+     "name": "auto_renew",
+     "type": {
+      "kind": "boolean"
+     },
+     "required": false,
+     "description": "Whether it renews automatically.",
+     "default": false
+    }
+   ],
+   "domain": "legal",
+   "category": "create",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the contract id",
+   "tags": [
+    "legal",
+    "draft",
+    "tier2"
+   ],
+   "kernel": "create",
+   "kernel_args": {
+    "table": "legal",
+    "cfg": {
+     "key": "counterparty"
+    },
+    "paths": {
+     "counterparty": [
+      "counterparty"
+     ],
+     "value": [
+      "value"
+     ],
+     "term_months": [
+      "term_months"
+     ],
+     "auto_renew": [
+      "auto_renew"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Draft a {term_months} month contract with {counterparty} worth {value}."
+    ]
+   }
+  },
+  {
+   "name": "legal_status_of",
+   "description": "Check a contract's status.",
+   "params": [
+    {
+     "name": "contract_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Contract number.",
+     "example": "C-2201"
+    },
+    {
+     "name": "counterparty",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Other party.",
+     "default": "Holt & Vane",
+     "example": "Holt & Vane"
+    },
+    {
+     "name": "status",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "draft",
+       "review",
+       "signed",
+       "expired"
+      ],
+      "base": "string"
+     },
+     "required": false,
+     "description": "Where it stands.",
+     "default": "draft"
+    },
+    {
+     "name": "value",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": false,
+     "description": "Contract value.",
+     "default": 15000.0,
+     "example": 15000.0
+    }
+   ],
+   "domain": "legal",
+   "category": "lookup",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the contract record",
+   "tags": [
+    "legal",
+    "status_of",
+    "tier2"
+   ],
+   "kernel": "lookup",
+   "kernel_args": {
+    "table": "legal",
+    "cfg": {
+     "key": "contract_id"
+    },
+    "paths": {
+     "contract_id": [
+      "contract_id"
+     ],
+     "counterparty": [
+      "counterparty"
+     ],
+     "status": [
+      "status"
+     ],
+     "value": [
+      "value"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Where is contract {contract_id}?"
+    ]
+   }
+  },
+  {
+   "name": "legal_by_status",
+   "description": "List contracts by status.",
+   "params": [
+    {
+     "name": "status",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "draft",
+       "review",
+       "signed",
+       "expired"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Where it stands."
+    },
+    {
+     "name": "auto_renew",
+     "type": {
+      "kind": "boolean"
+     },
+     "required": false,
+     "description": "Whether it renews automatically.",
+     "default": false
+    },
+    {
+     "name": "contract_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Contract number.",
+     "default": "C-2201",
+     "example": "C-2201"
+    },
+    {
+     "name": "counterparty",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Other party.",
+     "default": "Holt & Vane",
+     "example": "Holt & Vane"
+    }
+   ],
+   "domain": "legal",
+   "category": "search",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "a list of contracts",
+   "tags": [
+    "legal",
+    "by_status",
+    "tier2"
+   ],
+   "kernel": "search",
+   "kernel_args": {
+    "table": "legal",
+    "cfg": {
+     "key": "status"
+    },
+    "paths": {
+     "status": [
+      "status"
+     ],
+     "auto_renew": [
+      "auto_renew"
+     ],
+     "contract_id": [
+      "contract_id"
+     ],
+     "counterparty": [
+      "counterparty"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Which contracts are in {status}?"
+    ]
+   }
+  },
+  {
+   "name": "legal_advance",
+   "description": "Move a contract to a new status.",
+   "params": [
+    {
+     "name": "record_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Identifier of the record to act on."
+    },
+    {
+     "name": "status",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "draft",
+       "review",
+       "signed",
+       "expired"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Where it stands."
+    },
+    {
+     "name": "contract_id",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Contract number.",
+     "default": "C-2201",
+     "example": "C-2201"
+    },
+    {
+     "name": "counterparty",
+     "type": {
+      "kind": "string"
+     },
+     "required": false,
+     "description": "Other party.",
+     "default": "Holt & Vane",
+     "example": "Holt & Vane"
+    }
+   ],
+   "domain": "legal",
+   "category": "update",
+   "origin": "synthetic",
+   "returns": {
+    "kind": "object",
+    "fields": [
+     {
+      "name": "ok",
+      "type": {
+       "kind": "boolean"
+      },
+      "required": true,
+      "description": "Whether the call succeeded."
+     },
+     {
+      "name": "result",
+      "type": {
+       "kind": "any"
+      },
+      "required": false,
+      "description": "The value produced."
+     }
+    ]
+   },
+   "returns_description": "the updated contract",
+   "tags": [
+    "legal",
+    "advance",
+    "tier2"
+   ],
+   "kernel": "update",
+   "kernel_args": {
+    "table": "legal",
+    "cfg": {
+     "field": "status",
+     "key": "record_id"
+    },
+    "paths": {
+     "record_id": [
+      "record_id"
+     ],
+     "status": [
+      "status"
+     ],
+     "contract_id": [
+      "contract_id"
+     ],
+     "counterparty": [
+      "counterparty"
+     ]
+    },
+    "tier": 2,
+    "variant": 0,
+    "templates": [
+     "Move contract {record_id} to {status}."
+    ]
+   }
+  }
+ ]
+}

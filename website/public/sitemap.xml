@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The site routes on the URL hash, which crawlers do not treat as separate pages,
+     so the sitemap lists the entry points only. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://ctrl-gaurav.github.io/toolform/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://ctrl-gaurav.github.io/toolform/docs/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+</urlset>

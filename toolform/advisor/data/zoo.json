@@ -1,0 +1,1080 @@
+{
+ "schema_version": 1,
+ "name": "zoo",
+ "source": [
+  "configs:models"
+ ],
+ "description": "The study's model zoo: every model id with its family, size in billions of parameters (total, for mixture-of-experts models), kind and context window; the family labels of tab_models_main; and the patterns that map an unlisted id to a family.",
+ "conditions": {},
+ "data": {
+  "models": [
+   {
+    "id": "api/DeepSeek-V4.1-Flash",
+    "family": "deepseek",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "api/GLM-5.3",
+    "family": "glm",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "api/GLM-5.3-high",
+    "family": "glm",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "api/GLM-5.3-medium",
+    "family": "glm",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "api/gpt-oss-120b",
+    "family": "gpt-oss",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "api/gpt-oss-120b-high",
+    "family": "gpt-oss",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "api/gpt-oss-120b-medium",
+    "family": "gpt-oss",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "api/Kimi-K3",
+    "family": "kimi",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "claude-fable-5-1-medium",
+    "family": "claude",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "claude-haiku-4-5",
+    "family": "claude",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "claude-haiku-4-5-20251001",
+    "family": "claude",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "claude-opus-5",
+    "family": "claude",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "claude-opus-5-5",
+    "family": "claude",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "claude-opus-5-5-high",
+    "family": "claude",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "claude-opus-5-5-low",
+    "family": "claude",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "claude-opus-5-5-medium-run2",
+    "family": "claude",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "claude-opus-5-high",
+    "family": "claude",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "claude-opus-5-medium",
+    "family": "claude",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "claude-sonnet-4-5",
+    "family": "claude",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "claude-sonnet-5",
+    "family": "claude",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "claude-sonnet-5-high",
+    "family": "claude",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "claude-sonnet-5-medium",
+    "family": "claude",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
+    "family": "deepseek-r1",
+    "params_b": 70.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "gemini-2.5-flash",
+    "family": "gemini",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "gemini-2.5-pro",
+    "family": "gemini",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "google/gemma-3-12b-it",
+    "family": "gemma3",
+    "params_b": 12.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "google/gemma-3-1b-it",
+    "family": "gemma3",
+    "params_b": 1.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "google/gemma-3-1b-pt",
+    "family": "gemma3",
+    "params_b": 1.0,
+    "kind": "base",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "google/gemma-3-27b-it",
+    "family": "gemma3",
+    "params_b": 27.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "google/gemma-3-4b-it",
+    "family": "gemma3",
+    "params_b": 4.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "google/gemma-3-4b-pt",
+    "family": "gemma3",
+    "params_b": 4.0,
+    "kind": "base",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "google/gemma-4-12b-it",
+    "family": "gemma4",
+    "params_b": 12.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "google/gemma-4-26b-a4b-it",
+    "family": "gemma4",
+    "params_b": 26.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "google/gemma-4-31b-it",
+    "family": "gemma4",
+    "params_b": 31.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "google/gemma-4-e2b-it",
+    "family": "gemma4",
+    "params_b": 5.1,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "google/gemma-4-e4b-it",
+    "family": "gemma4",
+    "params_b": 8.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "gpt-4o-mini",
+    "family": "gpt4o",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "gpt-5",
+    "family": "gpt5",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "gpt-5-mini",
+    "family": "gpt5",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "gpt-5.6-luna",
+    "family": "gpt5.6",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "gpt-5.6-sol",
+    "family": "gpt5.6",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "gpt-5.6-terra",
+    "family": "gpt5.6",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "gpt-6-astra",
+    "family": "gpt6",
+    "params_b": null,
+    "kind": "instruct",
+    "open": false,
+    "max_model_len": 32768,
+    "in_study": false
+   },
+   {
+    "id": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+    "family": "smollm",
+    "params_b": 1.7,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "HuggingFaceTB/SmolLM2-360M-Instruct",
+    "family": "smollm",
+    "params_b": 0.36,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "HuggingFaceTB/SmolLM3-3B",
+    "family": "smollm",
+    "params_b": 3.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "meta-llama/Llama-3.1-70B-Instruct",
+    "family": "llama3",
+    "params_b": 70.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": false
+   },
+   {
+    "id": "meta-llama/Llama-3.1-8B",
+    "family": "llama3",
+    "params_b": 8.0,
+    "kind": "base",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "meta-llama/Llama-3.1-8B-Instruct",
+    "family": "llama3",
+    "params_b": 8.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "meta-llama/Llama-3.2-1B",
+    "family": "llama3",
+    "params_b": 1.0,
+    "kind": "base",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "meta-llama/Llama-3.2-1B-Instruct",
+    "family": "llama3",
+    "params_b": 1.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "meta-llama/Llama-3.2-3B",
+    "family": "llama3",
+    "params_b": 3.0,
+    "kind": "base",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "meta-llama/Llama-3.2-3B-Instruct",
+    "family": "llama3",
+    "params_b": 3.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "microsoft/phi-4",
+    "family": "phi",
+    "params_b": 14.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "microsoft/Phi-4-mini-instruct",
+    "family": "phi",
+    "params_b": 3.8,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "mistralai/Ministral-8B-Instruct-2410",
+    "family": "mistral",
+    "params_b": 8.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "mistralai/Mistral-7B-Instruct-v0.3",
+    "family": "mistral",
+    "params_b": 7.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "mistralai/Mistral-7B-v0.3",
+    "family": "mistral",
+    "params_b": 7.0,
+    "kind": "base",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "mistralai/Mistral-Small-24B-Instruct-2501",
+    "family": "mistral",
+    "params_b": 24.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "NousResearch/Hermes-3-Llama-3.1-8B",
+    "family": "llama3-tool",
+    "params_b": 8.0,
+    "kind": "tool_rl",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "openai/gpt-oss-120b",
+    "family": "gpt-oss",
+    "params_b": 117.0,
+    "kind": "reasoning",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "openai/gpt-oss-20b",
+    "family": "gpt-oss",
+    "params_b": 21.0,
+    "kind": "reasoning",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "family": "qwen2.5",
+    "params_b": 0.5,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "family": "qwen2.5",
+    "params_b": 1.5,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen2.5-14B-Instruct",
+    "family": "qwen2.5",
+    "params_b": 14.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen2.5-32B-Instruct",
+    "family": "qwen2.5",
+    "params_b": 32.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen2.5-3B-Instruct",
+    "family": "qwen2.5",
+    "params_b": 3.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen2.5-7B-Instruct",
+    "family": "qwen2.5",
+    "params_b": 7.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen2.5-Coder-7B-Instruct",
+    "family": "qwen2.5-coder",
+    "params_b": 7.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3-0.6B",
+    "family": "qwen3",
+    "params_b": 0.6,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3-0.6B-Base",
+    "family": "qwen3",
+    "params_b": 0.6,
+    "kind": "base",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3-1.7B",
+    "family": "qwen3",
+    "params_b": 1.7,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3-1.7B-Base",
+    "family": "qwen3",
+    "params_b": 1.7,
+    "kind": "base",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3-14B",
+    "family": "qwen3",
+    "params_b": 14.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3-14B-AWQ",
+    "family": "qwen3-quant",
+    "params_b": 14.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": false
+   },
+   {
+    "id": "Qwen/Qwen3-14B-Base",
+    "family": "qwen3",
+    "params_b": 14.0,
+    "kind": "base",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3-14B-FP8",
+    "family": "qwen3-quant",
+    "params_b": 14.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": false
+   },
+   {
+    "id": "Qwen/Qwen3-30B-A3B",
+    "family": "qwen3",
+    "params_b": 30.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3-32B",
+    "family": "qwen3",
+    "params_b": 32.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3-4B",
+    "family": "qwen3",
+    "params_b": 4.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3-4B-Base",
+    "family": "qwen3",
+    "params_b": 4.0,
+    "kind": "base",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3-8B",
+    "family": "qwen3",
+    "params_b": 8.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3-8B-Base",
+    "family": "qwen3",
+    "params_b": 8.0,
+    "kind": "base",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3.5-0.8B",
+    "family": "qwen3.5",
+    "params_b": 0.8,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3.5-0.8B-Base",
+    "family": "qwen3.5",
+    "params_b": 0.8,
+    "kind": "base",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3.5-122B-A10B-FP8",
+    "family": "qwen3.5-large",
+    "params_b": 122.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3.5-122B-A10B-GPTQ-Int4",
+    "family": "qwen3.5-large",
+    "params_b": 122.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3.5-27B",
+    "family": "qwen3.5",
+    "params_b": 27.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3.5-2B",
+    "family": "qwen3.5",
+    "params_b": 2.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3.5-2B-Base",
+    "family": "qwen3.5",
+    "params_b": 2.0,
+    "kind": "base",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3.5-35B-A3B",
+    "family": "qwen3.5",
+    "params_b": 35.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3.5-35B-A3B-Base",
+    "family": "qwen3.5",
+    "params_b": 35.0,
+    "kind": "base",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3.5-4B",
+    "family": "qwen3.5",
+    "params_b": 4.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3.5-4B-Base",
+    "family": "qwen3.5",
+    "params_b": 4.0,
+    "kind": "base",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3.5-9B",
+    "family": "qwen3.5",
+    "params_b": 9.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Qwen/Qwen3.5-9B-Base",
+    "family": "qwen3.5",
+    "params_b": 9.0,
+    "kind": "base",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Salesforce/Llama-xLAM-2-8b-fc-r",
+    "family": "llama3-tool",
+    "params_b": 8.0,
+    "kind": "tool_rl",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "Salesforce/xLAM-7b-r",
+    "family": "xlam",
+    "params_b": 7.0,
+    "kind": "tool_rl",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "watt-ai/watt-tool-8B",
+    "family": "llama3-tool",
+    "params_b": 8.0,
+    "kind": "tool_rl",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   },
+   {
+    "id": "zai-org/GLM-4.5-Air-FP8",
+    "family": "glm",
+    "params_b": 106.0,
+    "kind": "instruct",
+    "open": true,
+    "max_model_len": 262144,
+    "in_study": true
+   }
+  ],
+  "families": {
+   "claude": {
+    "label": null,
+    "n_models": 14
+   },
+   "deepseek": {
+    "label": null,
+    "n_models": 1
+   },
+   "deepseek-r1": {
+    "label": "DeepSeek-R1 distil",
+    "n_models": 1
+   },
+   "gemini": {
+    "label": null,
+    "n_models": 2
+   },
+   "gemma3": {
+    "label": "Gemma 3",
+    "n_models": 6
+   },
+   "gemma4": {
+    "label": "Gemma 4",
+    "n_models": 5
+   },
+   "glm": {
+    "label": "GLM",
+    "n_models": 4
+   },
+   "gpt-oss": {
+    "label": "gpt-oss",
+    "n_models": 5
+   },
+   "gpt4o": {
+    "label": null,
+    "n_models": 1
+   },
+   "gpt5": {
+    "label": null,
+    "n_models": 2
+   },
+   "gpt5.6": {
+    "label": null,
+    "n_models": 3
+   },
+   "gpt6": {
+    "label": null,
+    "n_models": 1
+   },
+   "kimi": {
+    "label": null,
+    "n_models": 1
+   },
+   "llama3": {
+    "label": "Llama 3",
+    "n_models": 7
+   },
+   "llama3-tool": {
+    "label": "Llama tool-RL",
+    "n_models": 3
+   },
+   "mistral": {
+    "label": "Mistral",
+    "n_models": 4
+   },
+   "phi": {
+    "label": "phi",
+    "n_models": 2
+   },
+   "qwen2.5": {
+    "label": "Qwen 2.5",
+    "n_models": 6
+   },
+   "qwen2.5-coder": {
+    "label": "Qwen 2.5 Coder",
+    "n_models": 1
+   },
+   "qwen3": {
+    "label": "Qwen 3",
+    "n_models": 12
+   },
+   "qwen3-quant": {
+    "label": "Qwen 3",
+    "n_models": 2
+   },
+   "qwen3.5": {
+    "label": "Qwen 3.5",
+    "n_models": 11
+   },
+   "qwen3.5-large": {
+    "label": "Qwen 3.5 122B",
+    "n_models": 2
+   },
+   "smollm": {
+    "label": "SmolLM",
+    "n_models": 3
+   },
+   "xlam": {
+    "label": "xLAM",
+    "n_models": 1
+   }
+  },
+  "patterns": [
+   [
+    "llama-xlam|watt-tool|hermes-3-llama|toolace|hammer",
+    "llama3-tool"
+   ],
+   [
+    "xlam",
+    "xlam"
+   ],
+   [
+    "qwen3\\.5|qwen3_5|qwen35",
+    "qwen3.5"
+   ],
+   [
+    "qwen2\\.5-coder",
+    "qwen2.5-coder"
+   ],
+   [
+    "qwen2\\.5",
+    "qwen2.5"
+   ],
+   [
+    "qwen3",
+    "qwen3"
+   ],
+   [
+    "gemma-?4",
+    "gemma4"
+   ],
+   [
+    "gemma-?3",
+    "gemma3"
+   ],
+   [
+    "deepseek-r1-distill",
+    "deepseek-r1"
+   ],
+   [
+    "gpt-oss",
+    "gpt-oss"
+   ],
+   [
+    "glm",
+    "glm"
+   ],
+   [
+    "mistral|ministral|magistral|devstral",
+    "mistral"
+   ],
+   [
+    "phi-?\\d|/phi",
+    "phi"
+   ],
+   [
+    "smollm",
+    "smollm"
+   ],
+   [
+    "llama",
+    "llama3"
+   ]
+  ],
+  "aliases": {
+   "qwen3-quant": "qwen3"
+  }
+ }
+}

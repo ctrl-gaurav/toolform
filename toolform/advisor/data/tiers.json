@@ -1,0 +1,147 @@
+{
+ "schema_version": 1,
+ "name": "tiers",
+ "source": [
+  "paper:tab_tier_by_format"
+ ],
+ "description": "Accuracy and the share of empty turns by complexity tier for each core format (percent). Tier 1 is flat scalars; tier 3 adds one nested object; tier 5 nests three levels deep.",
+ "conditions": {
+  "n_tools": 8,
+  "regime": "single",
+  "rule": "main",
+  "seeds": "0-2",
+  "checkpoints": 51
+ },
+ "data": {
+  "tiers": [
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "accuracy": {
+   "xml_schema": [
+    80.2,
+    78.0,
+    65.6,
+    66.5,
+    42.4
+   ],
+   "natural_language": [
+    70.2,
+    76.2,
+    57.4,
+    55.7,
+    25.9
+   ],
+   "python_stub": [
+    72.5,
+    75.0,
+    57.1,
+    61.6,
+    27.6
+   ],
+   "json_schema_openai": [
+    85.8,
+    83.2,
+    57.5,
+    51.7,
+    41.1
+   ],
+   "yaml_schema": [
+    82.4,
+    81.9,
+    47.9,
+    51.3,
+    46.5
+   ],
+   "typescript": [
+    85.1,
+    76.6,
+    45.7,
+    56.0,
+    37.8
+   ],
+   "markdown_table": [
+    81.4,
+    81.2,
+    45.8,
+    49.5,
+    38.4
+   ],
+   "json_minimal": [
+    70.0,
+    69.2,
+    33.3,
+    35.2,
+    29.9
+   ]
+  },
+  "empty": {
+   "xml_schema": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "natural_language": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "python_stub": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "json_schema_openai": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.1
+   ],
+   "yaml_schema": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "typescript": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "markdown_table": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "json_minimal": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  },
+  "definitions": {
+   "1": "minimal: up to 2 parameters, flat",
+   "2": "simple: up to 4 parameters, flat, 1 enum, up to 1 optional",
+   "3": "moderate: up to 6 parameters, nested 1 level deep, 1 enum, 1 array, up to 2 optional",
+   "4": "complex: up to 9 parameters, nested 2 levels deep, 2 enums, 1 union, 1 array, up to 4 optional",
+   "5": "extreme: up to 12 parameters, nested 3 levels deep, 3 enums, 2 unions, 2 arrays, up to 6 optional"
+  }
+ }
+}

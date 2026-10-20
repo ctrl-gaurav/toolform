@@ -1,0 +1,247 @@
+{
+ "schema_version": 1,
+ "name": "ladder",
+ "source": [
+  "paper:tab_ladder",
+  "paper:tab_names_only"
+ ],
+ "description": "The schema ladder from names alone to the full JSON Schema, the description ablation per core format, and names alone by tool count (percent).",
+ "conditions": {
+  "n_tools": 8,
+  "tier": 3,
+  "rule": "main"
+ },
+ "data": {
+  "rungs": [
+   {
+    "format_id": "names_only",
+    "shows": "tool names, nothing else",
+    "accuracy": 2.19
+   },
+   {
+    "format_id": "json_names_params",
+    "shows": "names and parameter names",
+    "accuracy": 25.05
+   },
+   {
+    "format_id": "json_minimal",
+    "shows": "names, parameter names, types, enums, nesting and top-level required flags (the minimal schema)",
+    "accuracy": 38.38
+   },
+   {
+    "format_id": "json_schema_openai",
+    "shows": "the full schema with natural language",
+    "accuracy": 59.28
+   }
+  ],
+  "gap": {
+   "value": 57.09,
+   "interval": [
+    50.4,
+    64.02
+   ]
+  },
+  "components": [
+   {
+    "setting": "both off",
+    "accuracy": 58.13
+   },
+   {
+    "setting": "constraints only",
+    "accuracy": 58.43
+   },
+   {
+    "setting": "descriptions only",
+    "accuracy": 56.11
+   },
+   {
+    "setting": "both on",
+    "accuracy": 56.56
+   }
+  ],
+  "descriptions_off": [
+   {
+    "format_id": "xml_schema",
+    "with": 59.41,
+    "without": 57.88
+   },
+   {
+    "format_id": "natural_language",
+    "with": 51.32,
+    "without": 49.7
+   },
+   {
+    "format_id": "json_schema_openai",
+    "with": 46.88,
+    "without": 47.19
+   },
+   {
+    "format_id": "python_stub",
+    "with": 48.5,
+    "without": 35.74
+   },
+   {
+    "format_id": "typescript",
+    "with": 45.74,
+    "without": 45.16
+   },
+   {
+    "format_id": "yaml_schema",
+    "with": 45.06,
+    "without": 46.08
+   },
+   {
+    "format_id": "markdown_table",
+    "with": 43.73,
+    "without": 43.87
+   },
+   {
+    "format_id": "json_minimal",
+    "with": 31.86,
+    "without": 31.96
+   },
+   {
+    "format_id": "pooled",
+    "with": 46.56,
+    "without": 44.7
+   }
+  ],
+  "names_only_by_count": [
+   {
+    "n_tools": 1,
+    "pairs": 101,
+    "names_call": 0.0,
+    "json_call": 70.47,
+    "gap": {
+     "value": 70.51,
+     "interval": [
+      63.28,
+      77.5
+     ]
+    },
+    "names_name": 92.92,
+    "json_name": 96.81
+   },
+   {
+    "n_tools": 2,
+    "pairs": 50,
+    "names_call": 6.35,
+    "json_call": 64.3,
+    "gap": {
+     "value": 57.95,
+     "interval": [
+      49.8,
+      65.7
+     ]
+    },
+    "names_name": 79.1,
+    "json_name": 91.7
+   },
+   {
+    "n_tools": 4,
+    "pairs": 101,
+    "names_call": 1.86,
+    "json_call": 59.43,
+    "gap": {
+     "value": 57.87,
+     "interval": [
+      51.03,
+      64.24
+     ]
+    },
+    "names_name": 67.9,
+    "json_name": 89.01
+   },
+   {
+    "n_tools": 8,
+    "pairs": 50,
+    "names_call": 1.0,
+    "json_call": 51.8,
+    "gap": {
+     "value": 50.8,
+     "interval": [
+      43.35,
+      58.25
+     ]
+    },
+    "names_name": 76.2,
+    "json_name": 88.0
+   },
+   {
+    "n_tools": 16,
+    "pairs": 50,
+    "names_call": 1.35,
+    "json_call": 51.6,
+    "gap": {
+     "value": 50.25,
+     "interval": [
+      42.7,
+      57.4
+     ]
+    },
+    "names_name": 65.5,
+    "json_name": 78.15
+   },
+   {
+    "n_tools": 32,
+    "pairs": 50,
+    "names_call": 3.1,
+    "json_call": 49.05,
+    "gap": {
+     "value": 45.95,
+     "interval": [
+      39.3,
+      52.6
+     ]
+    },
+    "names_name": 65.8,
+    "json_name": 77.35
+   },
+   {
+    "n_tools": 64,
+    "pairs": 101,
+    "names_call": 2.4,
+    "json_call": 45.67,
+    "gap": {
+     "value": 43.36,
+     "interval": [
+      35.66,
+      51.13
+     ]
+    },
+    "names_name": 67.75,
+    "json_name": 73.74
+   },
+   {
+    "n_tools": 128,
+    "pairs": 50,
+    "names_call": 0.7,
+    "json_call": 19.85,
+    "gap": {
+     "value": 19.15,
+     "interval": [
+      12.1,
+      26.2
+     ]
+    },
+    "names_name": 53.6,
+    "json_name": 38.05
+   },
+   {
+    "n_tools": 256,
+    "pairs": 100,
+    "names_call": 1.45,
+    "json_call": 19.75,
+    "gap": {
+     "value": 18.3,
+     "interval": [
+      11.07,
+      26.03
+     ]
+    },
+    "names_name": 46.92,
+    "json_name": 28.8
+   }
+  ]
+ }
+}

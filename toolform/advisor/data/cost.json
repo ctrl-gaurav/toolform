@@ -1,0 +1,822 @@
+{
+ "schema_version": 1,
+ "name": "cost",
+ "source": [
+  "paper:tab_cost",
+  "export:cost_pareto"
+ ],
+ "description": "Token counts per instance and accuracy per token and per unit price for the core formats at 8 tools (tab_cost); the cost frontier of every format from the site export (percent, mean tokens per cell).",
+ "conditions": {
+  "n_tools": 8,
+  "tier": 3,
+  "regime": "single",
+  "rule": "main",
+  "seeds": "0-2"
+ },
+ "data": {
+  "rows": [
+   {
+    "format_id": "json_minimal",
+    "accuracy": 34.5,
+    "schema": 448.1,
+    "prompt": 599.6,
+    "completion": 64.3,
+    "total": 663.9,
+    "acc_per_1k": 0.52,
+    "acc_per_price_a": 666.0,
+    "acc_per_price_b": 1388.2
+   },
+   {
+    "format_id": "natural_language",
+    "accuracy": 60.3,
+    "schema": 1315.4,
+    "prompt": 1467.8,
+    "completion": 53.0,
+    "total": 1520.8,
+    "acc_per_1k": 0.397,
+    "acc_per_price_a": 1098.3,
+    "acc_per_price_b": 1509.1
+   },
+   {
+    "format_id": "python_stub",
+    "accuracy": 55.08,
+    "schema": 1584.1,
+    "prompt": 1721.3,
+    "completion": 45.4,
+    "total": 1766.7,
+    "acc_per_1k": 0.312,
+    "acc_per_price_a": 1054.4,
+    "acc_per_price_b": 1266.3
+   },
+   {
+    "format_id": "typescript",
+    "accuracy": 48.0,
+    "schema": 1705.5,
+    "prompt": 1856.9,
+    "completion": 67.9,
+    "total": 1924.8,
+    "acc_per_1k": 0.249,
+    "acc_per_price_a": 726.0,
+    "acc_per_price_b": 947.0
+   },
+   {
+    "format_id": "markdown_table",
+    "accuracy": 47.99,
+    "schema": 1824.8,
+    "prompt": 1976.2,
+    "completion": 62.7,
+    "total": 2038.9,
+    "acc_per_1k": 0.235,
+    "acc_per_price_a": 741.0,
+    "acc_per_price_b": 922.0
+   },
+   {
+    "format_id": "xml_schema",
+    "accuracy": 67.52,
+    "schema": 2835.8,
+    "prompt": 2984.3,
+    "completion": 100.5,
+    "total": 3084.8,
+    "acc_per_1k": 0.219,
+    "acc_per_price_a": 722.0,
+    "acc_per_price_b": 846.0
+   },
+   {
+    "format_id": "yaml_schema",
+    "accuracy": 49.96,
+    "schema": 2386.0,
+    "prompt": 2538.0,
+    "completion": 67.3,
+    "total": 2605.3,
+    "acc_per_1k": 0.192,
+    "acc_per_price_a": 687.0,
+    "acc_per_price_b": 778.0
+   },
+   {
+    "format_id": "json_schema_openai",
+    "accuracy": 53.71,
+    "schema": 3614.6,
+    "prompt": 3765.9,
+    "completion": 65.6,
+    "total": 3831.5,
+    "acc_per_1k": 0.14,
+    "acc_per_price_a": 639.0,
+    "acc_per_price_b": 607.0
+   }
+  ],
+  "prices": {
+   "frontier_api": {
+    "input_per_m": 1,
+    "cached_input_per_m": 0.1,
+    "output_per_m": 5,
+    "schema_cached": true
+   },
+   "self_hosted": {
+    "input_per_m": 0.2,
+    "cached_input_per_m": 0.2,
+    "output_per_m": 2,
+    "schema_cached": false
+   }
+  },
+  "n_tools": 8,
+  "frontier": [
+   {
+    "format_id": "names_only",
+    "tokens": 453.0,
+    "call_exact": 2.67
+   },
+   {
+    "format_id": "toolformer_inline",
+    "tokens": 572.9,
+    "call_exact": 34.81
+   },
+   {
+    "format_id": "emoji_semantic",
+    "tokens": 734.1,
+    "call_exact": 40.58
+   },
+   {
+    "format_id": "thrift_idl",
+    "tokens": 764.8,
+    "call_exact": 40.67
+   },
+   {
+    "format_id": "checklist",
+    "tokens": 773.4,
+    "call_exact": 47.92
+   },
+   {
+    "format_id": "typed_lambda",
+    "tokens": 781.6,
+    "call_exact": 48.56
+   },
+   {
+    "format_id": "worked_dialogue",
+    "tokens": 888.3,
+    "call_exact": 54.62
+   },
+   {
+    "format_id": "cue",
+    "tokens": 1243.2,
+    "call_exact": 56.06
+   },
+   {
+    "format_id": "hjson",
+    "tokens": 1329.0,
+    "call_exact": 56.79
+   },
+   {
+    "format_id": "typescript_interface_arg",
+    "tokens": 1473.8,
+    "call_exact": 58.75
+   }
+  ],
+  "points": [
+   {
+    "format_id": "json_schema_openai",
+    "tokens": 12767.5,
+    "call_exact": 48.96
+   },
+   {
+    "format_id": "natural_language",
+    "tokens": 5635.6,
+    "call_exact": 47.6
+   },
+   {
+    "format_id": "python_stub",
+    "tokens": 6633.5,
+    "call_exact": 45.74
+   },
+   {
+    "format_id": "yaml_schema",
+    "tokens": 9018.5,
+    "call_exact": 46.96
+   },
+   {
+    "format_id": "json_minimal",
+    "tokens": 2306.0,
+    "call_exact": 32.48
+   },
+   {
+    "format_id": "markdown_table",
+    "tokens": 7217.3,
+    "call_exact": 44.48
+   },
+   {
+    "format_id": "typescript",
+    "tokens": 7077.1,
+    "call_exact": 47.31
+   },
+   {
+    "format_id": "xml_schema",
+    "tokens": 10108.4,
+    "call_exact": 57.05
+   },
+   {
+    "format_id": "ascii_table",
+    "tokens": 2348.0,
+    "call_exact": 52.47
+   },
+   {
+    "format_id": "avro_schema",
+    "tokens": 3302.8,
+    "call_exact": 53.78
+   },
+   {
+    "format_id": "bash_function",
+    "tokens": 1237.6,
+    "call_exact": 43.3
+   },
+   {
+    "format_id": "c_header",
+    "tokens": 1222.7,
+    "call_exact": 33.59
+   },
+   {
+    "format_id": "capability_matrix",
+    "tokens": 11631.0,
+    "call_exact": 34.27
+   },
+   {
+    "format_id": "capnproto_idl",
+    "tokens": 686.4,
+    "call_exact": 29.49
+   },
+   {
+    "format_id": "checklist",
+    "tokens": 773.4,
+    "call_exact": 47.92
+   },
+   {
+    "format_id": "cli_help",
+    "tokens": 5717.9,
+    "call_exact": 33.37
+   },
+   {
+    "format_id": "command_r_tools",
+    "tokens": 1405.9,
+    "call_exact": 37.83
+   },
+   {
+    "format_id": "compact_signature_lines",
+    "tokens": 2733.1,
+    "call_exact": 44.05
+   },
+   {
+    "format_id": "contrastive",
+    "tokens": 3916.0,
+    "call_exact": 44.26
+   },
+   {
+    "format_id": "cpp_signature",
+    "tokens": 1361.6,
+    "call_exact": 41.57
+   },
+   {
+    "format_id": "csharp_signature",
+    "tokens": 1266.6,
+    "call_exact": 44.55
+   },
+   {
+    "format_id": "csv",
+    "tokens": 8535.5,
+    "call_exact": 43.8
+   },
+   {
+    "format_id": "cue",
+    "tokens": 1243.2,
+    "call_exact": 56.06
+   },
+   {
+    "format_id": "curl_examples",
+    "tokens": 823.3,
+    "call_exact": 27.24
+   },
+   {
+    "format_id": "decision_tree",
+    "tokens": 1653.6,
+    "call_exact": 49.8
+   },
+   {
+    "format_id": "dhall",
+    "tokens": 1249.9,
+    "call_exact": 55.13
+   },
+   {
+    "format_id": "diff_schema",
+    "tokens": 2640.5,
+    "call_exact": 39.02
+   },
+   {
+    "format_id": "dspy_signature",
+    "tokens": 1327.3,
+    "call_exact": 43.84
+   },
+   {
+    "format_id": "ebnf_grammar",
+    "tokens": 1759.4,
+    "call_exact": 40.16
+   },
+   {
+    "format_id": "edn",
+    "tokens": 1591.8,
+    "call_exact": 26.28
+   },
+   {
+    "format_id": "elixir_signature",
+    "tokens": 1158.5,
+    "call_exact": 37.82
+   },
+   {
+    "format_id": "emoji_semantic",
+    "tokens": 734.1,
+    "call_exact": 40.58
+   },
+   {
+    "format_id": "few_shot_only",
+    "tokens": 5003.0,
+    "call_exact": 41.6
+   },
+   {
+    "format_id": "flatbuffers_idl",
+    "tokens": 850.6,
+    "call_exact": 19.1
+   },
+   {
+    "format_id": "gbnf_grammar",
+    "tokens": 1656.1,
+    "call_exact": 40.74
+   },
+   {
+    "format_id": "glaive_tools",
+    "tokens": 3128.8,
+    "call_exact": 55.61
+   },
+   {
+    "format_id": "go_signature",
+    "tokens": 4837.6,
+    "call_exact": 41.01
+   },
+   {
+    "format_id": "gorilla_api",
+    "tokens": 1842.2,
+    "call_exact": 36.9
+   },
+   {
+    "format_id": "granite_tools",
+    "tokens": 2855.2,
+    "call_exact": 43.91
+   },
+   {
+    "format_id": "graphql_sdl",
+    "tokens": 4259.2,
+    "call_exact": 29.74
+   },
+   {
+    "format_id": "haskell_curried",
+    "tokens": 1036.0,
+    "call_exact": 35.06
+   },
+   {
+    "format_id": "hcl",
+    "tokens": 2142.2,
+    "call_exact": 57.6
+   },
+   {
+    "format_id": "hermes_tools",
+    "tokens": 2494.0,
+    "call_exact": 44.45
+   },
+   {
+    "format_id": "hjson",
+    "tokens": 1329.0,
+    "call_exact": 56.79
+   },
+   {
+    "format_id": "html_forms",
+    "tokens": 2212.9,
+    "call_exact": 42.88
+   },
+   {
+    "format_id": "ini",
+    "tokens": 1099.6,
+    "call_exact": 49.29
+   },
+   {
+    "format_id": "java_signature",
+    "tokens": 2790.1,
+    "call_exact": 28.09
+   },
+   {
+    "format_id": "json5",
+    "tokens": 1449.5,
+    "call_exact": 51.7
+   },
+   {
+    "format_id": "json_compact",
+    "tokens": 9082.3,
+    "call_exact": 49.76
+   },
+   {
+    "format_id": "json_dotted_paths",
+    "tokens": 7340.7,
+    "call_exact": 47.21
+   },
+   {
+    "format_id": "json_schema_anthropic",
+    "tokens": 13695.2,
+    "call_exact": 52.27
+   },
+   {
+    "format_id": "json_schema_draft2020",
+    "tokens": 8047.8,
+    "call_exact": 44.6
+   },
+   {
+    "format_id": "json_schema_flat",
+    "tokens": 3836.0,
+    "call_exact": 56.28
+   },
+   {
+    "format_id": "jsonc",
+    "tokens": 1621.0,
+    "call_exact": 51.47
+   },
+   {
+    "format_id": "jsonl",
+    "tokens": 2254.1,
+    "call_exact": 52.28
+   },
+   {
+    "format_id": "jsonnet",
+    "tokens": 1251.1,
+    "call_exact": 32.24
+   },
+   {
+    "format_id": "julia_signature",
+    "tokens": 1246.8,
+    "call_exact": 39.1
+   },
+   {
+    "format_id": "kdl",
+    "tokens": 5713.6,
+    "call_exact": 43.04
+   },
+   {
+    "format_id": "key_value_lines",
+    "tokens": 5979.5,
+    "call_exact": 43.72
+   },
+   {
+    "format_id": "kotlin_signature",
+    "tokens": 1246.3,
+    "call_exact": 43.62
+   },
+   {
+    "format_id": "langchain_tools",
+    "tokens": 2233.7,
+    "call_exact": 37.04
+   },
+   {
+    "format_id": "llama3_tools",
+    "tokens": 3891.8,
+    "call_exact": 49.96
+   },
+   {
+    "format_id": "lua_signature",
+    "tokens": 977.7,
+    "call_exact": 19.55
+   },
+   {
+    "format_id": "markdown_docs",
+    "tokens": 7019.9,
+    "call_exact": 46.91
+   },
+   {
+    "format_id": "matlab_signature",
+    "tokens": 1358.1,
+    "call_exact": 41.86
+   },
+   {
+    "format_id": "mcp_manifest",
+    "tokens": 3162.9,
+    "call_exact": 54.99
+   },
+   {
+    "format_id": "mistral_tools",
+    "tokens": 2879.4,
+    "call_exact": 48.32
+   },
+   {
+    "format_id": "namespaced",
+    "tokens": 3296.2,
+    "call_exact": 41.58
+   },
+   {
+    "format_id": "negative_space",
+    "tokens": 1024.9,
+    "call_exact": 46.38
+   },
+   {
+    "format_id": "nix_expr",
+    "tokens": 2019.4,
+    "call_exact": 40.1
+   },
+   {
+    "format_id": "nl_faq",
+    "tokens": 1570.7,
+    "call_exact": 54.78
+   },
+   {
+    "format_id": "nl_instructional",
+    "tokens": 1462.8,
+    "call_exact": 45.38
+   },
+   {
+    "format_id": "nl_manpage",
+    "tokens": 3431.2,
+    "call_exact": 38.99
+   },
+   {
+    "format_id": "nl_narrative",
+    "tokens": 586.3,
+    "call_exact": 33.56
+   },
+   {
+    "format_id": "nl_reference_card",
+    "tokens": 1675.4,
+    "call_exact": 31.49
+   },
+   {
+    "format_id": "nl_terse",
+    "tokens": 1968.9,
+    "call_exact": 40.33
+   },
+   {
+    "format_id": "ocaml_signature",
+    "tokens": 1187.7,
+    "call_exact": 35.51
+   },
+   {
+    "format_id": "openai_responses",
+    "tokens": 3277.0,
+    "call_exact": 54.81
+   },
+   {
+    "format_id": "openapi_json",
+    "tokens": 15115.2,
+    "call_exact": 45.94
+   },
+   {
+    "format_id": "openapi_yaml",
+    "tokens": 9537.3,
+    "call_exact": 45.83
+   },
+   {
+    "format_id": "php_signature",
+    "tokens": 1219.2,
+    "call_exact": 44.23
+   },
+   {
+    "format_id": "progressive",
+    "tokens": 5246.7,
+    "call_exact": 49.09
+   },
+   {
+    "format_id": "protobuf",
+    "tokens": 6173.5,
+    "call_exact": 31.46
+   },
+   {
+    "format_id": "python_argparse",
+    "tokens": 1804.0,
+    "call_exact": 33.11
+   },
+   {
+    "format_id": "python_dataclass",
+    "tokens": 1311.0,
+    "call_exact": 41.41
+   },
+   {
+    "format_id": "python_protocol",
+    "tokens": 1380.0,
+    "call_exact": 36.25
+   },
+   {
+    "format_id": "python_pydantic",
+    "tokens": 5805.0,
+    "call_exact": 42.02
+   },
+   {
+    "format_id": "python_signature_only",
+    "tokens": 3052.7,
+    "call_exact": 47.74
+   },
+   {
+    "format_id": "python_stub_numpy",
+    "tokens": 5373.4,
+    "call_exact": 41.6
+   },
+   {
+    "format_id": "question_slots",
+    "tokens": 1333.7,
+    "call_exact": 20.1
+   },
+   {
+    "format_id": "qwen_tools",
+    "tokens": 2529.3,
+    "call_exact": 43.21
+   },
+   {
+    "format_id": "r_signature",
+    "tokens": 990.0,
+    "call_exact": 19.46
+   },
+   {
+    "format_id": "react_tools",
+    "tokens": 1664.0,
+    "call_exact": 32.32
+   },
+   {
+    "format_id": "regex_spec",
+    "tokens": 888.6,
+    "call_exact": 41.22
+   },
+   {
+    "format_id": "rest_endpoints",
+    "tokens": 1183.1,
+    "call_exact": 48.69
+   },
+   {
+    "format_id": "ruby_signature",
+    "tokens": 1000.4,
+    "call_exact": 22.18
+   },
+   {
+    "format_id": "rust_signature",
+    "tokens": 4733.4,
+    "call_exact": 35.96
+   },
+   {
+    "format_id": "scala_signature",
+    "tokens": 1277.7,
+    "call_exact": 42.63
+   },
+   {
+    "format_id": "sexpr",
+    "tokens": 1148.1,
+    "call_exact": 22.44
+   },
+   {
+    "format_id": "slot_template",
+    "tokens": 1286.8,
+    "call_exact": 55.71
+   },
+   {
+    "format_id": "smithy_idl",
+    "tokens": 3076.8,
+    "call_exact": 21.83
+   },
+   {
+    "format_id": "sql_udf",
+    "tokens": 1270.3,
+    "call_exact": 23.69
+   },
+   {
+    "format_id": "starlark",
+    "tokens": 1627.2,
+    "call_exact": 39.36
+   },
+   {
+    "format_id": "state_graph",
+    "tokens": 658.3,
+    "call_exact": 29.01
+   },
+   {
+    "format_id": "swift_signature",
+    "tokens": 1120.9,
+    "call_exact": 42.69
+   },
+   {
+    "format_id": "symbolic_compressed",
+    "tokens": 1865.9,
+    "call_exact": 34.25
+   },
+   {
+    "format_id": "thrift_idl",
+    "tokens": 764.8,
+    "call_exact": 40.67
+   },
+   {
+    "format_id": "toml",
+    "tokens": 1834.9,
+    "call_exact": 33.75
+   },
+   {
+    "format_id": "toolformer_inline",
+    "tokens": 572.9,
+    "call_exact": 34.81
+   },
+   {
+    "format_id": "tsv",
+    "tokens": 10264.4,
+    "call_exact": 37.75
+   },
+   {
+    "format_id": "two_stage_index",
+    "tokens": 4636.2,
+    "call_exact": 48.32
+   },
+   {
+    "format_id": "type_indexed",
+    "tokens": 984.1,
+    "call_exact": 39.01
+   },
+   {
+    "format_id": "typed_lambda",
+    "tokens": 781.6,
+    "call_exact": 48.56
+   },
+   {
+    "format_id": "typescript_compact",
+    "tokens": 2398.1,
+    "call_exact": 48.12
+   },
+   {
+    "format_id": "typescript_dts",
+    "tokens": 1395.8,
+    "call_exact": 38.04
+   },
+   {
+    "format_id": "typescript_interface_arg",
+    "tokens": 1473.8,
+    "call_exact": 58.75
+   },
+   {
+    "format_id": "watt_tool_tags",
+    "tokens": 1901.3,
+    "call_exact": 40.5
+   },
+   {
+    "format_id": "wit_idl",
+    "tokens": 1169.4,
+    "call_exact": 52.56
+   },
+   {
+    "format_id": "worked_dialogue",
+    "tokens": 888.3,
+    "call_exact": 54.62
+   },
+   {
+    "format_id": "xlam_tools",
+    "tokens": 2325.2,
+    "call_exact": 39.0
+   },
+   {
+    "format_id": "xml_attributes",
+    "tokens": 1554.7,
+    "call_exact": 44.55
+   },
+   {
+    "format_id": "xsd",
+    "tokens": 4948.9,
+    "call_exact": 22.71
+   },
+   {
+    "format_id": "yaml_anchors",
+    "tokens": 3603.2,
+    "call_exact": 49.81
+   },
+   {
+    "format_id": "yaml_documented",
+    "tokens": 1639.4,
+    "call_exact": 54.07
+   },
+   {
+    "format_id": "yaml_flow",
+    "tokens": 8778.3,
+    "call_exact": 54.45
+   },
+   {
+    "format_id": "yaml_minimal",
+    "tokens": 2469.7,
+    "call_exact": 44.6
+   },
+   {
+    "format_id": "zig_signature",
+    "tokens": 1231.0,
+    "call_exact": 34.23
+   },
+   {
+    "format_id": "json_names_params",
+    "tokens": 1127.6,
+    "call_exact": 24.42
+   },
+   {
+    "format_id": "names_only",
+    "tokens": 453.0,
+    "call_exact": 2.67
+   }
+  ]
+ }
+}

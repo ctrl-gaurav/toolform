@@ -1,0 +1,56 @@
+<svg width="1280" height="400" viewBox="0 0 1280 400" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ToolForm: tool interfaces, chosen by measurement">
+  <defs>
+    <radialGradient id="g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(160 30) scale(440 300)">
+      <stop stop-color="#4FE3C1" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#4FE3C1" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1140 380) scale(460 320)">
+      <stop stop-color="#3987E5" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#3987E5" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" stroke="#FFFFFF" stroke-opacity="0.035"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="400" rx="24" fill="#06080C"/>
+  <rect width="1280" height="400" rx="24" fill="url(#grid)"/>
+  <rect width="1280" height="400" rx="24" fill="url(#g1)"/>
+  <rect width="1280" height="400" rx="24" fill="url(#g2)"/>
+  <rect x="0.5" y="0.5" width="1279" height="399" rx="23.5" stroke="#FFFFFF" stroke-opacity="0.08"/>
+  <g transform="translate(76 60) scale(2.6)">
+    <rect x="1" y="2" width="5" height="3" rx="1.5" fill="#E7ECF2"/>
+    <rect x="1" y="7" width="10" height="3" rx="1.5" fill="#E7ECF2"/>
+    <rect x="1" y="12" width="15" height="3" rx="1.5" fill="#E7ECF2"/>
+    <rect x="1" y="17" width="20" height="3" rx="1.5" fill="#4FE3C1"/>
+  </g>
+  <g font-family="'Space Grotesk','Inter','Segoe UI',Helvetica,Arial,sans-serif">
+    <text x="148" y="122" font-size="72" font-weight="700" letter-spacing="-2" fill="#E7ECF2">toolform</text>
+    <text x="76" y="200" font-size="36" font-weight="700" letter-spacing="-0.8" fill="#E7ECF2">Tool interfaces, <tspan fill="#4FE3C1">chosen by measurement.</tspan></text>
+    <text x="78" y="242" font-family="'Inter','Segoe UI',sans-serif" font-size="18" fill="#9AA6B5">Recommend, render, parse and guard the tool block of an LLM agent.</text>
+    <g font-family="'JetBrains Mono',ui-monospace,monospace" font-size="16">
+      <rect x="76" y="282" width="252" height="44" rx="12" fill="#FFFFFF" fill-opacity="0.05" stroke="#FFFFFF" stroke-opacity="0.1"/>
+      <text x="96" y="310" fill="#4FE3C1">$</text>
+      <text x="116" y="310" fill="#E7ECF2">pip install toolform</text>
+    </g>
+  </g>
+  <g font-family="'Space Grotesk','Inter','Segoe UI',sans-serif">
+    <g transform="translate(840 64)">
+      <rect width="368" height="80" rx="14" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.09"/>
+      <text x="22" y="50" font-size="32" font-weight="700" fill="#4FE3C1">129</text>
+      <text x="142" y="38" font-family="'Inter',sans-serif" font-size="15" font-weight="600" fill="#E7ECF2">schema formats</text>
+      <text x="142" y="58" font-family="'Inter',sans-serif" font-size="14" fill="#9AA6B5">and 31 answer protocols</text>
+    </g>
+    <g transform="translate(840 160)">
+      <rect width="368" height="80" rx="14" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.09"/>
+      <text x="22" y="50" font-size="32" font-weight="700" fill="#4FE3C1">112</text>
+      <text x="142" y="38" font-family="'Inter',sans-serif" font-size="15" font-weight="600" fill="#E7ECF2">models measured</text>
+      <text x="142" y="58" font-family="'Inter',sans-serif" font-size="14" fill="#9AA6B5">100 open-source, 12 proprietary</text>
+    </g>
+    <g transform="translate(840 256)">
+      <rect width="368" height="80" rx="14" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.09"/>
+      <text x="22" y="50" font-size="32" font-weight="700" fill="#4FE3C1">+57%</text>
+      <text x="142" y="38" font-family="'Inter',sans-serif" font-size="15" font-weight="600" fill="#E7ECF2">from the parameter schema</text>
+      <text x="142" y="58" font-family="'Inter',sans-serif" font-size="14" fill="#9AA6B5">over tool names alone</text>
+    </g>
+  </g>
+</svg>

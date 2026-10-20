@@ -1,0 +1,352 @@
+{
+ "schema_version": 1,
+ "name": "protocols",
+ "source": [
+  "registry:protocols"
+ ],
+ "description": "Every registered answer protocol; in_crossing marks the five of the format by protocol experiment.",
+ "conditions": {},
+ "data": {
+  "python_call": {
+   "id": "python_call",
+   "name": "Python-style function call",
+   "description": "Answer with `tool_name(arg=value)`. Keyword arguments carry the names, so no JSON structure is needed.",
+   "novel": false,
+   "real_world_origin": "Llama / Gorilla / many code-tuned models",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": true
+  },
+  "python_list_call": {
+   "id": "python_list_call",
+   "name": "Bracketed list of Python calls",
+   "description": "`[f(a=1), g(b=2)]`: Llama 3.1's parallel-call shape, where several calls are one bracketed list.",
+   "novel": false,
+   "real_world_origin": "Meta Llama 3.1 parallel tool calls",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "bfcl_python_list": {
+   "id": "bfcl_python_list",
+   "name": "BFCL's bracketed Python call list, BFCL's words",
+   "description": "`[func_name1(params_name1=params_value1, ...), func_name2(params)]`, asked for in the Berkeley Function Calling Leaderboard's own sentence.",
+   "novel": false,
+   "real_world_origin": "BFCL v4 prompting mode (Gorilla)",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "cli_call": {
+   "id": "cli_call",
+   "name": "Command-line invocation",
+   "description": "`tool_name --arg value --flag`. Values are untyped text, so the schema has to supply the types.",
+   "novel": false,
+   "real_world_origin": "Shell command conventions",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "sql_call": {
+   "id": "sql_call",
+   "name": "SQL function call",
+   "description": "`SELECT tool_name(arg => 'value');` using PostgreSQL named-argument syntax.",
+   "novel": false,
+   "real_world_origin": "PostgreSQL named arguments",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "graphql_call": {
+   "id": "graphql_call",
+   "name": "GraphQL mutation",
+   "description": "`mutation { toolName(arg: \"value\") }`: named arguments with GraphQL literal syntax.",
+   "novel": false,
+   "real_world_origin": "GraphQL",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "url_call": {
+   "id": "url_call",
+   "name": "HTTP request line",
+   "description": "`POST /tool-name?arg=value`: a URL with a query string. Everything is a string, and nesting has to be flattened.",
+   "novel": false,
+   "real_world_origin": "REST / HTTP query strings",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "sexpr_call": {
+   "id": "sexpr_call",
+   "name": "S-expression call",
+   "description": "`(tool_name :arg \"value\" :count 3)`: Lisp-style keyword arguments with the least punctuation of any structured form.",
+   "novel": false,
+   "real_world_origin": "Lisp / Clojure keyword arguments",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "json_object": {
+   "id": "json_object",
+   "name": "JSON object call",
+   "description": "Answer with {\"name\": ..., \"arguments\": {...}}. The default shape for almost every function-calling API.",
+   "novel": false,
+   "real_world_origin": "OpenAI / Anthropic function calling",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": true
+  },
+  "json_array": {
+   "id": "json_array",
+   "name": "JSON array of calls",
+   "description": "Always answer with a JSON array, even for a single call. Removes the single-vs-parallel shape switch.",
+   "novel": false,
+   "real_world_origin": "Mistral / xLAM / Command-R tool responses",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "jsonl_call": {
+   "id": "jsonl_call",
+   "name": "One JSON call per line",
+   "description": "Each call on its own line as a complete JSON object. Makes parallel calls a line-oriented output rather than a nested one.",
+   "novel": false,
+   "real_world_origin": "JSON Lines convention",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "code_block_json": {
+   "id": "code_block_json",
+   "name": "JSON inside a fenced code block",
+   "description": "The call as JSON inside a ```json fence.",
+   "novel": false,
+   "real_world_origin": "Markdown fenced output convention",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "native": {
+   "id": "native",
+   "name": "Provider-native tool API",
+   "description": "Calls come back through the provider's own tool_calls field rather than as text.",
+   "novel": false,
+   "real_world_origin": "OpenAI / Anthropic / Gemini native tool calling",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "nl_intent": {
+   "id": "nl_intent",
+   "name": "Natural-language intent",
+   "description": "The model says in words which tool it will use and with what values; a schema-guided rule adapter converts that to a call.",
+   "novel": false,
+   "real_world_origin": "Natural Language Tools (NLT)",
+   "supports_parallel": true,
+   "structured": false,
+   "tags": [],
+   "in_crossing": true
+  },
+  "nl_intent_structured": {
+   "id": "nl_intent_structured",
+   "name": "Natural-language intent with a fixed sentence frame",
+   "description": "Natural language constrained to the frame 'Use TOOL with arg = value, arg = value.' Keeps the natural-language channel while removing most of the parsing ambiguity.",
+   "novel": true,
+   "real_world_origin": "",
+   "supports_parallel": true,
+   "structured": false,
+   "tags": [],
+   "in_crossing": false
+  },
+  "key_value_call": {
+   "id": "key_value_call",
+   "name": "Key-value block",
+   "description": "`TOOL: name` then one `arg: value` line each. Structured but with no brackets or quoting to get wrong.",
+   "novel": false,
+   "real_world_origin": "Header-style key/value blocks",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "yaml_call": {
+   "id": "yaml_call",
+   "name": "YAML call block",
+   "description": "The call as a small YAML document with name and arguments keys.",
+   "novel": false,
+   "real_world_origin": "YAML-based agent output formats",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "toml_call": {
+   "id": "toml_call",
+   "name": "TOML call block",
+   "description": "`[[call]]` array-of-tables with a name and an [call.arguments] table.",
+   "novel": false,
+   "real_world_origin": "TOML",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "pipe_call": {
+   "id": "pipe_call",
+   "name": "Pipe-delimited call (novel)",
+   "description": "`tool|arg=value|arg=value` on one line. No brackets, no quotes, no indentation: a one-line call that still names its arguments.",
+   "novel": true,
+   "real_world_origin": "",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "csv_call": {
+   "id": "csv_call",
+   "name": "Positional CSV call (novel)",
+   "description": "`tool_name,value1,value2` with values in the schema's declared order, so the arguments are bound by position, not by name.",
+   "novel": true,
+   "real_world_origin": "",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "table_call": {
+   "id": "table_call",
+   "name": "Markdown table call (novel)",
+   "description": "One row per argument in a fixed three-column table. The grid makes a missing or invented argument visible to the model as it writes.",
+   "novel": true,
+   "real_world_origin": "",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "symbolic_call": {
+   "id": "symbolic_call",
+   "name": "Type-marked symbolic call (novel)",
+   "description": "`tool ★arg§value` where the symbol before each value restates its type. Pairs with the symbolic schema format so the type channel is consistent in both directions.",
+   "novel": true,
+   "real_world_origin": "",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "slot_fill_call": {
+   "id": "slot_fill_call",
+   "name": "Template completion (novel)",
+   "description": "The model is given the exact JSON skeleton and told to replace only the placeholder values.",
+   "novel": true,
+   "real_world_origin": "",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "two_step_call": {
+   "id": "two_step_call",
+   "name": "Name first, then arguments (novel)",
+   "description": "The model writes the tool name on its own line, then the arguments as JSON on the next. Splits selection from binding so the two failure modes can be attributed separately.",
+   "novel": true,
+   "real_world_origin": "",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "tool_call_tags": {
+   "id": "tool_call_tags",
+   "name": "<tool_call> JSON tags",
+   "description": "A JSON call inside <tool_call></tool_call>, the convention of the Hermes, Qwen and Granite templates.",
+   "novel": false,
+   "real_world_origin": "Hermes / Qwen / Granite tool-call templates",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": true
+  },
+  "function_tags": {
+   "id": "function_tags",
+   "name": "<function=…> tags",
+   "description": "A call as <function=NAME> with a JSON body or <parameter=K>V</parameter> children.",
+   "novel": false,
+   "real_world_origin": "functionary and Qwen3-Coder tool-call templates",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "xml_call": {
+   "id": "xml_call",
+   "name": "<function_calls><invoke> XML",
+   "description": "Anthropic's prompt-level XML calling: an <invoke> element per call with one <parameter> element per argument. Values are text, so types have to be recovered from the schema.",
+   "novel": false,
+   "real_world_origin": "Anthropic function-calling XML convention",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": true
+  },
+  "xml_generic_call": {
+   "id": "xml_generic_call",
+   "name": "<call><tool>..</tool><args>..</args></call>",
+   "description": "A simpler XML shape where arguments are child elements named after the parameter. Fewer attributes to get right.",
+   "novel": false,
+   "real_world_origin": "Common hand-rolled agent XML formats",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "python_tag": {
+   "id": "python_tag",
+   "name": "<|python_tag|> call",
+   "description": "Llama 3.x's control-token convention: a Python-style call after a <|python_tag|> marker, terminated by <|eom_id|>.",
+   "novel": false,
+   "real_world_origin": "Meta Llama 3.1+ built-in tool calling",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "react": {
+   "id": "react",
+   "name": "Thought / Action / Action Input",
+   "description": "The ReAct convention. The tool name and the arguments live on separate lines, which removes any need for nesting.",
+   "novel": false,
+   "real_world_origin": "ReAct prompting; LangChain agents",
+   "supports_parallel": false,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  },
+  "bracket_call": {
+   "id": "bracket_call",
+   "name": "Inline [tool(args)] notation",
+   "description": "Toolformer's inline notation: the call is embedded in the sentence between square brackets.",
+   "novel": false,
+   "real_world_origin": "Toolformer",
+   "supports_parallel": true,
+   "structured": true,
+   "tags": [],
+   "in_crossing": false
+  }
+ }
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ctrl-gaurav.github.io/toolform/sitemap.xml

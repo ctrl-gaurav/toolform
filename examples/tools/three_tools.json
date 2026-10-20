@@ -1,0 +1,25 @@
+[
+  {"type": "function", "function": {
+    "name": "calculator",
+    "description": "Evaluate an arithmetic expression. Supports +, -, *, /, parentheses and powers.",
+    "parameters": {"type": "object", "properties": {
+      "expression": {"type": "string", "description": "The arithmetic expression to evaluate, for example 2 + 2."},
+      "precision": {"type": "integer", "description": "Number of decimal places to round the result to."}
+    }, "required": ["expression"]}}},
+  {"type": "function", "function": {
+    "name": "github",
+    "description": "Search GitHub repositories and issues. Returns matching items with their URLs.",
+    "parameters": {"type": "object", "properties": {
+      "query": {"type": "string", "description": "Search terms, for example a repository or issue title."},
+      "kind": {"type": "string", "enum": ["repositories", "issues"], "description": "What to search for."},
+      "limit": {"type": "integer", "description": "Maximum number of results to return."}
+    }, "required": ["query"]}}},
+  {"type": "function", "function": {
+    "name": "weather",
+    "description": "Get the current weather and the forecast for a location. Temperatures are in Celsius unless units is set.",
+    "parameters": {"type": "object", "properties": {
+      "location": {"type": "string", "description": "City name, for example Oslo or Paris."},
+      "units": {"type": "string", "enum": ["metric", "imperial"], "description": "Unit system for temperatures."},
+      "days": {"type": "integer", "description": "Number of forecast days to include."}
+    }, "required": ["location"]}}}
+]

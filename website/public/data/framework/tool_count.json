@@ -1,0 +1,328 @@
+{
+ "schema_version": 1,
+ "name": "tool_count",
+ "source": [
+  "paper:tab_count_by_format",
+  "paper:tab_count"
+ ],
+ "description": "Accuracy and the share of empty turns by tool count for each core format, the pooled count sweep read six ways, and the retrieval baseline on a 128-tool panel (percent).",
+ "conditions": {
+  "tier": 3,
+  "regime": "single",
+  "rule": "main",
+  "seeds": "0-2",
+  "checkpoints": 51
+ },
+ "data": {
+  "counts": [
+   1,
+   2,
+   4,
+   8,
+   16,
+   32,
+   64,
+   128,
+   256
+  ],
+  "accuracy": {
+   "xml_schema": [
+    84.6,
+    77.3,
+    71.6,
+    65.3,
+    60.4,
+    62.6,
+    60.4,
+    29.6,
+    27.8
+   ],
+   "natural_language": [
+    57.3,
+    66.0,
+    64.4,
+    57.3,
+    58.7,
+    53.5,
+    53.5,
+    40.6,
+    26.4
+   ],
+   "python_stub": [
+    66.3,
+    67.5,
+    62.1,
+    56.9,
+    53.5,
+    52.7,
+    50.8,
+    34.3,
+    24.1
+   ],
+   "json_schema_openai": [
+    70.5,
+    68.1,
+    59.4,
+    50.3,
+    51.9,
+    50.9,
+    45.7,
+    22.7,
+    19.8
+   ],
+   "yaml_schema": [
+    66.5,
+    65.6,
+    55.1,
+    54.0,
+    51.7,
+    46.8,
+    46.5,
+    26.3,
+    20.8
+   ],
+   "typescript": [
+    70.6,
+    66.6,
+    58.1,
+    50.8,
+    50.7,
+    51.0,
+    44.8,
+    31.1,
+    23.6
+   ],
+   "markdown_table": [
+    62.6,
+    64.3,
+    48.0,
+    45.7,
+    48.8,
+    49.3,
+    46.8,
+    28.8,
+    20.1
+   ],
+   "json_minimal": [
+    35.2,
+    47.3,
+    39.8,
+    33.0,
+    34.5,
+    34.7,
+    35.8,
+    23.3,
+    22.9
+   ]
+  },
+  "empty": {
+   "xml_schema": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    4.0,
+    5.9,
+    43.6,
+    46.0
+   ],
+   "natural_language": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    4.0,
+    5.9,
+    43.6
+   ],
+   "python_stub": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    4.0,
+    5.9,
+    43.6
+   ],
+   "json_schema_openai": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    4.0,
+    4.0,
+    11.9,
+    43.6,
+    56.0
+   ],
+   "yaml_schema": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    4.0,
+    5.9,
+    29.7,
+    46.0
+   ],
+   "typescript": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    4.0,
+    4.0,
+    5.9,
+    43.6
+   ],
+   "markdown_table": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    4.0,
+    4.0,
+    9.9,
+    43.6
+   ],
+   "json_minimal": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    4.0,
+    4.0
+   ]
+  },
+  "overall": [
+   {
+    "n_tools": 1,
+    "strict": 64.2,
+    "symmetric": 68.46,
+    "exact_tool": 92.44,
+    "twin": 0.0,
+    "behavioural": 64.2,
+    "end_state": 63.34,
+    "empty": 0.0
+   },
+   {
+    "n_tools": 2,
+    "strict": 65.33,
+    "symmetric": 72.33,
+    "exact_tool": 91.71,
+    "twin": 0.0,
+    "behavioural": 65.33,
+    "end_state": 79.04,
+    "empty": 0.0
+   },
+   {
+    "n_tools": 4,
+    "strict": 57.31,
+    "symmetric": 65.33,
+    "exact_tool": 85.61,
+    "twin": 0.0,
+    "behavioural": 57.31,
+    "end_state": 77.79,
+    "empty": 0.0
+   },
+   {
+    "n_tools": 8,
+    "strict": 51.66,
+    "symmetric": 61.28,
+    "exact_tool": 75.03,
+    "twin": 7.04,
+    "behavioural": 55.58,
+    "end_state": 83.12,
+    "empty": 0.0
+   },
+   {
+    "n_tools": 16,
+    "strict": 51.28,
+    "symmetric": 58.47,
+    "exact_tool": 60.41,
+    "twin": 13.98,
+    "behavioural": 57.48,
+    "end_state": 79.83,
+    "empty": 0.5
+   },
+   {
+    "n_tools": 32,
+    "strict": 50.18,
+    "symmetric": 58.17,
+    "exact_tool": 57.41,
+    "twin": 19.79,
+    "behavioural": 54.09,
+    "end_state": 82.82,
+    "empty": 2.48
+   },
+   {
+    "n_tools": 64,
+    "strict": 48.04,
+    "symmetric": 56.26,
+    "exact_tool": 55.09,
+    "twin": 21.54,
+    "behavioural": 48.98,
+    "end_state": 79.33,
+    "empty": 4.95
+   },
+   {
+    "n_tools": 128,
+    "strict": 29.59,
+    "symmetric": 38.14,
+    "exact_tool": 34.46,
+    "twin": 19.93,
+    "behavioural": 33.32,
+    "end_state": 74.82,
+    "empty": 18.57
+   },
+   {
+    "n_tools": 256,
+    "strict": 23.19,
+    "symmetric": 26.59,
+    "exact_tool": 15.63,
+    "twin": 21.56,
+    "behavioural": 28.55,
+    "end_state": 72.19,
+    "empty": 40.77
+   }
+  ],
+  "retrieval": [
+   {
+    "label": "128 shown whole",
+    "accuracy": 12.7
+   },
+   {
+    "label": "top 16, BM25",
+    "accuracy": 29.78,
+    "gain": 17.08
+   },
+   {
+    "label": "top 16, embedding",
+    "accuracy": 30.96,
+    "gain": 18.27
+   },
+   {
+    "label": "top 8, BM25",
+    "accuracy": 31.19,
+    "gain": 18.49
+   },
+   {
+    "label": "top 8, embedding",
+    "accuracy": 31.79,
+    "gain": 19.1
+   }
+  ],
+  "empty_filtered_256": 39.15
+ }
+}

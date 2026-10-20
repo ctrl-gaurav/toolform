@@ -1,0 +1,95 @@
+/* Brand tokens for the framework pages (design section g).
+ *
+ * Every rule is under .fw with --fw- names, so the research pages' global
+ * stylesheet and these never restyle each other. Dark is the default; the
+ * theme switch writes data-theme on <html>.
+ *
+ * Changes from the design's table, after the WCAG and palette checks:
+ *  - --fw-text-faint #6B7686 measured 3.97:1 on the dark surface and 4.30:1 on
+ *    the light page, under 4.5:1 for small text; it is #7D8898 / #5E6878 here.
+ *  - The chart palette in the design failed the dataviz validator in dark mode
+ *    (lightness band, a gray slot, green next to amber under deuteranopia at
+ *    Delta E 3.1). The eight core formats use the validated reference order
+ *    instead: blue, orange, aqua, yellow, magenta, green, violet, red, each
+ *    stepped for its surface. Light mode warns on contrast for three slots,
+ *    so every chart has direct labels or a table view.
+ */
+
+.fw {
+  color-scheme: dark;
+  --fw-bg: #06080c;
+  --fw-bg-raised: #0b0f16;
+  --fw-surface: #10151e;
+  --fw-surface-2: #161d29;
+  --fw-border: #222b38;
+  --fw-border-strong: #2e3a4b;
+  --fw-text: #e7ecf2;
+  --fw-text-muted: #9aa6b5;
+  --fw-text-faint: #7d8898;
+  --fw-accent: #4fe3c1;
+  --fw-accent-strong: #7cf0d5;
+  --fw-accent-ink: #042b24;
+  --fw-accent-soft: rgba(79, 227, 193, 0.12);
+  --fw-grid: rgba(231, 236, 242, 0.05);
+  --fw-ok: #5bd08a;
+  --fw-warn: #f2b35b;
+  --fw-danger: #f2716b;
+  --fw-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+
+  --fw-s-xml: #3987e5;
+  --fw-s-nl: #d95926;
+  --fw-s-py: #199e70;
+  --fw-s-json: #c98500;
+  --fw-s-yaml: #d55181;
+  --fw-s-ts: #008300;
+  --fw-s-md: #9085e9;
+  --fw-s-min: #e66767;
+  --fw-seq-lo: #10151e;
+  --fw-seq-hi: #3987e5;
+
+  --fw-display: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fw-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fw-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --fw-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --fw-width: 1200px;
+  --fw-gutter: 24px;
+}
+
+:root[data-theme="light"] .fw {
+  color-scheme: light;
+  --fw-bg: #f6f7f9;
+  --fw-bg-raised: #ffffff;
+  --fw-surface: #ffffff;
+  --fw-surface-2: #eef1f5;
+  --fw-border: #dce1e8;
+  --fw-border-strong: #c4ccd6;
+  --fw-text: #0a1018;
+  --fw-text-muted: #4a5566;
+  --fw-text-faint: #5e6878;
+  --fw-accent: #087a64;
+  --fw-accent-strong: #06604f;
+  --fw-accent-ink: #ffffff;
+  --fw-accent-soft: rgba(8, 122, 100, 0.1);
+  --fw-grid: rgba(10, 16, 24, 0.05);
+  --fw-ok: #1f7a45;
+  --fw-warn: #9a5b00;
+  --fw-danger: #b42318;
+  --fw-shadow: none;
+
+  --fw-s-xml: #2a78d6;
+  --fw-s-nl: #eb6834;
+  --fw-s-py: #1baf7a;
+  --fw-s-json: #eda100;
+  --fw-s-yaml: #e87ba4;
+  --fw-s-ts: #008300;
+  --fw-s-md: #4a3aa7;
+  --fw-s-min: #e34948;
+  --fw-seq-lo: #ffffff;
+  --fw-seq-hi: #2a78d6;
+}
+
+@media (max-width: 640px) {
+  .fw {
+    --fw-gutter: 16px;
+  }
+}

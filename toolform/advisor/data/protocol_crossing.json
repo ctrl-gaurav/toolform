@@ -1,0 +1,264 @@
+{
+ "schema_version": 1,
+ "name": "protocol_crossing",
+ "source": [
+  "paper:tab_protocol"
+ ],
+ "description": "Every core format paired with the five crossing protocols, under the three grading rules (percent), and the protocol spread over the format spread.",
+ "conditions": {
+  "n_tools": 8,
+  "tier": 3,
+  "regime": "single",
+  "checkpoints": 35,
+  "seeds": "0-2"
+ },
+ "data": {
+  "protocols": [
+   "xml_call",
+   "nl_intent",
+   "json_object",
+   "python_call",
+   "tool_call_tags"
+  ],
+  "rules": {
+   "main": {
+    "cells": {
+     "python_stub": {
+      "xml_call": 65.1,
+      "nl_intent": 64.2,
+      "json_object": 63.2,
+      "python_call": 60.4,
+      "tool_call_tags": 55.6
+     },
+     "xml_schema": {
+      "xml_call": 69.8,
+      "nl_intent": 63.9,
+      "json_object": 57.6,
+      "python_call": 51.5,
+      "tool_call_tags": 50.8
+     },
+     "json_schema_openai": {
+      "xml_call": 63.9,
+      "nl_intent": 58.1,
+      "json_object": 57.0,
+      "python_call": 51.0,
+      "tool_call_tags": 49.3
+     },
+     "typescript": {
+      "xml_call": 65.9,
+      "nl_intent": 61.6,
+      "json_object": 54.4,
+      "python_call": 47.0,
+      "tool_call_tags": 49.4
+     },
+     "markdown_table": {
+      "xml_call": 61.7,
+      "nl_intent": 61.4,
+      "json_object": 54.7,
+      "python_call": 51.4,
+      "tool_call_tags": 48.4
+     },
+     "yaml_schema": {
+      "xml_call": 63.5,
+      "nl_intent": 59.6,
+      "json_object": 55.7,
+      "python_call": 49.1,
+      "tool_call_tags": 48.0
+     },
+     "natural_language": {
+      "xml_call": 67.5,
+      "nl_intent": 66.0,
+      "json_object": 50.5,
+      "python_call": 39.6,
+      "tool_call_tags": 45.5
+     },
+     "json_minimal": {
+      "xml_call": 47.0,
+      "nl_intent": 44.2,
+      "json_object": 38.7,
+      "python_call": 36.0,
+      "tool_call_tags": 33.2
+     }
+    },
+    "row_mean": {
+     "python_stub": 61.69,
+     "xml_schema": 58.72,
+     "json_schema_openai": 55.84,
+     "typescript": 55.64,
+     "markdown_table": 55.5,
+     "yaml_schema": 55.16,
+     "natural_language": 53.81,
+     "json_minimal": 39.82
+    },
+    "col_mean": {
+     "xml_call": 63.04,
+     "nl_intent": 59.86,
+     "json_object": 53.98,
+     "python_call": 48.23,
+     "tool_call_tags": 47.51
+    }
+   },
+   "symmetric": {
+    "cells": {
+     "xml_schema": {
+      "xml_call": 69.8,
+      "nl_intent": 64.3,
+      "json_object": 76.2,
+      "python_call": 69.2,
+      "tool_call_tags": 65.5
+     },
+     "python_stub": {
+      "xml_call": 65.1,
+      "nl_intent": 64.5,
+      "json_object": 75.7,
+      "python_call": 71.3,
+      "tool_call_tags": 64.2
+     },
+     "natural_language": {
+      "xml_call": 67.5,
+      "nl_intent": 66.3,
+      "json_object": 72.1,
+      "python_call": 58.4,
+      "tool_call_tags": 63.2
+     },
+     "typescript": {
+      "xml_call": 65.9,
+      "nl_intent": 61.8,
+      "json_object": 72.3,
+      "python_call": 61.3,
+      "tool_call_tags": 62.1
+     },
+     "markdown_table": {
+      "xml_call": 61.7,
+      "nl_intent": 61.6,
+      "json_object": 69.2,
+      "python_call": 65.4,
+      "tool_call_tags": 59.9
+     },
+     "json_schema_openai": {
+      "xml_call": 63.9,
+      "nl_intent": 58.5,
+      "json_object": 70.2,
+      "python_call": 64.0,
+      "tool_call_tags": 58.4
+     },
+     "yaml_schema": {
+      "xml_call": 63.5,
+      "nl_intent": 59.9,
+      "json_object": 69.5,
+      "python_call": 62.9,
+      "tool_call_tags": 57.6
+     },
+     "json_minimal": {
+      "xml_call": 47.0,
+      "nl_intent": 44.3,
+      "json_object": 43.8,
+      "python_call": 42.1,
+      "tool_call_tags": 36.5
+     }
+    },
+    "row_mean": {
+     "xml_schema": 69.01,
+     "python_stub": 68.18,
+     "natural_language": 65.51,
+     "typescript": 64.67,
+     "markdown_table": 63.54,
+     "json_schema_openai": 63.01,
+     "yaml_schema": 62.68,
+     "json_minimal": 42.73
+    },
+    "col_mean": {
+     "xml_call": 63.04,
+     "nl_intent": 60.15,
+     "json_object": 68.62,
+     "python_call": 61.84,
+     "tool_call_tags": 58.43
+    }
+   },
+   "as_written": {
+    "cells": {
+     "python_stub": {
+      "xml_call": 52.0,
+      "nl_intent": 50.0,
+      "json_object": 63.2,
+      "python_call": 60.4,
+      "tool_call_tags": 55.6
+     },
+     "xml_schema": {
+      "xml_call": 51.9,
+      "nl_intent": 38.7,
+      "json_object": 57.6,
+      "python_call": 51.5,
+      "tool_call_tags": 50.8
+     },
+     "markdown_table": {
+      "xml_call": 47.5,
+      "nl_intent": 45.9,
+      "json_object": 54.7,
+      "python_call": 51.4,
+      "tool_call_tags": 48.4
+     },
+     "json_schema_openai": {
+      "xml_call": 49.8,
+      "nl_intent": 37.4,
+      "json_object": 57.0,
+      "python_call": 51.0,
+      "tool_call_tags": 49.3
+     },
+     "yaml_schema": {
+      "xml_call": 48.6,
+      "nl_intent": 37.3,
+      "json_object": 55.7,
+      "python_call": 49.1,
+      "tool_call_tags": 48.0
+     },
+     "typescript": {
+      "xml_call": 45.7,
+      "nl_intent": 39.3,
+      "json_object": 54.4,
+      "python_call": 47.0,
+      "tool_call_tags": 49.4
+     },
+     "natural_language": {
+      "xml_call": 44.5,
+      "nl_intent": 39.4,
+      "json_object": 50.5,
+      "python_call": 39.6,
+      "tool_call_tags": 45.5
+     },
+     "json_minimal": {
+      "xml_call": 37.6,
+      "nl_intent": 28.6,
+      "json_object": 38.7,
+      "python_call": 36.0,
+      "tool_call_tags": 33.2
+     }
+    },
+    "row_mean": {
+     "python_stub": 56.24,
+     "xml_schema": 50.1,
+     "markdown_table": 49.58,
+     "json_schema_openai": 48.88,
+     "yaml_schema": 47.72,
+     "typescript": 47.14,
+     "natural_language": 43.89,
+     "json_minimal": 34.82
+    },
+    "col_mean": {
+     "xml_call": 47.19,
+     "nl_intent": 39.57,
+     "json_object": 53.98,
+     "python_call": 48.23,
+     "tool_call_tags": 47.51
+    }
+   }
+  },
+  "ratios": {
+   "main": 2.0,
+   "symmetric": 1.68,
+   "as_written": 1.22
+  },
+  "checkpoints": 35,
+  "cells": 8400
+ }
+}

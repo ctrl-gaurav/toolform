@@ -1,0 +1,60 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "get_forecast",
+      "description": "Get the weather forecast for a city.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "city": {"type": "string", "description": "City name, for example Denver."},
+          "days": {"type": "integer", "minimum": 1, "maximum": 7, "default": 3, "description": "How many days to forecast."},
+          "units": {"type": "string", "enum": ["metric", "imperial"], "default": "metric", "description": "Unit system for temperatures."}
+        },
+        "required": ["city"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "search_flights",
+      "description": "Search one-way flights between two airports on a date.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "origin": {"type": "string", "minLength": 3, "maxLength": 3, "description": "IATA code of the departure airport, for example SFO."},
+          "destination": {"type": "string", "minLength": 3, "maxLength": 3, "description": "IATA code of the arrival airport."},
+          "date": {"type": "string", "format": "date", "description": "Departure date, YYYY-MM-DD."},
+          "cabin": {"type": "string", "enum": ["economy", "premium", "business", "first"], "default": "economy", "description": "Cabin class."}
+        },
+        "required": ["origin", "destination", "date"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "create_event",
+      "description": "Create a calendar event.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "title": {"type": "string", "minLength": 1, "maxLength": 200, "description": "Event title."},
+          "start": {"type": "string", "format": "date-time", "description": "Start time, ISO 8601."},
+          "duration_minutes": {"type": "integer", "minimum": 5, "maximum": 1440, "default": 30, "description": "Length of the event."},
+          "reminder": {
+            "type": "object",
+            "description": "When and how to remind the attendees.",
+            "properties": {
+              "minutes_before": {"type": "integer", "minimum": 0, "description": "Minutes before the start."},
+              "method": {"type": "string", "enum": ["email", "popup"], "description": "How to remind."}
+            },
+            "required": ["minutes_before"]
+          }
+        },
+        "required": ["title", "start"]
+      }
+    }
+  }
+]

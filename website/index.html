@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToolForm: tool interfaces, chosen by measurement</title>
+    <meta
+      name="description"
+      content="Choose, render, parse and guard the tool interface of an LLM agent, from a study of 129 formats, 31 protocols and 112 models."
+    />
+    <meta name="theme-color" content="#06080C" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="canonical" href="https://ctrl-gaurav.github.io/toolform/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ToolForm" />
+    <meta property="og:title" content="ToolForm: tool interfaces, chosen by measurement" />
+    <meta
+      property="og:description"
+      content="Choose, render, parse and guard the tool interface of an LLM agent, from a study of 129 formats, 31 protocols and 112 models."
+    />
+    <meta property="og:url" content="https://ctrl-gaurav.github.io/toolform/" />
+    <meta property="og:image" content="https://ctrl-gaurav.github.io/toolform/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="The ToolForm wordmark, the tagline and the study in numbers." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ToolForm: tool interfaces, chosen by measurement" />
+    <meta
+      name="twitter:description"
+      content="Choose, render, parse and guard the tool interface of an LLM agent, from a study of 129 formats, 31 protocols and 112 models."
+    />
+    <meta name="twitter:image" content="https://ctrl-gaurav.github.io/toolform/og.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600&display=swap"
+    />
+    <script>
+      // Set the theme before first paint so there is no flash of the wrong one.
+      // Dark is the default; a saved choice wins.
+      (function () {
+        var saved = null;
+        try {
+          saved = localStorage.getItem("toolform-theme");
+        } catch (e) {}
+        document.documentElement.dataset.theme = saved === "light" || saved === "dark" ? saved : "dark";
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <p style="font-family: system-ui, sans-serif; padding: 24px">
+        ToolForm's site needs JavaScript. The framework's documentation is also in the repository:
+        <a href="https://github.com/ctrl-gaurav/toolform/tree/main/docs">docs on GitHub</a>.
+      </p>
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

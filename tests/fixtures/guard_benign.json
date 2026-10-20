@@ -1,0 +1,16 @@
+[
+  "Get the current weather for a city. Returns temperature, humidity and wind speed.",
+  "Search the web and return the ten most relevant pages with their titles and snippets.",
+  "Create a calendar event. The start time must be in ISO 8601 format.",
+  "Send an email to one or more recipients. Attachments are limited to 10 MB.",
+  "Always returns a JSON object with a status field.",
+  "The number of results to return, between 1 and 100.",
+  "Deletes the file at the given path. This cannot be undone.",
+  "Query a SQL database in read-only mode. Only SELECT statements are allowed.",
+  "Translate text between two languages; auto-detects the source language when it is not given.",
+  "Upload a file to the shared drive and return its link.",
+  "Runs silently in the background and reports progress in the result.",
+  "Before the first call in a session, the tool may take a few seconds to warm up.",
+  "Convert an amount between currencies using the daily reference rates.",
+  "Look up a stock quote by ticker symbol, for example AAPL or MSFT."
+]

@@ -1,0 +1,13 @@
+{
+  "duplicate": [
+    {"type": "function", "function": {"name": "a", "parameters": {"type": "object", "properties": {}}}},
+    {"type": "function", "function": {"name": "a", "parameters": {"type": "object", "properties": {}}}}
+  ],
+  "no_name": [
+    {"type": "function", "function": {"description": "Nameless.", "parameters": {"type": "object", "properties": {}}}}
+  ],
+  "parameters_not_object": [
+    {"type": "function", "function": {"name": "b", "parameters": [1, 2, 3]}}
+  ],
+  "not_tools": {"hello": "world"}
+}

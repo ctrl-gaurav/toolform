@@ -1,0 +1,270 @@
+{
+ "schema_version": 1,
+ "name": "disclosure",
+ "source": [
+  "paper:tab_disclosure_v2"
+ ],
+ "description": "Names-first two-stage disclosure against the one-shot JSON Schema block, by tool count (percent; selection tokens are mean prompt tokens).",
+ "conditions": {
+  "tier": 3,
+  "regime": "single",
+  "rule": "main",
+  "seeds": "0-2",
+  "checkpoints": 53
+ },
+ "data": {
+  "first_design": [
+   {
+    "n_tools": 4,
+    "reduced": 37.7,
+    "twin_credit": 37.7,
+    "json": 52.45,
+    "minus_json": -14.75
+   },
+   {
+    "n_tools": 16,
+    "reduced": 38.68,
+    "twin_credit": 44.17,
+    "json": 52.21,
+    "minus_json": -8.04
+   },
+   {
+    "n_tools": 256,
+    "reduced": 15.2,
+    "twin_credit": 38.0,
+    "json": 19.35,
+    "minus_json": 18.65
+   }
+  ],
+  "second_design": [
+   {
+    "n_tools": 4,
+    "arm": "names",
+    "checkpoints": 53,
+    "selected": 70.44,
+    "twin": 0.0,
+    "failed": 3.62,
+    "exact_tool": 67.74,
+    "call": 51.65,
+    "json": 59.43,
+    "minus_json": {
+     "value": -6.66,
+     "interval": [
+      -9.66,
+      -3.9
+     ]
+    },
+    "selection_tokens": 209.0
+   },
+   {
+    "n_tools": 4,
+    "arm": "names_desc",
+    "checkpoints": 53,
+    "selected": 87.15,
+    "twin": 0.0,
+    "failed": 2.91,
+    "exact_tool": 83.46,
+    "call": 63.38,
+    "json": 59.43,
+    "minus_json": {
+     "value": 5.17,
+     "interval": [
+      1.23,
+      8.58
+     ]
+    },
+    "selection_tokens": 234.0
+   },
+   {
+    "n_tools": 4,
+    "arm": "oracle",
+    "checkpoints": 53,
+    "selected": 100.0,
+    "twin": 0.0,
+    "failed": 0.0,
+    "exact_tool": 94.39,
+    "call": 69.94,
+    "json": 59.43,
+    "minus_json": {
+     "value": 9.11,
+     "interval": [
+      5.51,
+      12.26
+     ]
+    },
+    "selection_tokens": 0.0
+   },
+   {
+    "n_tools": 16,
+    "arm": "names",
+    "checkpoints": 53,
+    "selected": 69.64,
+    "twin": 14.03,
+    "failed": 5.36,
+    "exact_tool": 53.55,
+    "call": 51.1,
+    "json": 51.91,
+    "minus_json": {
+     "value": -3.91,
+     "interval": [
+      -7.62,
+      -0.61
+     ]
+    },
+    "selection_tokens": 292.0
+   },
+   {
+    "n_tools": 16,
+    "arm": "names_desc",
+    "checkpoints": 53,
+    "selected": 77.08,
+    "twin": 16.65,
+    "failed": 4.72,
+    "exact_tool": 58.18,
+    "call": 55.58,
+    "json": 51.91,
+    "minus_json": {
+     "value": 1.88,
+     "interval": [
+      -1.99,
+      5.32
+     ]
+    },
+    "selection_tokens": 398.0
+   },
+   {
+    "n_tools": 16,
+    "arm": "oracle",
+    "checkpoints": 53,
+    "selected": 100.0,
+    "twin": 0.0,
+    "failed": 0.0,
+    "exact_tool": 94.14,
+    "call": 67.75,
+    "json": 51.91,
+    "minus_json": {
+     "value": 16.31,
+     "interval": [
+      12.6,
+      20.0
+     ]
+    },
+    "selection_tokens": 0.0
+   },
+   {
+    "n_tools": 64,
+    "arm": "names",
+    "checkpoints": 53,
+    "selected": 73.19,
+    "twin": 19.14,
+    "failed": 6.29,
+    "exact_tool": 51.98,
+    "call": 53.62,
+    "json": 45.67,
+    "minus_json": {
+     "value": 6.56,
+     "interval": [
+      1.54,
+      11.84
+     ]
+    },
+    "selection_tokens": 609.0
+   },
+   {
+    "n_tools": 64,
+    "arm": "names_desc",
+    "checkpoints": 53,
+    "selected": 79.61,
+    "twin": 20.88,
+    "failed": 5.35,
+    "exact_tool": 56.67,
+    "call": 57.74,
+    "json": 45.67,
+    "minus_json": {
+     "value": 11.24,
+     "interval": [
+      6.42,
+      16.64
+     ]
+    },
+    "selection_tokens": 1044.0
+   },
+   {
+    "n_tools": 64,
+    "arm": "oracle",
+    "checkpoints": 53,
+    "selected": 100.0,
+    "twin": 0.0,
+    "failed": 0.0,
+    "exact_tool": 94.58,
+    "call": 67.12,
+    "json": 45.67,
+    "minus_json": {
+     "value": 20.74,
+     "interval": [
+      16.08,
+      25.78
+     ]
+    },
+    "selection_tokens": 0.0
+   },
+   {
+    "n_tools": 256,
+    "arm": "names",
+    "checkpoints": 53,
+    "selected": 46.48,
+    "twin": 25.77,
+    "failed": 7.72,
+    "exact_tool": 20.05,
+    "call": 36.38,
+    "json": 19.75,
+    "minus_json": {
+     "value": 18.97,
+     "interval": [
+      11.37,
+      27.15
+     ]
+    },
+    "selection_tokens": 1877.0
+   },
+   {
+    "n_tools": 256,
+    "arm": "names_desc",
+    "checkpoints": 53,
+    "selected": 57.22,
+    "twin": 31.95,
+    "failed": 7.28,
+    "exact_tool": 24.32,
+    "call": 44.72,
+    "json": 19.75,
+    "minus_json": {
+     "value": 26.72,
+     "interval": [
+      18.32,
+      34.98
+     ]
+    },
+    "selection_tokens": 3617.0
+   },
+   {
+    "n_tools": 256,
+    "arm": "oracle",
+    "checkpoints": 53,
+    "selected": 100.0,
+    "twin": 0.0,
+    "failed": 0.0,
+    "exact_tool": 94.89,
+    "call": 71.29,
+    "json": 19.75,
+    "minus_json": {
+     "value": 49.52,
+     "interval": [
+      41.17,
+      58.05
+     ]
+    },
+    "selection_tokens": 0.0
+   }
+  ]
+ }
+}

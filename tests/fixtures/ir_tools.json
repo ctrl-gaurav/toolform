@@ -1,0 +1,140 @@
+{
+ "universe_id": "fixture",
+ "seed": null,
+ "meta": {},
+ "tools": [
+  {
+   "name": "legal_draft_v3",
+   "description": "Draft a new contract. Works on the contracts and clauses data set.",
+   "params": [
+    {
+     "name": "counterparty",
+     "type": {
+      "kind": "string"
+     },
+     "required": true,
+     "description": "Other party."
+    },
+    {
+     "name": "value",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": true,
+     "description": "Contract value. Value must be at least 0."
+    },
+    {
+     "name": "term_months",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 1,
+       "maximum": 600
+      }
+     },
+     "required": true,
+     "description": "Length of the term."
+    },
+    {
+     "name": "auto_renew",
+     "type": {
+      "kind": "boolean"
+     },
+     "required": false,
+     "description": "Whether it renews automatically.",
+     "default": false
+    },
+    {
+     "name": "contract_details",
+     "type": {
+      "kind": "object",
+      "fields": [
+       {
+        "name": "contract_id",
+        "type": {
+         "kind": "string"
+        },
+        "required": false,
+        "description": "Contract number."
+       },
+       {
+        "name": "status",
+        "type": {
+         "kind": "enum",
+         "enum_values": [
+          "draft",
+          "review",
+          "signed",
+          "expired"
+         ],
+         "base": "string"
+        },
+        "required": false,
+        "description": "Where it stands."
+       }
+      ]
+     },
+     "required": false,
+     "description": "Details of the contract."
+    }
+   ],
+   "domain": "legal",
+   "category": "legal",
+   "origin": "sample",
+   "returns": {
+    "kind": "object"
+   },
+   "returns_description": "the contract id"
+  },
+  {
+   "name": "convert_currency",
+   "description": "Convert an amount between currencies.",
+   "params": [
+    {
+     "name": "amount",
+     "type": {
+      "kind": "number",
+      "constraints": {
+       "minimum": 0
+      }
+     },
+     "required": true,
+     "description": "Amount."
+    },
+    {
+     "name": "to",
+     "type": {
+      "kind": "enum",
+      "enum_values": [
+       "USD",
+       "EUR",
+       "JPY"
+      ],
+      "base": "string"
+     },
+     "required": true,
+     "description": "Target currency."
+    },
+    {
+     "name": "round_to",
+     "type": {
+      "kind": "integer",
+      "constraints": {
+       "minimum": 0,
+       "maximum": 6
+      }
+     },
+     "required": false,
+     "description": "Decimals.",
+     "default": 2
+    }
+   ],
+   "domain": "finance",
+   "category": "finance",
+   "origin": "user"
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+{
+  "tools": [
+    {
+      "name": "lookup_order",
+      "description": "Look up an order by its number.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "order_id": {"type": "string", "description": "Order number.", "pattern": "^ORD-[0-9]+$"},
+          "include_items": {"type": "boolean", "default": false, "description": "Whether to list the items."}
+        },
+        "required": ["order_id"]
+      }
+    },
+    {
+      "name": "refund",
+      "description": "Refund part or all of an order.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "order_id": {"type": "string", "description": "Order number."},
+          "amount": {"type": "number", "exclusiveMinimum": 0, "description": "Amount to refund."},
+          "reason": {"type": "string", "enum": ["damaged", "late", "other"], "description": "Why."}
+        },
+        "required": ["order_id", "amount"]
+      }
+    }
+  ]
+}

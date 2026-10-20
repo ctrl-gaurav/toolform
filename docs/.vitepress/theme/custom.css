@@ -1,0 +1,299 @@
+/* ToolForm docs theme: the site's mint accent, full-width pages, polished surfaces */
+:root {
+  --vp-c-brand-1: #2fb8a0;
+  --vp-c-brand-2: #4fe3c1;
+  --vp-c-brand-3: #1f9c86;
+  --vp-c-brand-soft: rgba(79, 227, 193, 0.14);
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, #4fe3c1 10%, #2fb8a0 50%, #3987e5 90%);
+
+  --vp-home-hero-image-background-image: linear-gradient(120deg, #4fe3c1 30%, #3987e5);
+  --vp-home-hero-image-filter: blur(64px);
+
+  --vp-code-line-number-color: rgba(148, 163, 184, 0.45);
+}
+
+.dark {
+  --vp-c-bg: #06080c;
+  --vp-c-bg-alt: #06080c;
+  --vp-c-bg-soft: #0b0f16;
+  --vp-code-block-bg: #0b0f16;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---- Nav: keep the wordmark logo crisp and a comfortable size ---- */
+.VPNavBarTitle .logo {
+  height: 26px;
+  width: auto;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+.VPNavBarTitle:hover .logo {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 2px 10px rgba(79, 227, 193, 0.35));
+}
+
+/* ---- Hero buttons: gradient brand ---- */
+.VPButton.brand {
+  border-color: transparent;
+  background: linear-gradient(120deg, #4fe3c1, #2fb8a0, #3987e5);
+  background-size: 200% auto;
+  color: #06080c;
+  font-weight: 600;
+  transition: background-position 0.4s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+.VPButton.brand:hover {
+  background-position: right center;
+  box-shadow: 0 8px 28px -8px rgba(79, 227, 193, 0.6);
+  transform: translateY(-1px);
+}
+
+/* ---- Inline code: brand tint with theme-correct contrast ----
+   Light mode needs a DARK indigo (the old pale #7cf0d5 was unreadable on white);
+   dark mode keeps the light indigo. */
+.vp-doc :not(pre) > code {
+  color: #0b7a66;
+  background: rgba(99, 102, 241, 0.1);
+  border-radius: 6px;
+  font-weight: 500;
+}
+.dark .vp-doc :not(pre) > code {
+  color: #7cf0d5;
+  background: rgba(79, 227, 193, 0.12);
+}
+/* inline code inside headings/links should inherit, not fight, the heading color */
+.vp-doc h1 code,
+.vp-doc h2 code,
+.vp-doc h3 code,
+.vp-doc h4 code {
+  color: var(--vp-c-text-1);
+  background: rgba(127, 127, 127, 0.12);
+}
+
+/* ---- Theme-swapped architecture diagram ---- */
+.light-only { display: none; }
+html:not(.dark) .light-only { display: initial; }
+html:not(.dark) .dark-only { display: none; }
+
+/* ---- Code blocks: rounded, soft ring, language tag ---- */
+.vp-doc div[class*="language-"] {
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  box-shadow: 0 12px 32px -18px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+}
+.vp-doc div[class*="language-"] .lang {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0.55;
+}
+.vp-doc div[class*="language-"]:hover .lang {
+  opacity: 0.9;
+}
+.vp-doc [class*="language-"] code .highlighted {
+  background: rgba(79, 227, 193, 0.12);
+  border-radius: 3px;
+}
+/* gradient bar down the left of code blocks */
+.vp-doc div[class*="language-"]::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #4fe3c1, #2fb8a0, #3987e5);
+  opacity: 0.7;
+}
+
+/* ---- Feature cards: hover lift + brand edge ---- */
+.VPFeature {
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.VPFeature:hover {
+  transform: translateY(-4px);
+  border-color: rgba(79, 227, 193, 0.45);
+  box-shadow: 0 16px 40px -24px rgba(79, 227, 193, 0.7);
+}
+
+/* ---- Tables: rounded, zebra, sticky-feeling header ---- */
+.vp-doc table {
+  display: table;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.vp-doc th {
+  background: var(--vp-c-bg-soft);
+  font-weight: 600;
+}
+.vp-doc tr:nth-child(2n) td {
+  background: rgba(148, 163, 184, 0.04);
+}
+.vp-doc td,
+.vp-doc th {
+  border-color: rgba(148, 163, 184, 0.12);
+}
+
+/* ---- Custom blocks: brand accents ---- */
+.vp-doc .custom-block.tip {
+  border-color: var(--vp-c-brand-1);
+}
+.vp-doc .custom-block.info {
+  border-color: var(--vp-c-brand-2);
+}
+
+/* ---- Links: animated brand underline ---- */
+.vp-doc a:not(.header-anchor):not(.VPButton) {
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+/* ---- Headings: a touch more presence ---- */
+.vp-doc h2 {
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+  padding-top: 1.4rem;
+}
+.vp-doc h1 + p {
+  font-size: 1.05rem;
+}
+
+/* ---- Intro action buttons (docs landing) ---- */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.6rem 0 0.5rem;
+}
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 10px;
+  padding: 0.5rem 1.05rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  border: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-1);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.hero-btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--vp-c-brand-1);
+}
+.hero-btn.primary {
+  border-color: transparent;
+  color: #06080c;
+  background: linear-gradient(120deg, #4fe3c1, #2fb8a0, #3987e5);
+  background-size: 200% auto;
+}
+.hero-btn.primary:hover {
+  background-position: right center;
+  box-shadow: 0 8px 24px -8px rgba(79, 227, 193, 0.6);
+}
+
+/* =========================================================================
+   Full-width documentation layout: the sidebar on the left, the page using
+   the rest of the screen (no wide empty gutters), the outline on the right.
+   ========================================================================= */
+:root {
+  --vp-layout-max-width: 100%;
+  --vp-sidebar-width: 280px;
+}
+@media (min-width: 960px) {
+  .VPDoc:not(.has-sidebar) .container,
+  .VPDoc.has-sidebar .container {
+    max-width: none !important;
+  }
+  .VPDoc .content-container,
+  .VPDoc.has-aside .content-container {
+    max-width: 1080px !important;
+  }
+  .VPDoc .content {
+    padding-left: 48px !important;
+    padding-right: 48px !important;
+  }
+  .VPDoc.has-aside .aside {
+    max-width: 260px;
+  }
+}
+@media (min-width: 1440px) {
+  .VPContent.has-sidebar {
+    padding-left: var(--vp-sidebar-width) !important;
+  }
+  .VPSidebar {
+    padding-left: 32px !important;
+    width: var(--vp-sidebar-width) !important;
+  }
+  .VPNavBar.has-sidebar .content {
+    padding-left: var(--vp-sidebar-width) !important;
+  }
+  .VPNavBar.has-sidebar .title {
+    padding-left: 32px !important;
+    width: var(--vp-sidebar-width) !important;
+  }
+  .VPDoc .content-container,
+  .VPDoc.has-aside .content-container {
+    max-width: 1180px !important;
+  }
+}
+/* sidebar: group titles in brand small caps, active item with a gradient rail */
+.VPSidebarItem.level-0 > .item .text {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-2);
+}
+.VPSidebarItem.is-active > .item .link > .text {
+  font-weight: 600;
+}
+.VPSidebarItem.is-active > .item .indicator {
+  background: linear-gradient(180deg, #4fe3c1, #3987e5);
+  width: 3px;
+}
+/* page title with the brand gradient */
+.vp-doc h1 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.light .vp-doc :not(pre) > code,
+html:not(.dark) .vp-doc :not(pre) > code {
+  color: #0b7a66;
+}
+/* variant / option cards used on a few pages */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+  margin: 1.2rem 0;
+}
+.card-grid .c {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  padding: 16px 18px;
+  background: var(--vp-c-bg-soft);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.card-grid .c:hover {
+  transform: translateY(-2px);
+  border-color: var(--vp-c-brand-1);
+}
+.card-grid .c b {
+  display: block;
+  font-family: var(--vp-font-family-mono);
+  margin-bottom: 4px;
+}
+.card-grid .c span {
+  font-size: 0.88rem;
+  color: var(--vp-c-text-2);
+}
+/* inline code inside table cells stays on one line */
+.vp-doc td code {
+  white-space: nowrap;
+}

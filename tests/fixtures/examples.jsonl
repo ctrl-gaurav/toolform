@@ -1,0 +1,5 @@
+{"request": "What is the weather in Paris?", "calls": [{"name": "get_weather", "arguments": {"location": "Paris"}}]}
+{"request": "Weather in Tokyo in fahrenheit for 3 days", "calls": [{"name": "get_weather", "arguments": {"location": "Tokyo", "units": "fahrenheit", "days": 3}}]}
+{"request": "Find flights from SFO to JFK on 2026-10-02", "calls": [{"name": "search_flights", "arguments": {"origin": "SFO", "destination": "JFK", "date": "2026-10-02"}}]}
+
+{"request": "Tell me a joke", "calls": []}

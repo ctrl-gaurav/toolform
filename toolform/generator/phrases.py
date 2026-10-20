@@ -1,0 +1,235 @@
+"""A phrase per domain field for phrase-style requests.
+
+The stored requests cover the main fields with a template and append every
+other bound argument as ``Use <parameter> <value>``: the schema's parameter
+name pasted into the user's sentence, so binding that argument is string
+matching. Under ``request_style: phrase`` the appended
+clause is a phrase a person would say instead, one per field, written here
+by hand. A boolean has two phrases, one per value. The value itself is still
+spoken verbatim, because a gold value must be licensed by the request.
+"""
+
+from __future__ import annotations
+
+from typing import Any
+
+# (domain, field) -> phrase with {v}, or (phrase when true, phrase when false)
+PHRASES: dict[tuple[str, str], str | tuple[str, str]] = {
+    ("calendar", "title"): "called {v}",
+    ("calendar", "day"): "on {v}",
+    ("calendar", "start_hour"): "starting at {v}:00",
+    ("calendar", "duration_minutes"): "lasting {v} minutes",
+    ("calendar", "room"): "in the {v} room",
+    ("calendar", "attendee"): "with {v} attending",
+    ("calendar", "visibility"): "marked {v}",
+    ("calendar", "recurring"): ("repeating every week", "as a one-off"),
+    ("inventory", "sku"): "for item {v}",
+    ("inventory", "warehouse"): "at the {v} warehouse",
+    ("inventory", "quantity"): "{v} units",
+    ("inventory", "unit_price"): "at {v} dollars each",
+    ("inventory", "category"): "under {v}",
+    ("inventory", "reorder_level"): "restocking once it drops to {v}",
+    ("inventory", "discontinued"): ("no longer stocked", "still stocked"),
+    ("geo", "place"): "for {v}",
+    ("geo", "country"): "in {v}",
+    ("geo", "latitude"): "at latitude {v}",
+    ("geo", "longitude"): "at longitude {v}",
+    ("geo", "units"): "in {v}",
+    ("geo", "radius"): "within {v}",
+    ("geo", "mode"): "by {v}",
+    ("finance", "account"): "on account {v}",
+    ("finance", "amount"): "for {v}",
+    ("finance", "currency"): "in {v}",
+    ("finance", "counterparty"): "with {v}",
+    ("finance", "category"): "filed under {v}",
+    ("finance", "posted_on"): "posted on {v}",
+    ("finance", "cleared"): ("already cleared", "not yet cleared"),
+    ("messaging", "recipient"): "to {v}",
+    ("messaging", "channel"): "by {v}",
+    ("messaging", "subject"): "under the subject {v}",
+    ("messaging", "body"): "saying {v}",
+    ("messaging", "priority"): "at {v} priority",
+    ("messaging", "attachments"): "attaching {v}",
+    ("messaging", "read_receipt"): ("asking for a read receipt", "without a read receipt"),
+    ("devices", "device_id"): "for {v}",
+    ("devices", "room"): "in the {v}",
+    ("devices", "state"): "set to {v}",
+    ("devices", "target_value"): "aiming for {v}",
+    ("devices", "brightness"): "at {v} percent brightness",
+    ("devices", "locked"): ("locked", "unlocked"),
+    ("travel", "origin"): "from {v}",
+    ("travel", "destination"): "to {v}",
+    ("travel", "depart_on"): "leaving on {v}",
+    ("travel", "cabin"): "in {v}",
+    ("travel", "passengers"): "for {v} travellers",
+    ("travel", "max_price"): "under {v}",
+    ("travel", "refundable"): ("refundable only", "non-refundable is fine"),
+    ("library", "title"): "the book {v}",
+    ("library", "author"): "by {v}",
+    ("library", "shelf"): "in the {v} section",
+    ("library", "year"): "from {v}",
+    ("library", "copies"): "{v} copies",
+    ("library", "borrower"): "out with {v}",
+    ("library", "overdue"): ("already overdue", "not overdue"),
+    ("health", "patient"): "for patient {v}",
+    ("health", "clinic"): "at the {v} clinic",
+    ("health", "metric"): "tracking {v}",
+    ("health", "value"): "reading {v}",
+    ("health", "taken_on"): "taken on {v}",
+    ("health", "notes"): "noting {v}",
+    ("tickets", "ticket_id"): "for ticket {v}",
+    ("tickets", "requester"): "opened by {v}",
+    ("tickets", "severity"): "at {v}",
+    ("tickets", "queue"): "in the {v} queue",
+    ("tickets", "summary"): "about {v}",
+    ("tickets", "age_days"): "open for {v} days",
+    ("tickets", "escalated"): ("already escalated", "not escalated"),
+    ("media", "track"): "the track {v}",
+    ("media", "artist"): "by {v}",
+    ("media", "genre"): "in the {v} genre",
+    ("media", "length_seconds"): "running {v} seconds",
+    ("media", "rating"): "with a {v}-star rating",
+    ("media", "playlist"): "on the {v} playlist",
+    ("weather", "city"): "for {v}",
+    ("weather", "unit"): "in {v}",
+    ("weather", "days_ahead"): "{v} days out",
+    ("weather", "temperature"): "at {v} degrees",
+    ("weather", "conditions"): "with {v} skies",
+    ("weather", "include_hourly"): ("hour by hour", "daily totals only"),
+    ("hr", "employee_id"): "for employee {v}",
+    ("hr", "department"): "in {v}",
+    ("hr", "leave_type"): "as {v} leave",
+    ("hr", "days"): "for {v} days",
+    ("hr", "start_date"): "from {v}",
+    ("hr", "approved"): ("already approved", "awaiting approval"),
+    ("hr", "salary_band"): "in band {v}",
+    ("ecommerce", "order_id"): "for order {v}",
+    ("ecommerce", "product"): "a {v}",
+    ("ecommerce", "quantity"): "{v} of them",
+    ("ecommerce", "shipping"): "shipped {v}",
+    ("ecommerce", "address"): "delivered to {v}",
+    ("ecommerce", "gift_wrap"): ("gift wrapped", "no gift wrap"),
+    ("ecommerce", "total"): "coming to {v}",
+    ("devops", "service"): "for {v}",
+    ("devops", "environment"): "in {v}",
+    ("devops", "version"): "at version {v}",
+    ("devops", "replicas"): "with {v} replicas",
+    ("devops", "canary_percent"): "sending {v} percent of traffic to it",
+    ("devops", "auto_rollback"): ("rolling back on failure", "no automatic rollback"),
+    ("documents", "path"): "the file {v}",
+    ("documents", "folder"): "in the {v} folder",
+    ("documents", "format"): "as {v}",
+    ("documents", "size_kb"): "at {v} kilobytes",
+    ("documents", "shared_with"): "shared with {v}",
+    ("documents", "read_only"): ("read only", "editable"),
+    ("education", "course_code"): "for {v}",
+    ("education", "student"): "for {v}",
+    ("education", "term"): "in the {v} term",
+    ("education", "grade"): "scoring {v} percent",
+    ("education", "credits"): "worth {v} credits",
+    ("education", "audit"): ("as an audit", "for credit"),
+    ("restaurant", "venue"): "at {v}",
+    ("restaurant", "party_size"): "for {v} people",
+    ("restaurant", "seating"): "with {v} seating",
+    ("restaurant", "dietary"): "on a {v} diet",
+    ("restaurant", "at_time"): "at {v}",
+    ("restaurant", "on_date"): "on {v}",
+    ("fleet", "plate"): "for vehicle {v}",
+    ("fleet", "depot"): "based at the {v} depot",
+    ("fleet", "fuel_percent"): "with {v} percent fuel",
+    ("fleet", "driver"): "driven by {v}",
+    ("fleet", "odometer_km"): "at {v} km on the clock",
+    ("fleet", "in_service"): ("available", "off the road"),
+    ("security", "alert_id"): "for alert {v}",
+    ("security", "source"): "from the {v}",
+    ("security", "risk"): "rated {v} risk",
+    ("security", "user"): "involving {v}",
+    ("security", "count"): "fired {v} times",
+    ("security", "acknowledged"): ("already acknowledged", "not yet acknowledged"),
+    ("agriculture", "plot_id"): "for plot {v}",
+    ("agriculture", "crop"): "planted with {v}",
+    ("agriculture", "hectares"): "covering {v} hectares",
+    ("agriculture", "moisture_percent"): "at {v} percent moisture",
+    ("agriculture", "irrigated"): ("irrigated", "rain-fed"),
+    ("agriculture", "yield_tonnes"): "yielding {v} tonnes",
+    ("research", "paper_id"): "for paper {v}",
+    ("research", "topic"): "in {v}",
+    ("research", "year"): "from {v}",
+    ("research", "citations"): "with {v} citations",
+    ("research", "author"): "by {v}",
+    ("research", "open_access"): ("open access", "paywalled"),
+    ("energy", "meter_id"): "for meter {v}",
+    ("energy", "site"): "at {v}",
+    ("energy", "kwh"): "using {v} kWh",
+    ("energy", "tariff"): "on the {v} tariff",
+    ("energy", "month"): "for {v}",
+    ("energy", "estimated"): ("estimated", "an actual reading"),
+    ("legal", "contract_id"): "for contract {v}",
+    ("legal", "counterparty"): "with {v}",
+    ("legal", "status"): "currently {v}",
+    ("legal", "value"): "worth {v}",
+    ("legal", "term_months"): "over {v} months",
+    ("legal", "auto_renew"): ("renewing automatically", "ending without renewal"),
+    ("logistics", "tracking_code"): "for shipment {v}",
+    ("logistics", "origin"): "from {v}",
+    ("logistics", "destination"): "to {v}",
+    ("logistics", "weight_kg"): "weighing {v} kg",
+    ("logistics", "carrier"): "by {v}",
+    ("logistics", "status"): "currently {v}",
+    ("logistics", "priority"): "at priority {v}",
+    ("logistics", "fragile"): ("handled as fragile", "nothing fragile inside"),
+    ("realestate", "address"): "at {v}",
+    ("realestate", "city"): "in {v}",
+    ("realestate", "price"): "asking {v}",
+    ("realestate", "bedrooms"): "with {v} bedrooms",
+    ("realestate", "listing_type"): "for {v}",
+    ("realestate", "status"): "currently {v}",
+    ("realestate", "furnished"): ("furnished", "unfurnished"),
+    ("realestate", "agent"): "handled by {v}",
+    ("sports", "home_team"): "{v} at home",
+    ("sports", "away_team"): "against {v}",
+    ("sports", "league"): "in the {v}",
+    ("sports", "match_day"): "on {v}",
+    ("sports", "venue"): "at {v}",
+    ("sports", "home_score"): "the home side scoring {v}",
+    ("sports", "away_score"): "the visitors scoring {v}",
+    ("sports", "televised"): ("on television", "not televised"),
+    ("veterinary", "pet_name"): "for {v}",
+    ("veterinary", "species"): "a {v}",
+    ("veterinary", "owner"): "owned by {v}",
+    ("veterinary", "weight_kg"): "weighing {v} kg",
+    ("veterinary", "age_years"): "aged {v}",
+    ("veterinary", "clinic"): "registered at {v}",
+    ("veterinary", "visit_reason"): "in for a {v}",
+    ("veterinary", "vaccinated"): ("with vaccinations up to date", "with vaccinations overdue"),
+    # generator v2's two extra arguments on every create; "*" is any domain
+    ("*", "line_items"): "including {v}",
+    ("*", "due_on"): "due on {v}",
+}
+
+
+def phrase_for(domain: str, field: str, value: Any, spoken: str) -> str:
+    """The clause for one bound argument; ``spoken`` is the value as the
+    template style would say it. A field without a phrase falls back to the
+    spoken value alone, which still licenses it without naming the parameter."""
+    leaf = field.split(".")[-1]
+    if leaf == "limit":  # the generic result cap every listing tool carries
+        return f"at most {spoken} results"
+    p = PHRASES.get((domain, leaf)) or PHRASES.get(("*", leaf))
+    if p is None:
+        return spoken
+    if isinstance(p, tuple):
+        return p[0] if bool(value) else p[1]
+    return p.format(v=spoken)
+
+
+def missing_phrases() -> list[tuple[str, str]]:
+    """Every (domain, field) in the domain table without a phrase; the test keeps it empty."""
+    from .domains import DOMAINS, HELDOUT_DOMAINS
+
+    return [
+        (d.name, f.name)
+        for d in list(DOMAINS) + list(HELDOUT_DOMAINS)
+        for f in d.fields
+        if (d.name, f.name) not in PHRASES
+    ]

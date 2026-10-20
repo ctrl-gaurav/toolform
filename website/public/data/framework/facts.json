@@ -1,0 +1,716 @@
+{
+ "schema_version": 1,
+ "name": "facts",
+ "source": [
+  "paper:prose"
+ ],
+ "description": "The headline facts of the study, each checked against the paper source when the evidence is built.",
+ "conditions": {},
+ "data": [
+  {
+   "id": "n_formats",
+   "value": 129,
+   "interval": null,
+   "unit": "count",
+   "text": "schema formats",
+   "source": "paper:abstract",
+   "check": {
+    "file": "paper/main.tex",
+    "contains": "129"
+   }
+  },
+  {
+   "id": "n_protocols",
+   "value": 31,
+   "interval": null,
+   "unit": "count",
+   "text": "answer protocols",
+   "source": "paper:abstract",
+   "check": {
+    "file": "paper/main.tex",
+    "contains": "31 answer protocols"
+   }
+  },
+  {
+   "id": "n_rules",
+   "value": 3,
+   "interval": null,
+   "unit": "count",
+   "text": "grading rules",
+   "source": "paper:sec_results",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "three grading rules"
+   }
+  },
+  {
+   "id": "n_open_models",
+   "value": 100,
+   "interval": null,
+   "unit": "count",
+   "text": "open-source models",
+   "source": "paper:sec_intro",
+   "check": {
+    "file": "paper/sections/01_introduction.tex",
+    "contains": "100 open-source models"
+   }
+  },
+  {
+   "id": "n_proprietary_models",
+   "value": 12,
+   "interval": null,
+   "unit": "count",
+   "text": "proprietary models",
+   "source": "paper:sec_setup",
+   "check": {
+    "file": "paper/sections/04_setup.tex",
+    "contains": "12 proprietary models"
+   }
+  },
+  {
+   "id": "n_domains",
+   "value": 24,
+   "interval": null,
+   "unit": "count",
+   "text": "generated domains with executable tools",
+   "source": "paper:abstract",
+   "check": {
+    "file": "paper/main.tex",
+    "contains": "24 domains"
+   }
+  },
+  {
+   "id": "n_real_tools",
+   "value": 66,
+   "interval": null,
+   "unit": "count",
+   "text": "real tool schemas",
+   "source": "paper:abstract",
+   "check": {
+    "file": "paper/main.tex",
+    "contains": "66 real tool schemas"
+   }
+  },
+  {
+   "id": "n_real_requests",
+   "value": 1248,
+   "interval": null,
+   "unit": "count",
+   "text": "human-written requests",
+   "source": "paper:abstract",
+   "check": {
+    "file": "paper/main.tex",
+    "contains": "1,248 human-written requests"
+   }
+  },
+  {
+   "id": "n_public_benchmarks",
+   "value": 6,
+   "interval": null,
+   "unit": "count",
+   "text": "public benchmarks",
+   "source": "paper:sec_intro",
+   "check": {
+    "file": "paper/sections/01_introduction.tex",
+    "contains": "6 public benchmarks"
+   }
+  },
+  {
+   "id": "schema_over_names",
+   "value": 57.09,
+   "interval": [
+    50.4,
+    64.02
+   ],
+   "unit": "%",
+   "text": "full schema minus names alone",
+   "source": "paper:tab_ladder",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "57.09"
+   }
+  },
+  {
+   "id": "ladder_names",
+   "value": 2.19,
+   "interval": null,
+   "unit": "%",
+   "text": "schema ladder: tool names alone",
+   "source": "paper:tab_ladder",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "2.19\\%, 25.05\\%, 38.38\\% and 59.28\\%"
+   }
+  },
+  {
+   "id": "ladder_param_names",
+   "value": 25.05,
+   "interval": null,
+   "unit": "%",
+   "text": "schema ladder: names and parameter names",
+   "source": "paper:tab_ladder",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "2.19\\%, 25.05\\%, 38.38\\% and 59.28\\%"
+   }
+  },
+  {
+   "id": "ladder_types",
+   "value": 38.38,
+   "interval": null,
+   "unit": "%",
+   "text": "schema ladder: the minimal schema",
+   "source": "paper:tab_ladder",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "2.19\\%, 25.05\\%, 38.38\\% and 59.28\\%"
+   }
+  },
+  {
+   "id": "ladder_full",
+   "value": 59.28,
+   "interval": null,
+   "unit": "%",
+   "text": "schema ladder: the full JSON Schema",
+   "source": "paper:tab_ladder",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "2.19\\%, 25.05\\%, 38.38\\% and 59.28\\%"
+   }
+  },
+  {
+   "id": "minimal_schema_cost",
+   "value": 19.22,
+   "interval": [
+    15.58,
+    23.05
+   ],
+   "unit": "%",
+   "text": "minimal schema against full JSON Schema",
+   "source": "paper:tab_main",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "19.22"
+   }
+  },
+  {
+   "id": "xml_minus_json_main",
+   "value": 13.8,
+   "interval": [
+    9.16,
+    18.72
+   ],
+   "unit": "%",
+   "text": "XML minus JSON Schema, main rule",
+   "source": "paper:tab_main",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "13.80"
+   }
+  },
+  {
+   "id": "xml_minus_json_symmetric",
+   "value": 1.07,
+   "interval": [
+    -2.82,
+    4.61
+   ],
+   "unit": "%",
+   "text": "XML minus JSON Schema, symmetric rule",
+   "source": "paper:sec_results",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "1.07"
+   }
+  },
+  {
+   "id": "xml_minus_json_as_written",
+   "value": -3.28,
+   "interval": [
+    -6.18,
+    -0.58
+   ],
+   "unit": "%",
+   "text": "XML minus JSON Schema, as written",
+   "source": "paper:tab_main",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "3.28"
+   }
+  },
+  {
+   "id": "protocol_ratio_main",
+   "value": 2.0,
+   "interval": [
+    1.4,
+    3.22
+   ],
+   "unit": "ratio",
+   "text": "protocol spread over format spread, main rule",
+   "source": "paper:tab_protocol",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "[1.40, 3.22]"
+   }
+  },
+  {
+   "id": "protocol_ratio_symmetric",
+   "value": 1.68,
+   "interval": [
+    1.07,
+    3.11
+   ],
+   "unit": "ratio",
+   "text": "protocol spread over format spread, symmetric rule",
+   "source": "paper:tab_protocol",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "[1.07, 3.11]"
+   }
+  },
+  {
+   "id": "protocol_ratio_as_written",
+   "value": 1.22,
+   "interval": [
+    0.86,
+    1.67
+   ],
+   "unit": "ratio",
+   "text": "protocol spread over format spread, as written",
+   "source": "paper:tab_protocol",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "[0.86, 1.67]"
+   }
+  },
+  {
+   "id": "grammar_hallucinated_free",
+   "value": 1.07,
+   "interval": null,
+   "unit": "%",
+   "text": "hallucinated tool names without a grammar",
+   "source": "paper:sec_results",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "1.07\\% to 0.01\\%"
+   }
+  },
+  {
+   "id": "grammar_hallucinated_fixed",
+   "value": 0.01,
+   "interval": null,
+   "unit": "%",
+   "text": "hallucinated tool names with a fixed grammar",
+   "source": "paper:sec_results",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "1.07\\% to 0.01\\%"
+   }
+  },
+  {
+   "id": "injection_min",
+   "value": 38.48,
+   "interval": null,
+   "unit": "%",
+   "text": "hidden instruction followed, lowest format that shows a description",
+   "source": "paper:tab_pressure",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "38.48 to 54.16"
+   }
+  },
+  {
+   "id": "injection_max",
+   "value": 54.16,
+   "interval": null,
+   "unit": "%",
+   "text": "hidden instruction followed, highest format that shows a description",
+   "source": "paper:tab_pressure",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "38.48 to 54.16"
+   }
+  },
+  {
+   "id": "injection_decoy_min",
+   "value": 5.22,
+   "interval": null,
+   "unit": "%",
+   "text": "decoy tool called, lowest format",
+   "source": "paper:tab_pressure",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "5.22 to 8.45"
+   }
+  },
+  {
+   "id": "injection_decoy_max",
+   "value": 8.45,
+   "interval": null,
+   "unit": "%",
+   "text": "decoy tool called, highest format",
+   "source": "paper:tab_pressure",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "5.22 to 8.45"
+   }
+  },
+  {
+   "id": "trust_line_sentinel",
+   "value": -0.35,
+   "interval": [
+    -1.49,
+    0.7
+   ],
+   "unit": "%",
+   "text": "effect of a trust sentence, sentinel payload",
+   "source": "paper:tab_injection_trust",
+   "check": {
+    "file": "paper/sections/appendix_pressure.tex",
+    "contains": "0.35"
+   }
+  },
+  {
+   "id": "trust_line_valid",
+   "value": 0.23,
+   "interval": [
+    -0.74,
+    1.23
+   ],
+   "unit": "%",
+   "text": "effect of a trust sentence, valid payload",
+   "source": "paper:tab_injection_trust",
+   "check": {
+    "file": "paper/sections/appendix_pressure.tex",
+    "contains": "0.35"
+   }
+  },
+  {
+   "id": "hijack_schema_valid",
+   "value": 58.1,
+   "interval": null,
+   "unit": "%",
+   "text": "followed hijacks that pass schema validation",
+   "source": "paper:app_pressure",
+   "check": {
+    "file": "paper/sections/appendix_pressure.tex",
+    "contains": "58.1\\%"
+   }
+  },
+  {
+   "id": "descriptions_off_min",
+   "value": -1.86,
+   "interval": null,
+   "unit": "%",
+   "text": "accuracy effect of dropping descriptions, lowest",
+   "source": "paper:sec_results",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "$-1.86$\\% to $+1.94$\\%"
+   }
+  },
+  {
+   "id": "descriptions_off_max",
+   "value": 1.94,
+   "interval": null,
+   "unit": "%",
+   "text": "accuracy effect of dropping descriptions, highest",
+   "source": "paper:sec_results",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "$-1.86$\\% to $+1.94$\\%"
+   }
+  },
+  {
+   "id": "descriptions_off_python_stub",
+   "value": -12.76,
+   "interval": null,
+   "unit": "%",
+   "text": "Python function signature without its docstring",
+   "source": "paper:tab_ladder",
+   "check": {
+    "file": "paper/sections/appendix_controls.tex",
+    "contains": "12.76"
+   }
+  },
+  {
+   "id": "tools_1",
+   "value": 64.2,
+   "interval": null,
+   "unit": "%",
+   "text": "strict-call accuracy at 1 tool",
+   "source": "paper:tab_count",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "41.01"
+   }
+  },
+  {
+   "id": "tools_256",
+   "value": 23.19,
+   "interval": null,
+   "unit": "%",
+   "text": "strict-call accuracy at 256 tools",
+   "source": "paper:tab_count",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "41.01"
+   }
+  },
+  {
+   "id": "tool_count_cost",
+   "value": 41.01,
+   "interval": null,
+   "unit": "%",
+   "text": "accuracy lost from 1 to 256 tools",
+   "source": "paper:tab_count",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "41.01"
+   }
+  },
+  {
+   "id": "empty_at_256",
+   "value": 40.77,
+   "interval": null,
+   "unit": "%",
+   "text": "turns with no answer at 256 tools",
+   "source": "paper:tab_count",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "40.77"
+   }
+  },
+  {
+   "id": "two_stage_256_names",
+   "value": 18.97,
+   "interval": [
+    11.37,
+    27.15
+   ],
+   "unit": "%",
+   "text": "names-first two-stage minus one shot at 256 tools",
+   "source": "paper:tab_disclosure_v2",
+   "check": {
+    "file": "paper/sections/appendix_controls.tex",
+    "contains": "18.97"
+   }
+  },
+  {
+   "id": "two_stage_256_names_desc",
+   "value": 26.72,
+   "interval": [
+    18.32,
+    34.98
+   ],
+   "unit": "%",
+   "text": "names-and-descriptions two-stage minus one shot at 256 tools",
+   "source": "paper:tab_disclosure_v2",
+   "check": {
+    "file": "paper/sections/appendix_controls.tex",
+    "contains": "26.72"
+   }
+  },
+  {
+   "id": "two_stage_4_names",
+   "value": -6.66,
+   "interval": [
+    -9.66,
+    -3.9
+   ],
+   "unit": "%",
+   "text": "names-first two-stage minus one shot at 4 tools",
+   "source": "paper:tab_disclosure_v2",
+   "check": {
+    "file": "paper/sections/appendix_controls.tex",
+    "contains": "6.66"
+   }
+  },
+  {
+   "id": "retrieval_whole_128",
+   "value": 12.7,
+   "interval": null,
+   "unit": "%",
+   "text": "a 128-tool panel shown whole",
+   "source": "paper:tab_count",
+   "check": {
+    "file": "paper/tables/tab_count.tex",
+    "contains": "31.19"
+   }
+  },
+  {
+   "id": "retrieval_top8_bm25",
+   "value": 31.19,
+   "interval": null,
+   "unit": "%",
+   "text": "the top 8 of the panel by BM25",
+   "source": "paper:tab_count",
+   "check": {
+    "file": "paper/tables/tab_count.tex",
+    "contains": "31.19"
+   }
+  },
+  {
+   "id": "retrieval_top8_embed",
+   "value": 31.79,
+   "interval": null,
+   "unit": "%",
+   "text": "the top 8 of the panel by an embedding",
+   "source": "paper:tab_count",
+   "check": {
+    "file": "paper/tables/tab_count.tex",
+    "contains": "31.19"
+   }
+  },
+  {
+   "id": "renest_overcredit",
+   "value": 12.5,
+   "interval": [
+    8.6,
+    17.8
+   ],
+   "unit": "%",
+   "text": "human check: re-nesting repairs judged wrong",
+   "source": "paper:sec_results",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "12.5\\%"
+   }
+  },
+  {
+   "id": "measure_eight",
+   "value": 69.18,
+   "interval": null,
+   "unit": "%",
+   "text": "measure eight formats on the target model",
+   "source": "paper:tab_selection",
+   "check": {
+    "file": "paper/sections/appendix_selection.tex",
+    "contains": "69.18"
+   }
+  },
+  {
+   "id": "fitted_rule",
+   "value": 64.35,
+   "interval": null,
+   "unit": "%",
+   "text": "the fitted selection rule",
+   "source": "paper:tab_selection",
+   "check": {
+    "file": "paper/sections/appendix_selection.tex",
+    "contains": "69.18"
+   }
+  },
+  {
+   "id": "always_json",
+   "value": 57.97,
+   "interval": null,
+   "unit": "%",
+   "text": "always JSON Schema, the usual default",
+   "source": "paper:tab_selection",
+   "check": {
+    "file": "paper/sections/appendix_selection.tex",
+    "contains": "69.18"
+   }
+  },
+  {
+   "id": "always_xml",
+   "value": 65.02,
+   "interval": null,
+   "unit": "%",
+   "text": "always XML",
+   "source": "paper:tab_selection",
+   "check": {
+    "file": "paper/sections/appendix_selection.tex",
+    "contains": "69.18"
+   }
+  },
+  {
+   "id": "lookup_count_tier",
+   "value": 65.85,
+   "interval": null,
+   "unit": "%",
+   "text": "best format per (count, tier), a lookup table",
+   "source": "paper:tab_selection",
+   "check": {
+    "file": "paper/sections/appendix_selection.tex",
+    "contains": "69.18"
+   }
+  },
+  {
+   "id": "oracle",
+   "value": 75.0,
+   "interval": null,
+   "unit": "%",
+   "text": "best format per condition in hindsight",
+   "source": "paper:tab_selection",
+   "check": {
+    "file": "paper/sections/appendix_selection.tex",
+    "contains": "69.18"
+   }
+  },
+  {
+   "id": "measure_eight_requests",
+   "value": 400,
+   "interval": null,
+   "unit": "count",
+   "text": "requests to measure eight cells",
+   "source": "paper:app_selection",
+   "check": {
+    "file": "paper/sections/appendix_selection.tex",
+    "contains": "400 requests"
+   }
+  },
+  {
+   "id": "surface_heldout_r2",
+   "value": 0.219,
+   "interval": null,
+   "unit": "R2",
+   "text": "fitted surface, held-out families",
+   "source": "paper:sec_results",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "0.219"
+   }
+  },
+  {
+   "id": "natural_language_minus_best",
+   "value": -11.24,
+   "interval": [
+    -14.93,
+    -7.59
+   ],
+   "unit": "%",
+   "text": "natural language minus the best structured format",
+   "source": "paper:sec_results",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "11.24"
+   }
+  },
+  {
+   "id": "anchor_spread_median",
+   "value": 25,
+   "interval": null,
+   "unit": "%",
+   "text": "median anchor model: spread across the eight formats",
+   "source": "paper:sec_results",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "varies by 25\\%"
+   }
+  },
+  {
+   "id": "open_spread_median",
+   "value": 44,
+   "interval": null,
+   "unit": "%",
+   "text": "median open checkpoint: spread across the eight formats",
+   "source": "paper:sec_results",
+   "check": {
+    "file": "paper/sections/05_results.tex",
+    "contains": "varies by 25\\%"
+   }
+  }
+ ]
+}

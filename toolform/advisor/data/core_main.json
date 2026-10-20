@@ -1,0 +1,305 @@
+{
+ "schema_version": 1,
+ "name": "core_main",
+ "source": [
+  "paper:tab_main"
+ ],
+ "description": "The main grid read under the three grading rules, with the paired contrasts against JSON Schema and the real-tool arm (percent).",
+ "conditions": {
+  "n_tools": 8,
+  "tier": 3,
+  "regime": "single",
+  "checkpoints": 51,
+  "seeds": "0-2"
+ },
+ "data": {
+  "rows": [
+   {
+    "format_id": "xml_schema",
+    "protocol_id": "xml_call",
+    "main": 67.52,
+    "symmetric": 67.52,
+    "as_written": 50.43,
+    "rank_main": 1,
+    "rank_symmetric": 1,
+    "rank_as_written": 3,
+    "minus_json_main": {
+     "value": 13.8,
+     "interval": [
+      9.16,
+      18.72
+     ]
+    },
+    "minus_json_as_written": {
+     "value": -3.28,
+     "interval": [
+      -6.18,
+      -0.58
+     ]
+    },
+    "real_accuracy": 59.09,
+    "real_minus_json": {
+     "value": -4.98,
+     "interval": [
+      -8.86,
+      -1.57
+     ]
+    }
+   },
+   {
+    "format_id": "natural_language",
+    "protocol_id": "nl_intent",
+    "main": 60.3,
+    "symmetric": 60.5,
+    "as_written": 34.41,
+    "rank_main": 2,
+    "rank_symmetric": 7,
+    "rank_as_written": 8,
+    "minus_json_main": {
+     "value": 6.59,
+     "interval": [
+      2.05,
+      11.28
+     ]
+    },
+    "minus_json_as_written": {
+     "value": -19.31,
+     "interval": [
+      -23.41,
+      -15.15
+     ]
+    },
+    "real_accuracy": 45.31,
+    "real_minus_json": {
+     "value": -18.76,
+     "interval": [
+      -23.03,
+      -14.55
+     ]
+    }
+   },
+   {
+    "format_id": "python_stub",
+    "protocol_id": "python_call",
+    "main": 55.08,
+    "symmetric": 64.77,
+    "as_written": 55.08,
+    "rank_main": 3,
+    "rank_symmetric": 4,
+    "rank_as_written": 1,
+    "minus_json_main": {
+     "value": 1.37,
+     "interval": [
+      -3.24,
+      5.83
+     ]
+    },
+    "minus_json_as_written": {
+     "value": 1.37,
+     "interval": [
+      -3.37,
+      5.71
+     ]
+    },
+    "real_accuracy": 55.56,
+    "real_minus_json": {
+     "value": -8.5,
+     "interval": [
+      -13.79,
+      -3.24
+     ]
+    }
+   },
+   {
+    "format_id": "json_schema_openai",
+    "protocol_id": "json_object",
+    "main": 53.71,
+    "symmetric": 66.44,
+    "as_written": 53.71,
+    "rank_main": 4,
+    "rank_symmetric": 2,
+    "rank_as_written": 2,
+    "minus_json_main": {
+     "value": 0.0,
+     "interval": null
+    },
+    "minus_json_as_written": {
+     "value": 0.0,
+     "interval": null
+    },
+    "real_accuracy": 64.07,
+    "real_minus_json": {
+     "value": 0.0,
+     "interval": null
+    }
+   },
+   {
+    "format_id": "yaml_schema",
+    "protocol_id": "json_object",
+    "main": 49.96,
+    "symmetric": 64.48,
+    "as_written": 49.96,
+    "rank_main": 5,
+    "rank_symmetric": 5,
+    "rank_as_written": 4,
+    "minus_json_main": {
+     "value": -3.75,
+     "interval": [
+      -5.73,
+      -1.92
+     ]
+    },
+    "minus_json_as_written": {
+     "value": -3.75,
+     "interval": [
+      -5.73,
+      -1.91
+     ]
+    },
+    "real_accuracy": 63.01,
+    "real_minus_json": {
+     "value": -1.05,
+     "interval": [
+      -2.35,
+      0.12
+     ]
+    }
+   },
+   {
+    "format_id": "typescript",
+    "protocol_id": "json_object",
+    "main": 48.0,
+    "symmetric": 66.07,
+    "as_written": 48.0,
+    "rank_main": 6,
+    "rank_symmetric": 3,
+    "rank_as_written": 5,
+    "minus_json_main": {
+     "value": -5.71,
+     "interval": [
+      -8.5,
+      -2.81
+     ]
+    },
+    "minus_json_as_written": {
+     "value": -5.71,
+     "interval": [
+      -8.55,
+      -2.82
+     ]
+    },
+    "real_accuracy": 61.92,
+    "real_minus_json": {
+     "value": -2.14,
+     "interval": [
+      -3.7,
+      -0.8
+     ]
+    }
+   },
+   {
+    "format_id": "markdown_table",
+    "protocol_id": "json_object",
+    "main": 47.99,
+    "symmetric": 62.39,
+    "as_written": 47.99,
+    "rank_main": 7,
+    "rank_symmetric": 6,
+    "rank_as_written": 6,
+    "minus_json_main": {
+     "value": -5.73,
+     "interval": [
+      -8.24,
+      -3.37
+     ]
+    },
+    "minus_json_as_written": {
+     "value": -5.73,
+     "interval": [
+      -8.16,
+      -3.36
+     ]
+    },
+    "real_accuracy": 59.07,
+    "real_minus_json": {
+     "value": -5.0,
+     "interval": [
+      -6.75,
+      -3.36
+     ]
+    }
+   },
+   {
+    "format_id": "json_minimal",
+    "protocol_id": "json_object",
+    "main": 34.5,
+    "symmetric": 40.24,
+    "as_written": 34.5,
+    "rank_main": 8,
+    "rank_symmetric": 8,
+    "rank_as_written": 7,
+    "minus_json_main": {
+     "value": -19.22,
+     "interval": [
+      -23.05,
+      -15.58
+     ]
+    },
+    "minus_json_as_written": {
+     "value": -19.22,
+     "interval": [
+      -23.08,
+      -15.5
+     ]
+    },
+    "real_accuracy": 48.36,
+    "real_minus_json": {
+     "value": -15.71,
+     "interval": [
+      -17.95,
+      -13.46
+     ]
+    }
+   }
+  ],
+  "by_rule": {
+   "main": {
+    "xml_schema": 67.52,
+    "natural_language": 60.3,
+    "python_stub": 55.08,
+    "json_schema_openai": 53.71,
+    "yaml_schema": 49.96,
+    "typescript": 48.0,
+    "markdown_table": 47.99,
+    "json_minimal": 34.5
+   },
+   "symmetric": {
+    "xml_schema": 67.52,
+    "natural_language": 60.5,
+    "python_stub": 64.77,
+    "json_schema_openai": 66.44,
+    "yaml_schema": 64.48,
+    "typescript": 66.07,
+    "markdown_table": 62.39,
+    "json_minimal": 40.24
+   },
+   "as_written": {
+    "xml_schema": 50.43,
+    "natural_language": 34.41,
+    "python_stub": 55.08,
+    "json_schema_openai": 53.71,
+    "yaml_schema": 49.96,
+    "typescript": 48.0,
+    "markdown_table": 47.99,
+    "json_minimal": 34.5
+   }
+  },
+  "conditions": {
+   "n_tools": 8,
+   "tier": 3,
+   "regime": "single",
+   "checkpoints": 51,
+   "seeds": "0-2"
+  }
+ }
+}

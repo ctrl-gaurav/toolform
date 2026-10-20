@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ToolForm</title>
+    <!-- GitHub Pages serves this file for any path it does not have. The site
+         routes on the hash, so /toolform/docs/quickstart becomes
+         /toolform/#/docs/quickstart and the router takes it from there. -->
+    <script>
+      (function () {
+        var base = "/toolform/";
+        var path = location.pathname;
+        var rest = path.indexOf(base) === 0 ? path.slice(base.length) : path.replace(/^\//, "");
+        rest = rest.replace(/^index\.html\/?/, "").replace(/\/+$/, "");
+        var root = path.indexOf(base) === 0 ? base : "/";
+        location.replace(root + "#/" + rest + location.search + (location.hash || ""));
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

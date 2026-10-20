@@ -1,0 +1,75 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "get_weather",
+      "description": "Get the current weather for a place.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "location": {"type": "string", "description": "City and country, for example Paris, France.", "minLength": 2},
+          "units": {"type": "string", "enum": ["celsius", "fahrenheit"], "default": "celsius", "description": "Temperature unit."},
+          "days": {"type": "integer", "minimum": 1, "maximum": 14, "default": 1, "description": "Days of forecast."}
+        },
+        "required": ["location"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "create_event",
+      "description": "Create a calendar event.",
+      "parameters": {
+        "type": "object",
+        "$defs": {
+          "Reminder": {
+            "type": "object",
+            "properties": {
+              "minutes": {"type": "integer", "minimum": 0, "description": "Minutes before the start."},
+              "method": {"type": "string", "enum": ["email", "popup"], "description": "How to remind."}
+            },
+            "required": ["minutes"]
+          }
+        },
+        "properties": {
+          "title": {"type": "string", "minLength": 1, "maxLength": 200, "description": "Event title."},
+          "start": {"type": "string", "format": "date-time", "description": "Start time, ISO 8601.", "examples": ["2026-10-01T09:00:00Z"]},
+          "attendees": {
+            "type": "array",
+            "minItems": 1,
+            "description": "People to invite.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "email": {"type": "string", "format": "email", "description": "Email address."},
+                "optional": {"type": "boolean", "default": false, "description": "Whether attendance is optional."}
+              },
+              "required": ["email"]
+            }
+          },
+          "reminder": {"$ref": "#/$defs/Reminder", "description": "A reminder before the event."}
+        },
+        "required": ["title", "start"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "search_flights",
+      "description": "Search one-way flights between two airports.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "origin": {"type": "string", "pattern": "^[A-Z]{3}$", "description": "Origin airport code."},
+          "destination": {"type": "string", "pattern": "^[A-Z]{3}$", "description": "Destination airport code."},
+          "date": {"type": "string", "format": "date", "description": "Travel date."},
+          "passengers": {"type": "integer", "minimum": 1, "maximum": 9, "default": 1, "description": "Number of passengers."},
+          "cabin": {"anyOf": [{"type": "string", "enum": ["economy", "business", "first"]}, {"type": "null"}], "description": "Cabin class."}
+        },
+        "required": ["origin", "destination", "date"]
+      }
+    }
+  }
+]

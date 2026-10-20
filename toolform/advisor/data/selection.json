@@ -1,0 +1,199 @@
+{
+ "schema_version": 1,
+ "name": "selection",
+ "source": [
+  "paper:tab_selection"
+ ],
+ "description": "The fitted selection rule against simple alternatives, scored on measured accuracy with each family held out (percent).",
+ "conditions": {},
+ "data": {
+  "rows": [
+   {
+    "family_label": "Qwen 3.5 122B",
+    "family": "qwen3.5-large",
+    "conditions": 26,
+    "always_json": 90.22,
+    "always_xml": 91.11,
+    "lookup": 91.18,
+    "measure_eight": 90.97,
+    "fitted_rule": 91.11,
+    "oracle": 92.99
+   },
+   {
+    "family_label": "Gemma 4",
+    "family": "gemma4",
+    "conditions": 63,
+    "always_json": 83.09,
+    "always_xml": 85.69,
+    "lookup": 85.1,
+    "measure_eight": 83.51,
+    "fitted_rule": 85.69,
+    "oracle": 88.83
+   },
+   {
+    "family_label": "GLM",
+    "family": "glm",
+    "conditions": 13,
+    "always_json": 78.71,
+    "always_xml": 83.91,
+    "lookup": 83.65,
+    "measure_eight": 83.68,
+    "fitted_rule": 83.91,
+    "oracle": 88.84
+   },
+   {
+    "family_label": "Mistral",
+    "family": "mistral",
+    "conditions": 32,
+    "always_json": 70.17,
+    "always_xml": 83.82,
+    "lookup": 82.52,
+    "measure_eight": 84.17,
+    "fitted_rule": 83.59,
+    "oracle": 85.34
+   },
+   {
+    "family_label": "Qwen 2.5 Coder",
+    "family": "qwen2.5-coder",
+    "conditions": 11,
+    "always_json": 51.67,
+    "always_xml": 79.64,
+    "lookup": 79.94,
+    "measure_eight": 75.67,
+    "fitted_rule": 79.64,
+    "oracle": 81.74
+   },
+   {
+    "family_label": "Qwen 3",
+    "family": "qwen3",
+    "conditions": 77,
+    "always_json": 64.16,
+    "always_xml": 78.1,
+    "lookup": 77.6,
+    "measure_eight": 78.07,
+    "fitted_rule": 77.33,
+    "oracle": 80.56
+   },
+   {
+    "family_label": "phi",
+    "family": "phi",
+    "conditions": 23,
+    "always_json": 53.22,
+    "always_xml": 70.84,
+    "lookup": 69.9,
+    "measure_eight": 70.52,
+    "fitted_rule": 70.19,
+    "oracle": 74.35
+   },
+   {
+    "family_label": "Qwen 2.5",
+    "family": "qwen2.5",
+    "conditions": 66,
+    "always_json": 50.96,
+    "always_xml": 70.45,
+    "lookup": 69.61,
+    "measure_eight": 70.53,
+    "fitted_rule": 70.23,
+    "oracle": 72.85
+   },
+   {
+    "family_label": "Qwen 3.5",
+    "family": "qwen3.5",
+    "conditions": 78,
+    "always_json": 66.17,
+    "always_xml": 69.95,
+    "lookup": 71.57,
+    "measure_eight": 70.5,
+    "fitted_rule": 70.84,
+    "oracle": 76.28
+   },
+   {
+    "family_label": "gpt-oss",
+    "family": "gpt-oss",
+    "conditions": 26,
+    "always_json": 66.48,
+    "always_xml": 46.92,
+    "lookup": 51.54,
+    "measure_eight": 64.83,
+    "fitted_rule": 46.92,
+    "oracle": 80.4
+   },
+   {
+    "family_label": "Llama 3",
+    "family": "llama3",
+    "conditions": 51,
+    "always_json": 44.43,
+    "always_xml": 61.24,
+    "lookup": 60.1,
+    "measure_eight": 59.41,
+    "fitted_rule": 61.53,
+    "oracle": 64.49
+   },
+   {
+    "family_label": "DeepSeek-R1 distil",
+    "family": "deepseek-r1",
+    "conditions": 13,
+    "always_json": 54.21,
+    "always_xml": 60.98,
+    "lookup": 58.55,
+    "measure_eight": 64.65,
+    "fitted_rule": 50.54,
+    "oracle": 71.78
+   },
+   {
+    "family_label": "Gemma 3",
+    "family": "gemma3",
+    "conditions": 46,
+    "always_json": 50.46,
+    "always_xml": 56.58,
+    "lookup": 58.62,
+    "measure_eight": 56.79,
+    "fitted_rule": 56.16,
+    "oracle": 65.56
+   },
+   {
+    "family_label": "Llama tool-RL",
+    "family": "llama3-tool",
+    "conditions": 39,
+    "always_json": 40.06,
+    "always_xml": 44.04,
+    "lookup": 46.41,
+    "measure_eight": 57.08,
+    "fitted_rule": 44.04,
+    "oracle": 66.21
+   },
+   {
+    "family_label": "xLAM",
+    "family": "xlam",
+    "conditions": 10,
+    "always_json": 40.88,
+    "always_xml": 34.28,
+    "lookup": 39.44,
+    "measure_eight": 62.69,
+    "fitted_rule": 34.28,
+    "oracle": 67.64
+   },
+   {
+    "family_label": "SmolLM",
+    "family": "smollm",
+    "conditions": 28,
+    "always_json": 22.62,
+    "always_xml": 22.8,
+    "lookup": 27.92,
+    "measure_eight": 33.8,
+    "fitted_rule": 23.69,
+    "oracle": 42.19
+   }
+  ],
+  "mean": {
+   "conditions": 602,
+   "always_json": 57.97,
+   "always_xml": 65.02,
+   "lookup": 65.85,
+   "measure_eight": 69.18,
+   "fitted_rule": 64.35,
+   "oracle": 75.0
+  },
+  "cells": 55732
+ }
+}

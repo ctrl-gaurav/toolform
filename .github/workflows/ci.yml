@@ -1,0 +1,72 @@
+# CI: lint, tests on Python 3.10-3.13, package build and README check, website and docs builds.
+#
+# Runs on demand (Actions tab -> CI -> Run workflow); uncomment the push and pull_request triggers
+# below to run it on every change.
+name: CI
+
+on:
+  workflow_dispatch:
+  # push:
+  #   branches: [main]
+  # pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "ruff>=0.5"
+      - run: ruff check toolform tests examples
+      - run: ruff format --check toolform tests examples
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - run: pytest --cov=toolform --cov-report=term-missing
+
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install build twine
+      - run: python -m build
+      - run: twine check --strict dist/*
+      - name: Install the wheel and run the CLI
+        run: |
+          python -m venv /tmp/smoke && /tmp/smoke/bin/pip install dist/*.whl
+          /tmp/smoke/bin/toolform version
+          /tmp/smoke/bin/toolform doctor
+          /tmp/smoke/bin/toolform recommend --tools-file examples/tools/openai_tools.json --model Qwen/Qwen3-8B
+
+  site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: cd website && npm ci && npm run build && npx vitest run
+      - run: cd docs && npm ci && npm run build

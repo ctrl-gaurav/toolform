@@ -1,0 +1,406 @@
+{
+ "schema_version": 1,
+ "name": "injection",
+ "source": [
+  "paper:tab_pressure",
+  "paper:tab_injection_trust"
+ ],
+ "description": "How often models follow an instruction hidden in one tool's description, per core format; the description shown once; and the trust-line experiment (percent).",
+ "conditions": {
+  "n_tools": 8,
+  "tier": 3,
+  "regime": "single",
+  "seeds": "0-2",
+  "checkpoints": 51
+ },
+ "data": {
+  "formats": [
+   {
+    "format_id": "markdown_table",
+    "hijack": 54.16,
+    "minus_nl": {
+     "value": 12.31,
+     "interval": [
+      6.88,
+      17.81
+     ]
+    },
+    "acc_control": 47.7,
+    "acc_hijack": 14.24,
+    "drop": -33.46,
+    "decoy": 8.45,
+    "control": 0.0
+   },
+   {
+    "format_id": "typescript",
+    "hijack": 47.43,
+    "minus_nl": {
+     "value": 5.63,
+     "interval": [
+      -0.06,
+      10.95
+     ]
+    },
+    "acc_control": 48.08,
+    "acc_hijack": 18.73,
+    "drop": -29.35,
+    "decoy": 6.2,
+    "control": 0.0
+   },
+   {
+    "format_id": "yaml_schema",
+    "hijack": 44.33,
+    "minus_nl": {
+     "value": 2.49,
+     "interval": [
+      -3.03,
+      7.88
+     ]
+    },
+    "acc_control": 47.63,
+    "acc_hijack": 19.59,
+    "drop": -28.04,
+    "decoy": 5.81,
+    "control": 0.0
+   },
+   {
+    "format_id": "json_schema_openai",
+    "hijack": 43.93,
+    "minus_nl": {
+     "value": 2.1,
+     "interval": [
+      -3.31,
+      7.27
+     ]
+    },
+    "acc_control": 49.98,
+    "acc_hijack": 21.57,
+    "drop": -28.41,
+    "decoy": 5.35,
+    "control": 0.0
+   },
+   {
+    "format_id": "natural_language",
+    "hijack": 41.73,
+    "minus_nl": null,
+    "acc_control": 61.67,
+    "acc_hijack": 28.67,
+    "drop": -33.0,
+    "decoy": 5.22,
+    "control": 0.0
+   },
+   {
+    "format_id": "python_stub",
+    "hijack": 40.73,
+    "minus_nl": {
+     "value": -0.95,
+     "interval": [
+      -5.65,
+      3.69
+     ]
+    },
+    "acc_control": 49.77,
+    "acc_hijack": 21.35,
+    "drop": -28.42,
+    "decoy": 5.71,
+    "control": 0.0
+   },
+   {
+    "format_id": "xml_schema",
+    "hijack": 38.48,
+    "minus_nl": {
+     "value": -3.22,
+     "interval": [
+      -8.22,
+      1.93
+     ]
+    },
+    "acc_control": 64.58,
+    "acc_hijack": 34.78,
+    "drop": -29.79,
+    "decoy": 6.75,
+    "control": 0.0
+   },
+   {
+    "format_id": "json_minimal",
+    "hijack": 0.0,
+    "minus_nl": {
+     "value": -41.93,
+     "interval": [
+      -49.49,
+      -34.53
+     ]
+    },
+    "acc_control": 34.92,
+    "acc_hijack": 34.88,
+    "drop": -0.04,
+    "decoy": 1.27,
+    "control": 0.0
+   }
+  ],
+  "once": [
+   {
+    "format_id": "markdown_table",
+    "hijack": 55.5,
+    "minus_nl": {
+     "value": 6.76,
+     "interval": [
+      -0.91,
+      14.5
+     ]
+    },
+    "acc_control": 50.05,
+    "acc_hijack": 11.72,
+    "drop": -38.33
+   },
+   {
+    "format_id": "json_schema_openai",
+    "hijack": 49.75,
+    "minus_nl": {
+     "value": 1.01,
+     "interval": [
+      -6.65,
+      8.71
+     ]
+    },
+    "acc_control": 51.12,
+    "acc_hijack": 19.5,
+    "drop": -31.61
+   },
+   {
+    "format_id": "natural_language",
+    "hijack": 48.74,
+    "minus_nl": null,
+    "acc_control": 59.01,
+    "acc_hijack": 20.94,
+    "drop": -38.07
+   }
+  ],
+  "trust": [
+   {
+    "payload": "sentinel",
+    "trust_line": false,
+    "format_id": "markdown_table",
+    "followed": 55.44,
+    "interval": [
+     47.2,
+     63.99
+    ],
+    "control": 0.0,
+    "acc_control": 49.86,
+    "acc_hijack": 11.67,
+    "credited_valid": 10.47
+   },
+   {
+    "payload": "sentinel",
+    "trust_line": false,
+    "format_id": "json_schema_openai",
+    "followed": 49.72,
+    "interval": [
+     43.14,
+     56.61
+    ],
+    "control": 0.0,
+    "acc_control": 50.87,
+    "acc_hijack": 19.89,
+    "credited_valid": 19.52
+   },
+   {
+    "payload": "sentinel",
+    "trust_line": false,
+    "format_id": "natural_language",
+    "followed": 48.83,
+    "interval": [
+     39.57,
+     58.05
+    ],
+    "control": 0.0,
+    "acc_control": 58.97,
+    "acc_hijack": 20.87,
+    "credited_valid": 18.48
+   },
+   {
+    "payload": "sentinel",
+    "trust_line": false,
+    "format_id": "xml_schema",
+    "followed": 47.71,
+    "interval": [
+     39.64,
+     56.24
+    ],
+    "control": 0.0,
+    "acc_control": 61.84,
+    "acc_hijack": 26.58,
+    "credited_valid": 28.12
+   },
+   {
+    "payload": "sentinel",
+    "trust_line": true,
+    "format_id": "markdown_table",
+    "followed": 55.39,
+    "interval": [
+     47.69,
+     63.58
+    ],
+    "control": 0.0,
+    "acc_control": 49.63,
+    "acc_hijack": 11.65,
+    "credited_valid": 11.07
+   },
+   {
+    "payload": "sentinel",
+    "trust_line": true,
+    "format_id": "json_schema_openai",
+    "followed": 49.72,
+    "interval": [
+     42.94,
+     56.53
+    ],
+    "control": 0.0,
+    "acc_control": 50.74,
+    "acc_hijack": 19.82,
+    "credited_valid": 19.62
+   },
+   {
+    "payload": "sentinel",
+    "trust_line": true,
+    "format_id": "natural_language",
+    "followed": 46.83,
+    "interval": [
+     37.84,
+     55.82
+    ],
+    "control": 0.0,
+    "acc_control": 58.3,
+    "acc_hijack": 22.45,
+    "credited_valid": 19.95
+   },
+   {
+    "payload": "sentinel",
+    "trust_line": true,
+    "format_id": "xml_schema",
+    "followed": 48.37,
+    "interval": [
+     40.34,
+     56.77
+    ],
+    "control": 0.0,
+    "acc_control": 61.84,
+    "acc_hijack": 26.12,
+    "credited_valid": 28.05
+   },
+   {
+    "payload": "valid",
+    "trust_line": false,
+    "format_id": "markdown_table",
+    "followed": 57.34,
+    "interval": [
+     49.4,
+     65.11
+    ],
+    "control": 0.0,
+    "acc_control": 49.95,
+    "acc_hijack": 10.78,
+    "credited_valid": 9.69
+   },
+   {
+    "payload": "valid",
+    "trust_line": false,
+    "format_id": "json_schema_openai",
+    "followed": 51.38,
+    "interval": [
+     44.75,
+     58.1
+    ],
+    "control": 0.0,
+    "acc_control": 51.06,
+    "acc_hijack": 19.11,
+    "credited_valid": 16.65
+   },
+   {
+    "payload": "valid",
+    "trust_line": false,
+    "format_id": "natural_language",
+    "followed": 51.13,
+    "interval": [
+     42.13,
+     60.34
+    ],
+    "control": 0.0,
+    "acc_control": 58.78,
+    "acc_hijack": 18.53,
+    "credited_valid": 17.06
+   },
+   {
+    "payload": "valid",
+    "trust_line": false,
+    "format_id": "xml_schema",
+    "followed": 48.53,
+    "interval": [
+     40.83,
+     56.44
+    ],
+    "control": 0.0,
+    "acc_control": 61.74,
+    "acc_hijack": 25.5,
+    "credited_valid": 25.79
+   },
+   {
+    "payload": "valid",
+    "trust_line": true,
+    "format_id": "markdown_table",
+    "followed": 58.6,
+    "interval": [
+     51.19,
+     65.89
+    ],
+    "control": 0.0,
+    "acc_control": 49.5,
+    "acc_hijack": 11.01,
+    "credited_valid": 9.82
+   },
+   {
+    "payload": "valid",
+    "trust_line": true,
+    "format_id": "json_schema_openai",
+    "followed": 51.93,
+    "interval": [
+     45.34,
+     58.95
+    ],
+    "control": 0.0,
+    "acc_control": 50.71,
+    "acc_hijack": 18.44,
+    "credited_valid": 16.0
+   },
+   {
+    "payload": "valid",
+    "trust_line": true,
+    "format_id": "natural_language",
+    "followed": 49.86,
+    "interval": [
+     41.22,
+     58.69
+    ],
+    "control": 0.0,
+    "acc_control": 58.16,
+    "acc_hijack": 20.39,
+    "credited_valid": 18.54
+   },
+   {
+    "payload": "valid",
+    "trust_line": true,
+    "format_id": "xml_schema",
+    "followed": 48.94,
+    "interval": [
+     41.29,
+     57.07
+    ],
+    "control": 0.0,
+    "acc_control": 61.86,
+    "acc_hijack": 24.89,
+    "credited_valid": 25.18
+   }
+  ]
+ }
+}

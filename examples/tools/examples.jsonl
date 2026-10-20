@@ -1,0 +1,8 @@
+{"request": "What is the forecast for Denver over the next 5 days?", "calls": [{"name": "get_forecast", "arguments": {"city": "Denver", "days": 5}}]}
+{"request": "Forecast for Oslo in imperial units, 2 days.", "calls": [{"name": "get_forecast", "arguments": {"city": "Oslo", "days": 2, "units": "imperial"}}]}
+{"request": "Find flights from SFO to JFK on 2026-10-02.", "calls": [{"name": "search_flights", "arguments": {"origin": "SFO", "destination": "JFK", "date": "2026-10-02"}}]}
+{"request": "Business class flights from LHR to CDG on 2026-11-15, please.", "calls": [{"name": "search_flights", "arguments": {"origin": "LHR", "destination": "CDG", "date": "2026-11-15", "cabin": "business"}}]}
+{"request": "Put 'Design review' on my calendar at 2026-10-05T15:00:00Z.", "calls": [{"name": "create_event", "arguments": {"title": "Design review", "start": "2026-10-05T15:00:00Z"}}]}
+{"request": "Schedule 'Standup' at 2026-10-06T09:00:00Z for 15 minutes with a popup 5 minutes before.", "calls": [{"name": "create_event", "arguments": {"title": "Standup", "start": "2026-10-06T09:00:00Z", "duration_minutes": 15, "reminder": {"minutes_before": 5, "method": "popup"}}}]}
+{"request": "Tell me a joke about compilers.", "calls": []}
+{"request": "What is the capital of France?", "calls": []}
