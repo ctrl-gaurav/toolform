@@ -7,7 +7,7 @@ import { FindingCard } from "../landing/FindingCard";
 import { HeroField } from "../landing/HeroField";
 import { MiniAdvisor } from "../landing/MiniAdvisor";
 import { PipelineRail } from "../landing/PipelineRail";
-import { docs, GITHUB, PAPER, PYPI } from "../lib/links";
+import { docs, GITHUB, PAPER_PDF, PYPI } from "../lib/links";
 import { useTitle } from "../layout/SiteShell";
 import { ButtonLink } from "../ui/Button";
 import { CopyButton } from "../ui/CopyButton";
@@ -59,11 +59,13 @@ export default function Landing() {
                 Get started
               </a>
               <ButtonLink to="/dashboard/advisor">Open the dashboard</ButtonLink>
+              <a className="fw-btn ghost" href={PAPER_PDF} target="_blank" rel="noreferrer">
+                Paper (PDF)
+              </a>
               <span className="textlinks">
                 <a href={PYPI} target="_blank" rel="noreferrer">
                   PyPI
                 </a>
-                <a href={PAPER}>Paper</a>
                 <span className="faint">arXiv coming soon</span>
                 <a href={GITHUB} target="_blank" rel="noreferrer">
                   GitHub
@@ -168,7 +170,7 @@ export default function Landing() {
           </SectionHead>
           <div className="row">
             <ButtonLink to="/dashboard/evidence">The evidence explorer</ButtonLink>
-            <a className="fw-btn ghost" href={PAPER}>
+            <a className="fw-btn ghost" href={PAPER_PDF} target="_blank" rel="noreferrer">
               Read the paper
             </a>
             <a className="fw-btn ghost" href={docs()}>

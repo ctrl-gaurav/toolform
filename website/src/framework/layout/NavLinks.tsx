@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { DOCS, GITHUB } from "../lib/links";
+import { DOCS, GITHUB, PAPER } from "../lib/links";
 
 export { GITHUB };
 
@@ -18,6 +18,9 @@ export function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
       ))}
       <a href={DOCS} onClick={onNavigate}>
         Docs
+      </a>
+      <a href={PAPER} onClick={onNavigate}>
+        Paper
       </a>
       <a href={GITHUB} className="ext" target="_blank" rel="noreferrer">
         GitHub
