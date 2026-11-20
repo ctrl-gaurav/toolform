@@ -97,6 +97,34 @@ const RESOLVE_MS = 1700;
 const DISSOLVE_MS = 700;
 const FRAME_MS = 1000 / 30;
 
+/* Wrap each line to `width` columns, breaking at a space where possible. A continuation keeps the
+ * line's indent plus two spaces, so wrapped code still reads as code. */
+export function wrapLines(lines: string[], width: number): string[] {
+  const out: string[] = [];
+  for (const line of lines) {
+    if (line.length <= width) {
+      out.push(line);
+      continue;
+    }
+    const indent = " ".repeat(Math.min(line.length - line.trimStart().length + 2, Math.floor(width / 3)));
+    let rest = line;
+    let first = true;
+    while (rest.length > 0) {
+      const room = first ? width : width - indent.length;
+      if (rest.length <= room) {
+        out.push(first ? rest : indent + rest);
+        break;
+      }
+      let cut = rest.lastIndexOf(" ", room);
+      if (cut <= (first ? line.length - line.trimStart().length : 0)) cut = room;
+      out.push((first ? "" : indent) + rest.slice(0, cut).trimEnd());
+      rest = rest.slice(cut).trimStart();
+      first = false;
+    }
+  }
+  return out;
+}
+
 function cssVar(el: Element, name: string, fallback: string) {
   const v = getComputedStyle(el).getPropertyValue(name).trim();
   return v || fallback;
@@ -124,8 +152,16 @@ export function HeroField({ onFormat }: { onFormat?: (format: string) => void })
     const cw = 7.9;
     const lh = 20;
 
+    // The block sits in the free area right of the hero text, centred there, with long lines
+    // wrapped to that width so nothing runs off the edge.
+    let left = 0; // left edge of the free area, in canvas pixels
+    let maxCols = 72;
+    let maxRows = 20;
+    let lines: string[] = [];
+
     const reseed = () => {
-      seeds = FRAGMENTS[frag].lines.map((l) => Array.from({ length: Math.max(l.length, 52) }, () => Math.random()));
+      lines = wrapLines(FRAGMENTS[frag].lines, maxCols).slice(0, maxRows);
+      seeds = lines.map((l) => Array.from({ length: Math.max(l.length, 44) }, () => Math.random()));
     };
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -135,6 +171,12 @@ export function HeroField({ onFormat }: { onFormat?: (format: string) => void })
       canvas.width = Math.round(w * dpr);
       canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const inner = canvas.parentElement?.querySelector(".inner");
+      const textRight = inner ? inner.getBoundingClientRect().right - r.left : w * 0.5;
+      left = Math.max(textRight + 40, w * 0.5);
+      maxCols = Math.max(0, Math.min(72, Math.floor((w - left - 40) / cw)));
+      maxRows = Math.max(0, Math.floor((h - 48) / lh) - 2);
+      reseed();
     };
 
     const draw = (now: number, still = false) => {
@@ -152,13 +194,13 @@ export function HeroField({ onFormat }: { onFormat?: (format: string) => void })
       ctx.clearRect(0, 0, w, h);
       ctx.font = `${font}px "JetBrains Mono", ui-monospace, monospace`;
       ctx.textBaseline = "top";
-      const lines = FRAGMENTS[frag].lines;
-      const cols = Math.max(...lines.map((l) => l.length), 44);
-      // Long lines run off the right edge; the block is placed as if 60 wide.
-      const blockW = Math.min(cols, 60) * cw;
-      const x0 = Math.max(w * 0.52, w - blockW - 48);
-      const y0 = Math.max(24, (h - lines.length * lh) / 2);
-      if (w < 900) return; // on narrow screens the text sits over the field; keep the grid only
+      // On narrow screens the text sits over the field, and with too little room beside it the
+      // block would be unreadable; keep the grid only.
+      if (w < 900 || maxCols < 40 || lines.length === 0) return;
+      const cols = Math.max(...lines.map((l) => l.length));
+      const blockW = cols * cw;
+      const x0 = left + Math.max(0, (w - left - 40 - blockW) / 2);
+      const y0 = Math.max(24 + lh * 1.4, (h - lines.length * lh) / 2);
       const dissolve = !still && t > CYCLE_MS - DISSOLVE_MS ? (t - (CYCLE_MS - DISSOLVE_MS)) / DISSOLVE_MS : 0;
       ctx.fillStyle = faint;
       ctx.globalAlpha = 0.55;
