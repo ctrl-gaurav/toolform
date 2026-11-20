@@ -4,11 +4,24 @@ title: Citing ToolForm
 
 # Citing ToolForm
 
-The paper describing the study behind ToolForm, *ToolForm: A Controlled Study of Tool
-Formatting for Agents*, is coming soon. Until it is posted, please cite the software:
+If you use ToolForm, please cite the paper describing the study behind it, *ToolForm: A
+Controlled Study of Tool Formatting for Agents* ([PDF](https://ctrl-gaurav.github.io/toolform/paper/toolform.pdf) ·
+[paper page](https://ctrl-gaurav.github.io/toolform/paper/); the arXiv link is coming soon):
 
 ```bibtex
-@software{srivastava2026toolform,
+@misc{srivastava2026toolform,
+  title  = {ToolForm: A Controlled Study of Tool Formatting for Agents},
+  author = {Srivastava, Gaurav and Hussain, Aafiya and Fang, Yi and Wang, Xuan},
+  year   = {2026},
+  note   = {Preprint},
+  url    = {https://ctrl-gaurav.github.io/toolform/paper/}
+}
+```
+
+To cite the software itself:
+
+```bibtex
+@software{srivastava2026toolform_software,
   author  = {Srivastava, Gaurav},
   title   = {ToolForm: A Controlled Study of Tool Formatting for Agents},
   year    = {2026},
@@ -17,4 +30,4 @@ Formatting for Agents*, is coming soon. Until it is posted, please cite the soft
 }
 ```
 
-This page will carry the paper's citation once it is available.
+This page will carry the arXiv identifier once the paper is announced.

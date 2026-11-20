@@ -127,7 +127,7 @@ tables as JSON inside the package, so it works offline and needs no GPU.
 ## How it relates to the study
 
 ToolForm is built on the renderers, parsers and graders of a controlled study of tool formatting
-(the paper is coming soon): every renderer and every parser in the package is the one the study
+([the paper](https://ctrl-gaurav.github.io/toolform/paper/toolform.pdf)): every renderer and every parser in the package is the one the study
 used, so a prompt rendered by ToolForm is the prompt the study measured. The study's tables ship
 with the package as the evidence the advisor reads. The rest of the study's code (its run harness,
 law fitting and experiment definitions) and its records will be released separately.

@@ -141,5 +141,5 @@ and a warning. See [Contributing](contributing.md).
 
 ## How do I cite it?
 
-The paper is coming soon. Until then, cite the software; [Citing ToolForm](citing.md)
+Cite the [paper](https://ctrl-gaurav.github.io/toolform/paper/) (arXiv link coming soon); [Citing ToolForm](citing.md)
 has the BibTeX.

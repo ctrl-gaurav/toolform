@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToolForm: A Controlled Study of Tool Formatting for Agents</title>
+    <meta
+      name="description"
+      content="ToolForm: A Controlled Study of Tool Formatting for Agents. Gaurav Srivastava, Aafiya Hussain, Yi Fang, Xuan Wang. Preprint, 2026."
+    />
+    <link rel="canonical" href="https://ctrl-gaurav.github.io/toolform/paper/" />
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+
+    <!-- Bibliographic metadata (Highwire Press tags) read by Google Scholar and reference managers. -->
+    <meta name="citation_title" content="ToolForm: A Controlled Study of Tool Formatting for Agents" />
+    <meta name="citation_author" content="Srivastava, Gaurav" />
+    <meta name="citation_author_institution" content="Virginia Tech" />
+    <meta name="citation_author" content="Hussain, Aafiya" />
+    <meta name="citation_author_institution" content="Virginia Tech" />
+    <meta name="citation_author" content="Fang, Yi" />
+    <meta name="citation_author_institution" content="Virginia Tech" />
+    <meta name="citation_author" content="Wang, Xuan" />
+    <meta name="citation_author_institution" content="Virginia Tech" />
+    <meta name="citation_publication_date" content="2026/10/20" />
+    <meta name="citation_online_date" content="2026/11/20" />
+    <meta name="citation_technical_report_institution" content="Virginia Tech" />
+    <meta name="citation_language" content="en" />
+    <meta name="citation_pdf_url" content="https://ctrl-gaurav.github.io/toolform/paper/toolform.pdf" />
+    <meta name="citation_abstract_html_url" content="https://ctrl-gaurav.github.io/toolform/paper/" />
+    <meta name="citation_keywords" content="tool use; LLM agents; function calling; tool schema formats; benchmark" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="ToolForm: A Controlled Study of Tool Formatting for Agents" />
+    <meta property="og:description" content="129 schema formats, 31 answer protocols, 112 models. Preprint, 2026." />
+    <meta property="og:url" content="https://ctrl-gaurav.github.io/toolform/paper/" />
+    <meta property="og:image" content="https://ctrl-gaurav.github.io/toolform/og.png" />
+
+    <style>
+      :root {
+        --bg: #06080c; --fg: #e6edf3; --muted: #9aa7b4; --line: rgba(255,255,255,0.1);
+        --card: rgba(255,255,255,0.04); --accent: #4fe3c1; --accent-ink: #06080c;
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #ffffff; --fg: #0d1117; --muted: #4b5563; --line: rgba(13,17,23,0.12);
+          --card: rgba(13,17,23,0.03); --accent: #0f766e; --accent-ink: #ffffff;
+        }
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.65 Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+      main { max-width: 820px; margin: 0 auto; padding: 56px 20px 72px; }
+      .kicker { color: var(--muted); font-size: 14px; letter-spacing: 0.02em; }
+      h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.2; margin: 10px 0 18px; }
+      .authors { font-size: 17px; margin: 0; }
+      .affil { color: var(--muted); font-size: 14px; margin: 6px 0 0; }
+      .status { display: inline-block; margin-top: 18px; padding: 4px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--muted); }
+      .links { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 8px; }
+      .links a { padding: 10px 18px; border-radius: 10px; border: 1px solid var(--line); color: var(--fg); text-decoration: none; font-weight: 600; font-size: 15px; }
+      .links a.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+      .links a:hover { border-color: var(--accent); }
+      h2 { font-size: 20px; margin: 40px 0 10px; }
+      p.abstract { text-align: justify; hyphens: auto; }
+      pre { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; overflow-x: auto; font: 13.5px/1.55 "JetBrains Mono", ui-monospace, Menlo, monospace; }
+      footer { margin-top: 48px; color: var(--muted); font-size: 14px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="kicker">Preprint · October 2026</div>
+      <h1>ToolForm: A Controlled Study of Tool Formatting for Agents</h1>
+      <p class="authors">Gaurav Srivastava, Aafiya Hussain, Yi Fang, Xuan Wang</p>
+      <p class="affil">Department of Computer Science, Virginia Tech</p>
+      <span class="status">arXiv link coming soon</span>
+
+      <div class="links">
+        <a class="primary" href="toolform.pdf">Paper (PDF)</a>
+        <a href="https://github.com/ctrl-gaurav/toolform">Code</a>
+        <a href="../">Website</a>
+        <a href="../docs/">Documentation</a>
+        <a href="https://pypi.org/project/toolform/">PyPI</a>
+      </div>
+
+      <h2>Abstract</h2>
+      <p class="abstract">
+        Agent frameworks show a language model its tools in one written format, such as JSON Schema, XML, YAML, a
+        Python function signature or a natural-language description. Prior studies compare these formats as one
+        design choice and reach different conclusions. A tool interface sets three things: the schema format the
+        model reads, the answer protocol it writes back in, and the grading rule that scores the call. Most prior
+        studies change the first two together and fix the third, so the cause of a difference is unclear. We
+        introduce ToolForm, an open-source framework that separates the three into independently controlled
+        variables, measures the effect of each, and turns the measurements into defaults an agent can use. Our
+        results show that many apparent format advantages depend on the answer protocol and the grading rule,
+        while the gain from showing the parameter schema keeps its direction under every rule and task set.
+        First, we run a controlled study that changes one factor at a time, on 100 open-source models in 17
+        families (0.36B to 122B) and 12 proprietary models, with 129 schema formats, 31 answer protocols, 3
+        grading rules, 1 to 256 tools, 5 complexity tiers, 6 task regimes and 3 pressure treatments, at 5 seeds.
+        Second, we build a benchmark from three sources: a seeded generator over 24 domains whose tools run
+        against a world state, 66 real tool schemas with 1,248 human-written requests, and 6 public benchmarks
+        rewritten in our formats and scored by their own checkers. An audit checks every record, and two authors
+        check 600 graded turns by hand. Third, we package ToolForm as a toolkit whose advisor turns the results
+        into a format and protocol choice for a given model and tool set. The results give four rules. Show the
+        parameter schema: it raises accuracy by 57.09% over tool names alone, the largest effect in the study.
+        Choose the answer protocol before the schema format: the protocol changes accuracy 1.22 to 2.00 times as
+        much as the format, and the XML lead over JSON Schema under the default pairing (13.80%) falls to 2.88%
+        over five protocols. Prefer a structured format to natural language: natural language is never more
+        accurate on average than the best structured format at any model size. Keep the tool list short and treat
+        tool descriptions as untrusted: going from 1 to 256 tools lowers accuracy by 41.01%, and an instruction
+        hidden in a tool description is followed on 38.48 to 54.16% of turns in every format that shows the
+        description. The gap between formats narrows with model size but does not close: the median of the 20
+        anchor models (12 proprietary) varies by 25% across the eight core formats, against 44% for the median
+        open-source model.
+      </p>
+
+      <h2>Citation</h2>
+      <pre>@misc{srivastava2026toolform,
+  title  = {ToolForm: A Controlled Study of Tool Formatting for Agents},
+  author = {Srivastava, Gaurav and Hussain, Aafiya and Fang, Yi and Wang, Xuan},
+  year   = {2026},
+  note   = {Preprint},
+  url    = {https://ctrl-gaurav.github.io/toolform/paper/}
+}</pre>
+
+      <footer>
+        Submitted to arXiv on 20 October 2026 and posted here on 20 November 2026. The arXiv version will be linked here once it is announced.
+      </footer>
+    </main>
+  </body>
+</html>

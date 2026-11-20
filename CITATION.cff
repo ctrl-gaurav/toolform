@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use ToolForm, please cite the paper below."
+title: "ToolForm: A Controlled Study of Tool Formatting for Agents"
+type: software
+authors:
+  - family-names: Srivastava
+    given-names: Gaurav
+    affiliation: Virginia Tech
+version: 0.0.1
+date-released: 2026-10-20
+license: Apache-2.0
+repository-code: "https://github.com/ctrl-gaurav/toolform"
+url: "https://ctrl-gaurav.github.io/toolform/"
+preferred-citation:
+  type: article
+  title: "ToolForm: A Controlled Study of Tool Formatting for Agents"
+  authors:
+    - family-names: Srivastava
+      given-names: Gaurav
+      affiliation: Virginia Tech
+    - family-names: Hussain
+      given-names: Aafiya
+      affiliation: Virginia Tech
+    - family-names: Fang
+      given-names: Yi
+      affiliation: Virginia Tech
+    - family-names: Wang
+      given-names: Xuan
+      affiliation: Virginia Tech
+  year: 2026
+  notes: "Preprint. arXiv link coming soon."
+  url: "https://ctrl-gaurav.github.io/toolform/paper/"

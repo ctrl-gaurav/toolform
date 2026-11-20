@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Wordmark } from "../brand/Wordmark";
-import { docs, GITHUB, PYPI } from "../lib/links";
+import { docs, GITHUB, PAPER, PYPI } from "../lib/links";
 
 export function SiteFooter() {
   return (
@@ -36,7 +36,7 @@ export function SiteFooter() {
             <h2>Project</h2>
             <ul>
               <li><a href={PYPI} target="_blank" rel="noreferrer">PyPI</a></li>
-              <li><span className="muted">Paper (coming soon)</span></li>
+              <li><a href={PAPER}>Paper</a> <span className="muted">(arXiv coming soon)</span></li>
               <li><a href={GITHUB} target="_blank" rel="noreferrer">GitHub</a></li>
               <li><a href={`${GITHUB}/blob/main/LICENSE`} target="_blank" rel="noreferrer">License: Apache-2.0</a></li>
             </ul>

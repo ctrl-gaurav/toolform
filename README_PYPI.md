@@ -14,7 +14,7 @@
   <a href="https://ctrl-gaurav.github.io/toolform/docs/"><b>Documentation</b></a> ·
   <a href="https://ctrl-gaurav.github.io/toolform/#/dashboard/advisor"><b>Dashboard</b></a> ·
   <a href="https://pypi.org/project/toolform/"><b>PyPI</b></a> ·
-  <b>Paper (coming soon)</b>
+  <a href="https://ctrl-gaurav.github.io/toolform/paper/"><b>Paper</b></a> (arXiv coming soon)
 </p>
 
 **ToolForm** decides how an agent shows its tools to a language model and reads back the calls.
@@ -39,11 +39,12 @@ for call in parsed.calls:
 
 ## News
 
+- **2026-11-20** · The paper, *ToolForm: A Controlled Study of Tool Formatting for Agents*, is out:
+  [PDF](https://ctrl-gaurav.github.io/toolform/paper/toolform.pdf) · [paper page](https://ctrl-gaurav.github.io/toolform/paper/). The arXiv link is coming soon.
 - **2026-10-20** · ToolForm 0.0.1 is on PyPI: `pip install toolform`. The advisor, 129 formats, 31 answer
   protocols, the guard, catalogue tools, a command line, an HTTP API and a web dashboard.
 - **2026-10-20** · The [website](https://ctrl-gaurav.github.io/toolform/) and the
   [documentation](https://ctrl-gaurav.github.io/toolform/docs/) are live.
-- **Coming soon** · The paper, *ToolForm: A Controlled Study of Tool Formatting for Agents*, on arXiv.
 
 ## What the study found
 
@@ -104,11 +105,23 @@ Issues and pull requests are welcome; see [CONTRIBUTING.md](https://github.com/c
 
 ## Citation
 
-The paper, *ToolForm: A Controlled Study of Tool Formatting for Agents*, is coming soon. Until then,
-please cite the software:
+If you use ToolForm, please cite the paper, *ToolForm: A Controlled Study of Tool Formatting for
+Agents* ([PDF](https://ctrl-gaurav.github.io/toolform/paper/toolform.pdf), arXiv link coming soon):
 
 ```bibtex
-@software{srivastava2026toolform,
+@misc{srivastava2026toolform,
+  title  = {ToolForm: A Controlled Study of Tool Formatting for Agents},
+  author = {Srivastava, Gaurav and Hussain, Aafiya and Fang, Yi and Wang, Xuan},
+  year   = {2026},
+  note   = {Preprint},
+  url    = {https://ctrl-gaurav.github.io/toolform/paper/}
+}
+```
+
+To cite the software itself:
+
+```bibtex
+@software{srivastava2026toolform_software,
   author  = {Srivastava, Gaurav},
   title   = {ToolForm: A Controlled Study of Tool Formatting for Agents},
   year    = {2026},

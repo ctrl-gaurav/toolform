@@ -7,7 +7,7 @@ import { FindingCard } from "../landing/FindingCard";
 import { HeroField } from "../landing/HeroField";
 import { MiniAdvisor } from "../landing/MiniAdvisor";
 import { PipelineRail } from "../landing/PipelineRail";
-import { docs, GITHUB, PYPI } from "../lib/links";
+import { docs, GITHUB, PAPER, PYPI } from "../lib/links";
 import { useTitle } from "../layout/SiteShell";
 import { ButtonLink } from "../ui/Button";
 import { CopyButton } from "../ui/CopyButton";
@@ -63,7 +63,8 @@ export default function Landing() {
                 <a href={PYPI} target="_blank" rel="noreferrer">
                   PyPI
                 </a>
-                <span className="faint">Paper (coming soon)</span>
+                <a href={PAPER}>Paper</a>
+                <span className="faint">arXiv coming soon</span>
                 <a href={GITHUB} target="_blank" rel="noreferrer">
                   GitHub
                 </a>
@@ -163,10 +164,13 @@ export default function Landing() {
         <div className="wrap">
           <SectionHead n="04" label="RESEARCH" title="Built on a controlled study">
             The framework ships the study's renderers, parsers and graders, and its tables as evidence: 100 open-source and 12 proprietary models, 129
-            schema formats, 31 answer protocols and 3 grading rules. The paper is coming soon.
+            schema formats, 31 answer protocols and 3 grading rules. The full study is in the paper; the arXiv link is coming soon.
           </SectionHead>
           <div className="row">
             <ButtonLink to="/dashboard/evidence">The evidence explorer</ButtonLink>
+            <a className="fw-btn ghost" href={PAPER}>
+              Read the paper
+            </a>
             <a className="fw-btn ghost" href={docs()}>
               Read the documentation
             </a>
